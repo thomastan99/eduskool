@@ -1,21 +1,24 @@
 <template>
 <TopBar/>
+<Question/>
 </template>
 
 <script>
 import TopBar from './components/TopBar.vue'
+import Question from './components/Question.vue'
 
 export default {
   name: 'App',
   components: {
-    TopBar
+    TopBar,
+    Question
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Varela Round', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

@@ -6,6 +6,11 @@
 </template>
 
 <style scoped>
+* {
+	box-sizing: border-box;
+	font-family: 'Varela Round', sans-serif;
+}
+
 .top {
     overflow: hidden;
     margin-top: -50px;
