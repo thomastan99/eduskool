@@ -1,75 +1,103 @@
 <template>
-  <div style = "text-align:center;">
-      <h1 id = "mainHead"> eduSKOOL </h1>
-      <div id = "firebaseui-auth-container"></div>
-      <div id = "pagecontent">
-          EduSkool is the leading web application in helping secondary school students catch up or overtake their peers with questions
-          up to date with the latest syllabus
-      </div>
-      <h5>coopyright@cpp-2022</h5>
+  <div id="loggingIn">
+    <img src="../assets/eduLogo.png" />
+    <form id="loginForm" class="register" @submit.prevent="login">
+      <h1 class="title">Login to eduSkool</h1>
+      <label for="email">Email:</label>
+      <input type="text" id="email" v-model="login_form.email" /><br />
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        v-model="login_form.password"
+      /><br />
+      <input type="submit" value="Login" />
+    </form>
   </div>
 </template>
 
 <script>
-import firebase from '@/uifire.js'
-import 'firebase/compat/auth'
-import * as firebaseui from 'firebaseui'
-import 'firebaseui/dist/firebaseui.css'
+import { ref } from "vue";
+import { useStore } from "vuex";
 
 export default {
-    name: "Login",
+  name: "Login",
 
-    mounted() {
-        // To call ui instance
-        var ui = firebaseui.auth.AuthUI.getInstance();
+  components: [],
 
-        if (!ui) {
-            // need to create instance only once
-            // initialize the firebaseUI widget using firebase
-            ui = new firebaseui.auth.AuthUI(firebase.auth());
-        }
+  setup() {
+    const login_form = ref({});
+    const store = useStore();
 
-        var uiConfig = {
-            signInSuccessUrl: '/home',
-            signInOptions: [
-                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                firebase.auth.EmailAuthProvider.PROVIDER_ID,
-            ]
-        };
+    const login = () => {
+      store.dispatch("login", login_form.value);
+    };
 
-        ui.start("#firebaseui-auth-container", uiConfig)
-    }
-}
+    return {
+      login_form,
+      login,
+    };
+  },
+};
 </script>
 
 <style scoped>
-
-#firebaseui-auth-container {
-    margin-top: 50px;
-    margin-bottom: 50px;
+input {
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  height: 30px;
 }
 
-#pagecontent {
-    height: 100px;
-    font-size: larger;
-    font-weight: bolder;
-    text-align: center;
+input[type="submit"] {
+  border-radius: none;
+  font-size: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  text-decoration: underline;
 }
 
-#mainHead {
-    text-align: center;
-    text-shadow: 2px 2px grey;
+input[type="submit"]:hover {
+  color: rgb(22, 25, 231);
+  font-size: 20px;
 }
 
-#bg {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+.title {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  /* padding-top: 10px; */
 }
 
-h5 {
-    text-align: center;
-    background-color: rgba(12, 170, 136, 0.61)
+#loggingIn {
+  text-align: center;
+  min-height: 100vh;
+  background-image: linear-gradient(
+      rgba(228, 218, 218, 0.6),
+      rgba(131, 125, 125, 0.6)
+    ),
+    url("../assets/teacher2.jpg");
+  background-size: cover;
+}
+
+#loginForm {
+  align-self: right;
+  /* min-height:100vh; */
+}
+
+label {
+  display: inline-block;
+  text-align: right;
+  width: 100px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+}
+
+p {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 </style>
