@@ -18,7 +18,9 @@
                     <button id="watch">Watch</button>
                 </td>
                 <td> 
-                    <button id="attempt">Attempt</button>
+                    <!-- <button id="attempt">Attempt</button> -->
+                    <router-link to="/quiz" tag="button">Attempt </router-link>
+                    <!-- <a id="homeworkText" href="/quiz"> </a> -->
                 </td>
                 <td> 
                     <h3 class="marks"> 10/10 </h3>

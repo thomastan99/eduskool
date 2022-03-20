@@ -9,6 +9,7 @@ import Login from '@/views/Login.vue'
 import TeachersHome from '@/views/TeachersHome.vue'
 import TeachersScoreboard from '@/views/TeachersScoreboard.vue'
 import TeachersCS from '@/views/TeachersCS.vue'
+import Quiz from '@/views/Quiz.vue'
 
 const routes = [
     {   path: '/home',
@@ -20,6 +21,11 @@ const routes = [
         path: '/mathstopics',
         name: 'MathsTopics',
         component: MathsTopics
+    },
+    {
+        path: '/quiz',
+        name: "Quiz",
+        component: Quiz
     },
     {
         path:'/',
@@ -50,7 +56,7 @@ const routes = [
         component: LeaderboardSci
     },
     {
-        path: '/',
+        path: '/TeachersHome',
         name: 'TeachersHome',
         component: TeachersHome,
     },

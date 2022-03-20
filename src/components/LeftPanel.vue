@@ -33,8 +33,8 @@
 
             <div class="options">
                 <img id="leaderboardImage" src="../assets/leaderboard.png" alt="Leaderboard Image">
-                <a id="leaderboardText" href="/">Leaderboard</a>
-                <a href="/"></a>
+                <a id="leaderboardText" href="/LeaderboardMath">Leaderboard</a>
+
             </div>
 
             <div class="options">

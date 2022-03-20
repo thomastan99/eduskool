@@ -1,11 +1,12 @@
 <template>
   <TopBar/>
   <Question/>
+  <router-view/>
 </template>
 
 <script>
-import TopBar from './components/TopBar.vue'
-import Question from './components/Question.vue'
+import TopBar from '../components/TopBar.vue'
+import Question from '../components/Question.vue'
 
 export default {
 

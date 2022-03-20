@@ -4,6 +4,13 @@
         <hr>
     </div>
 </template>
+<script>
+
+
+export default {
+
+}
+</script>
 
 <style scoped>
 * {
@@ -13,7 +20,6 @@
 
 .top {
     overflow: hidden;
-    margin-top: -50px;
     font-family: 'Varela Round', sans-serif;
     font-size: 10px;
 }

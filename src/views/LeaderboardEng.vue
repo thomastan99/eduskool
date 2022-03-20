@@ -1,6 +1,7 @@
 <template>
 <h1> Leaderboard English </h1>
   <LeaderboardE/>
+  
 </template>
 
 <script>
