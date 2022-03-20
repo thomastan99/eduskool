@@ -11,7 +11,7 @@ import TeachersScoreboard from '@/views/TeachersScoreboard.vue'
 import TeachersCS from '@/views/TeachersCS.vue'
 
 const routes = [
-    {   path: '/',
+    {   path: '/home',
     name: 'Homepage',
     component: Homepage
     },

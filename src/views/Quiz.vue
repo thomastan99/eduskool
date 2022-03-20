@@ -1,17 +1,20 @@
 <template>
-  <div id ="nav">
-    <router-link to="/Homepage"></router-link>
-  </div>
-  <router-view/>
-
+  <TopBar/>
+  <Question/>
 </template>
 
 <script>
-
+import TopBar from './components/TopBar.vue'
+import Question from './components/Question.vue'
 
 export default {
 
-  name: 'App',
+  name: 'Quiz',
+
+  components: {
+    TopBar,
+    Question
+  }
   
 }
 </script>

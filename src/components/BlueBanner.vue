@@ -4,10 +4,6 @@
         <h2 id="welcome">Welcome Back James!</h2>
         <a id="courses" href="./">Courses</a>
         <a id="help" href="./">Help</a>
-        <div id="logo"><img src="../assets/elogo.png" alt="EDU'skool logo"></div>
-        <div id="welcome"><h2>Welcome Chase!</h2></div>
-        <div id="courses"><a href="./">Courses</a></div>
-        <div id="help"><a href="./">Help</a></div>
     </div><br><br>
 </template>
 
