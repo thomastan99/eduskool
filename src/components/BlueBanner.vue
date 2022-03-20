@@ -64,6 +64,7 @@ h2 {
     right: 90px;
     top:25px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
+}
 button {
     background-color: #00bcd4;
     border: none;
