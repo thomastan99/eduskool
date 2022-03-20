@@ -1,8 +1,6 @@
 <template>
 <div id = "nav">
-    <router-link to="LeaderboardMath">Math</router-link>|
-    <router-link to="LeaderboardSci"> Science </router-link>|
-    <router-link to="LeaderboardEng"> Eng </router-link>
+    <router-view />
 </div>
 <router-view/>
 <TopBar/>
@@ -25,12 +23,15 @@ export default {
 </script>
 
 <style>
+
 #app {
   font-family: 'Varela Round', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
+
+
 </style>
