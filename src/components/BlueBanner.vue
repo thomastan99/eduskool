@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <img id ="logo" src="../assets/elogo.png" alt="EDU'skool logo">
+        <a href = "/home" > <img id ="logo" src="../assets/elogo.png" alt="EDU'skool logo" > </a>
         <h2 id="welcome">Welcome Back James!</h2>
         <a id="courses" href="./">Courses</a>
         <a id="help" href="./">Help</a>
