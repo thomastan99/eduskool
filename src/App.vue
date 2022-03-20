@@ -10,6 +10,12 @@
 <script>
 import TopBar from './components/TopBar.vue'
 import Question from './components/Question.vue'
+  <router-view/>
+</template>
+
+<script>
+
+
 
 export default {
 
@@ -19,6 +25,7 @@ export default {
     TopBar,
     Question
   }
+  
 }
 </script>
 

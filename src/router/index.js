@@ -4,6 +4,9 @@ import LeaderboardEng from '@/views/LeaderboardEng.vue'
 import LeaderboardSci from '@/views/LeaderboardSci.vue'
 import Register from '@/views/Register.vue'
 import Login from '@/views/Login.vue'
+import TeachersHome from '@/views/TeachersHome.vue'
+import TeachersScoreboard from '@/views/TeachersScoreboard.vue'
+import TeachersCS from '@/views/TeachersCS.vue'
 
 
 
@@ -35,9 +38,24 @@ const routes = [
         path: '/LeaderboardSci',
         name: "LeaderboardSci",
         component: LeaderboardSci
-    }
- 
+    },
+    {
+        path: '/',
+        name: 'TeachersHome',
+        component: TeachersHome,
+    },
+    {
+        path: '/teachersscoreboard',
+        name: 'TeachersScoreboard',
+        component: TeachersScoreboard,
+    },
+    {
+        path: '/teacherscs',
+        name: 'TeachersCS',
+        component: TeachersCS
+    },
 ]
+
 const router = createRouter({
     history: createWebHistory(),
     routes
