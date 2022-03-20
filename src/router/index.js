@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from "vue-router"
 import MathsTopics from '@/views/MathsTopics.vue'
 import Homepage from '@/views/Homepage.vue'
 import LeaderboardMath from '@/views/LeaderboardMath.vue'
-import LeaderboardEng from '@/views/LeaderboardEng.vue'
-import LeaderboardSci from '@/views/LeaderboardSci.vue'
+
+
 import Register from '@/views/Register.vue'
 import Login from '@/views/Login.vue'
 import TeachersHome from '@/views/TeachersHome.vue'
@@ -45,16 +45,8 @@ const routes = [
         //     requiresAuth: true
         // }
     },
-    {
-        path: '/LeaderboardEng',
-        name: "LeaderboardEng",
-        component: LeaderboardEng
-    },
-    {
-        path: '/LeaderboardSci',
-        name: "LeaderboardSci",
-        component: LeaderboardSci
-    },
+ 
+
     {
         path: '/TeachersHome',
         name: 'TeachersHome',
