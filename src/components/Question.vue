@@ -67,40 +67,66 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import firebaseApp from '../firebase.js'
+import {getFirestore} from "firebase/firestore";
+import {collection,getDocs} from "firebase/firestore";
+const db = getFirestore(firebaseApp)
+    async function getQuestions(){
+    const questions1 = []
+    let x = await getDocs(collection(db,"Questions","Science","Chap1"))
+    x.forEach((docs) =>{
+        let s = docs.data()
+        questions1.push({
+            question: s.Question,
+            answer: s.answer,
+            options: [
+                s.Option1,
+                s.Option2,
+                s.Option3
+            ],
+            selected: null
 
+        })
+    })
+    return questions1
+    }
+    getQuestions()
+
+
+    const questions  = ref(getQuestions())
     //Question bank
-    const questions = ref([
-        {
-            question: "What is 1 + 1?",
-            answer: 1,
-            options: [
-                "1",
-                "2",
-                "0"
-            ],
-            selected: null
-        },
-        {
-            question: "What is 2 * 2?",
-            answer: 2,
-            options: [
-                "1",
-                "2",
-                "4"
-            ],
-            selected: null
-        },
-        {
-            question: "What is 3 * 2 + 1?",
-            answer: 0,
-            options: [
-                "7",
-                "2",
-                "0"
-            ],
-            selected: null
-        }
-    ])
+    // const questions = ref([
+    //     {
+    //         question: "What is 1 + 1?",
+    //         answer: 1,
+    //         options: [
+    //             "1",
+    //             "2",
+    //             "0"
+    //         ],
+    //         selected: null
+    //     },
+    //     {
+    //         question: "What is 2 * 2?",
+    //         answer: 2,
+    //         options: [
+    //             "1",
+    //             "2",
+    //             "4"
+    //         ],
+    //         selected: null
+    //     },
+    //     {
+    //         question: "What is 3 * 2 + 1?",
+    //         answer: 0,
+    //         options: [
+    //             "7",
+    //             "2",
+    //             "0"
+    //         ],
+    //         selected: null
+    //     }
+    // ])
 
     const quizCompleted = ref(false)
     const currentQuestion = ref(0)
