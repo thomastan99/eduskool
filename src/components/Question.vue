@@ -10,21 +10,21 @@
                 <!---else, if the unselected question is correct, mark it as correct. else mark it as disabled--->
                 <label 
                     v-for="(option, index) in getCurrentQuestion.options" 
-					:key="index"
-					:class="`option ${ 
-						getCurrentQuestion.selected == index 
-							? index == getCurrentQuestion.answer 
-								? 'correct' 
-								: 'wrong'
-							: ''
-					} ${
-						getCurrentQuestion.selected != null &&
-						index != getCurrentQuestion.selected && index == getCurrentQuestion.answer
-							? 'correct'
-							: getCurrentQuestion.selected != null && index != getCurrentQuestion.selected
+          :key="index"
+          :class="`option ${ 
+            getCurrentQuestion.selected == index 
+              ? index == getCurrentQuestion.answer 
+                ? 'correct' 
+                : 'wrong'
+              : ''
+          } ${
+            getCurrentQuestion.selected != null &&
+            index != getCurrentQuestion.selected && index == getCurrentQuestion.answer
+              ? 'correct'
+              : getCurrentQuestion.selected != null && index != getCurrentQuestion.selected
                                 ? 'disabled'
                                 : ''
-					}`">
+          }`">
                     <!---disable every other option once an option is selected and set the selected option as the answer--->
                     <input 
                         type="radio" 
@@ -44,8 +44,8 @@
                 </button>
 
                 <button class="nextButton"
-				@click="nextQuestion" 
-				:disabled="!getCurrentQuestion.selected">
+        @click="nextQuestion" 
+        :disabled="!getCurrentQuestion.selected">
                     {{ 
                         getCurrentQuestion.index == questions.length - 1 
                             ? 'Submit' 
@@ -53,57 +53,50 @@
                                 ? 'Select your answer'
                                 : 'Next'
                     }}
-			</button>
+      </button>
             </div>
         </section>
 
         <!---if current question is last question, show final page with score--->
         <section v-else>
             <h2>You have finished the quiz!</h2>
-			<p>Your score is {{ score }}/{{ questions.length }}</p>
+      <p>Your score is {{ score }}/{{ questions.length }}</p>
         </section>
     </div>
+    
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
+import firebaseApp from '../firebase.js'
+import {getFirestore} from "firebase/firestore";
+import {collection,getDocs} from "firebase/firestore";
 
-    //Question bank
-    const questions = ref([
-        {
-            question: "What is 1 + 1?",
-            answer: 1,
-            options: [
-                "1",
-                "2",
-                "0"
-            ],
+
+    const db = getFirestore(firebaseApp)
+
+    const questions = ref([])
+   getDocs(collection(db,"Questions","Science","Chap1")).then(querySnapshot => {
+        querySnapshot.forEach((docs) =>{
+        let s = docs.data()
+        questions.value.push({
+            question: s.question,
+            answer: s.answer,
+            options: s.Options,
             selected: null
-        },
-        {
-            question: "What is 2 * 2?",
-            answer: 2,
-            options: [
-                "1",
-                "2",
-                "4"
-            ],
-            selected: null
-        },
-        {
-            question: "What is 3 * 2 + 1?",
-            answer: 0,
-            options: [
-                "7",
-                "2",
-                "0"
-            ],
-            selected: null
-        }
-    ])
+
+        })
+
+    })
+
+    })
+
+
+
 
     const quizCompleted = ref(false)
     const currentQuestion = ref(0)
+    console.log(currentQuestion.value)
 
     //Calculate score
     const score = computed(() => {
@@ -116,7 +109,6 @@ import { ref, computed } from 'vue'
         })
         return value
     })
-
     //Get current question
     const getCurrentQuestion = computed(() => {
         let question = questions.value[currentQuestion.value]
@@ -141,57 +133,57 @@ import { ref, computed } from 'vue'
 
 <style scoped>
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Varela Round', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .question {
     display: flex;
-	flex-direction: column;
-	padding: 2rem;
-	height: 100vh;
+  flex-direction: column;
+  padding: 2rem;
+  height: 100vh;
 }
 
 .quiz {
-	width: 100%;
+  width: 100%;
 }
 
 .quizInfo {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .options {
-	margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .option {
-	padding: 1rem;
-	display: block;
-	background-color: #F3EEEE;
-	margin-bottom: 0.5rem;
-	border-radius: 0.5rem;
-	cursor: pointer;
+  padding: 1rem;
+  display: block;
+  background-color: #F3EEEE;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
     text-align: left;
 }
 
 .option:hover {
-	background-color: #C4C4C4;
+  background-color: #C4C4C4;
 }
 
 .option input {
-	display: none;
+  display: none;
 }
 
 .option.correct {
-	background-color: #2cce7d;
+  background-color: #2cce7d;
 }
 
 .option.wrong {
-	background-color: #ff5a5f;
+  background-color: #ff5a5f;
 }
 
 .buttons {
@@ -199,20 +191,20 @@ import { ref, computed } from 'vue'
 }
 
 button {
-	appearance: none;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	padding: 0.5rem 1rem;
-	background-color: #00BCD4;
-	color: #2d213f;
-	font-weight: 700;
-	font-size: 1.2rem;
+  appearance: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background-color: #00BCD4;
+  color: #2d213f;
+  font-weight: 700;
+  font-size: 1.2rem;
     display: inline-block;
 }
 
 button:disabled {
-	opacity: 0.5;
+  opacity: 0.5;
 }
 
 .hintButton {
@@ -220,8 +212,8 @@ button:disabled {
 }
 
 h2 {
-	font-size: 2rem;
-	margin-bottom: 2rem;
-	text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 </style>
