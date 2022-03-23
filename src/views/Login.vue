@@ -19,26 +19,35 @@
 <script>
 import { ref } from "vue";
 import { useStore } from "vuex";
+ const login_form = ref({});
 
 export default {
   name: "Login",
 
   components: [],
+  
 
   setup() {
-    const login_form = ref({});
+     
+    
     const store = useStore();
 
     const login = () => {
       store.dispatch("login", login_form.value);
+      console.log(login_form.value.email)
     };
+    
 
     return {
       login_form,
       login,
     };
   },
+
+
 };
+
+export const loginData = login_form.value.email
 </script>
 
 <style scoped>

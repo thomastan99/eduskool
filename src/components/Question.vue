@@ -70,7 +70,15 @@
 import { ref, computed } from 'vue'
 import firebaseApp from '../firebase.js'
 import {getFirestore} from "firebase/firestore";
-import {collection,getDocs} from "firebase/firestore";
+import {collection,getDocs, doc, updateDoc} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
+const auth = getAuth();
+const user = auth.currentUser;
+console.log(user.email)
+
+
+
 
 
     const db = getFirestore(firebaseApp)
@@ -90,13 +98,20 @@ import {collection,getDocs} from "firebase/firestore";
     })
 
     })
+         function update(score){
+          updateDoc(doc(db,"Students","john@gmail.com","Classes","Sci"),{
+        score: score
+    }).then(() =>{
+        console.log("lmao")
+    })
+        }
 
 
 
 
     const quizCompleted = ref(false)
     const currentQuestion = ref(0)
-    console.log(currentQuestion.value)
+
 
     //Calculate score
     const score = computed(() => {
@@ -107,8 +122,27 @@ import {collection,getDocs} from "firebase/firestore";
                 value++
             }
         })
+   
+        
+        update(value)
         return value
     })
+    // getDocs(collection(db,"Students","john@gmail.com","Classes","Sci")).then(querySnapshot => {
+    //     querySnapshot.forEach((docs) =>{
+    //         docs.set({
+    //             score:1000
+    //         })
+    //         console.log("updated")
+    //     })})
+  
+
+
+    // const cityRef = db.collection("john@gmail.com").doc("Classes").collection("Sci");
+    // const res = cityRef.update({score: score})
+
+        
+
+
     //Get current question
     const getCurrentQuestion = computed(() => {
         let question = questions.value[currentQuestion.value]
@@ -129,6 +163,8 @@ import {collection,getDocs} from "firebase/firestore";
         
         quizCompleted.value = true
     }
+
+
 </script>
 
 <style scoped>
