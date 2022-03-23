@@ -67,24 +67,19 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import firebaseApp from '../firebase.js'
-import {getFirestore} from "firebase/firestore";
-import {collection,getDocs, doc, updateDoc} from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+  import { ref, computed } from 'vue'
+  import firebaseApp from '../firebase.js'
+  import {getFirestore} from "firebase/firestore";
+  import {collection,getDocs, doc, updateDoc} from "firebase/firestore";
+  import { getAuth } from "firebase/auth";
 
-const auth = getAuth();
-const user = auth.currentUser;
-console.log(user.email)
-
-
-
-
-
-    const db = getFirestore(firebaseApp)
+  const auth = getAuth();
+  const user = auth.currentUser;
+  console.log(user.email)
+  const db = getFirestore(firebaseApp)
 
     const questions = ref([])
-   getDocs(collection(db,"Questions","Science","Chap1")).then(querySnapshot => {
+    getDocs(collection(db,"Questions","Science","Chap1")).then(querySnapshot => {
         querySnapshot.forEach((docs) =>{
         let s = docs.data()
         questions.value.push({
@@ -102,7 +97,7 @@ console.log(user.email)
           updateDoc(doc(db,"Students","john@gmail.com","Classes","Sci"),{
         score: score
     }).then(() =>{
-        console.log("lmao")
+        console.log("updated")
     })
         }
 
@@ -128,21 +123,6 @@ console.log(user.email)
         update(value)
         return value
     })
-    // getDocs(collection(db,"Students","john@gmail.com","Classes","Sci")).then(querySnapshot => {
-    //     querySnapshot.forEach((docs) =>{
-    //         docs.set({
-    //             score:1000
-    //         })
-    //         console.log("updated")
-    //     })})
-  
-
-
-    // const cityRef = db.collection("john@gmail.com").doc("Classes").collection("Sci");
-    // const res = cityRef.update({score: score})
-
-        
-
 
     //Get current question
     const getCurrentQuestion = computed(() => {
