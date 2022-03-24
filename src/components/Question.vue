@@ -94,7 +94,7 @@
 
     })
          function update(score){
-          updateDoc(doc(db,"Students","john@gmail.com","Classes","Sci"),{
+          updateDoc(doc(db,"Students",user.email,"Classes","Sci"),{
         score: score
     }).then(() =>{
         console.log("updated")
