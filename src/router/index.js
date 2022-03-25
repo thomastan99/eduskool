@@ -10,11 +10,17 @@ import TeachersHome from '@/views/TeachersHome.vue'
 import TeachersScoreboard from '@/views/TeachersScoreboard.vue'
 import TeachersCS from '@/views/TeachersCS.vue'
 import Quiz from '@/views/Quiz.vue'
+import Ready from '@/views/Ready.vue'
 
 const routes = [
     {   path: '/home',
     name: 'Homepage',
     component: Homepage
+    },
+    {
+        path: "/ready",
+        name: "Ready",
+        component: Ready
     },
 
     {

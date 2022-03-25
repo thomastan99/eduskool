@@ -1,7 +1,9 @@
 <template>
+
     <div id="main">
         <div id="pageTitle">
             <h1> P5 Maths </h1>
+            
         </div>
 
         <table id = "topicstable">
@@ -19,7 +21,7 @@
                 </td>
                 <td> 
                     <!-- <button id="attempt">Attempt</button> -->
-                    <router-link to="/quiz" tag="button">Attempt </router-link>
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Science')">Attempt </router-link>
                     <!-- <a id="homeworkText" href="/quiz"> </a> -->
                 </td>
                 <td> 
@@ -37,7 +39,7 @@
                 </td>
 
                 <td> 
-                    <button id="attempt">Attempt</button>
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Math')">Attempt </router-link>
                 </td>
 
                 <td> 
@@ -131,7 +133,30 @@
 </template>
 
 <script>
+import firebaseApp from '../firebase.js'
+import {getFirestore} from "firebase/firestore";
+import { doc, updateDoc} from "firebase/firestore";
+const db = getFirestore(firebaseApp)
 export default {
+
+    data(){
+        return{
+            chapter :1,
+            subject :"math"
+        }
+    },
+    methods : {
+        update(chapter,subject){
+            updateDoc(doc(db,"Questions","index"),{
+                chapter: chapter,
+                subject: subject
+            }).then(() =>{
+                console.log("updated")
+            })
+
+        }
+
+    }
 
 }
 </script>
