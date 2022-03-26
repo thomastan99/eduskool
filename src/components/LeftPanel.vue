@@ -9,14 +9,14 @@
             </div>
         </div>
         <div id="menu">
-            <div class="options">
+            <div class="options" onclick="location.href='/'">
                 <img id="announcementImage" src="../assets/announcement.png" alt="Announcement Image">
-                <a id="announcementText" href="/">Announcements</a>
+                <a id="announcementText">Announcements</a>
             </div>
 
-            <div class="options">
+            <div class="options" onclick="location.href='/home'">
                 <img id="topicsImage" src="../assets/topics.png" alt="Topics Image">
-                <a id="topicsText" href="/">Topics</a>
+                <a id="homeworkText">Topics</a>
             </div>
 
             <div class="options">
@@ -65,7 +65,7 @@ export default {
     width:20%;
     position: relative;
     top:7px;
-    right: 85px;
+    right: 120px;
 }
 
 #leaderboardText {
@@ -78,7 +78,7 @@ export default {
     width:28%;
     position: relative;
     top: 5px;
-    right: 114px;
+    right: 129px;
 }
 #achievementsText {
     position: relative;
@@ -89,8 +89,8 @@ export default {
     height:20%;
     width:23%;
     position: relative;
-    top: 7px;
-    right: 121px;
+    top: 5px;
+    right: 137px;
 }
 #homeworkText {
     position: relative;
@@ -102,7 +102,7 @@ export default {
     width:20%;
     position: relative;
     top:4px;
-    right: 90px;
+    right: 125px;
 }
 #topicsText {
     position: relative;
@@ -114,7 +114,7 @@ export default {
     width:20%;
     position: relative;
     top:1px;
-    right: 45px;
+    right: 103px;
 }
 #announcementText {
     position: relative;
@@ -164,34 +164,31 @@ export default {
 }
 
 #personal {
-    float: left;
-    margin-bottom: 20px;
-    position: relative;
-    top: 50px;
-    left: 15px;
+    margin-top:10px;
+    margin-bottom:120px;
 }
 
 #main {
-    max-width: 270px;
+    position: fixed;
+    margin-top:50px;
+    margin-left:20px;
 }
 
 #menu {
     float: left;
     background-color: #ececec;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    height: 525px;
+    height: 522.5px;
     width: 250px;
-    position: relative;
-    top:60px;
-    left:20px;
 }
 
 .options {
-    border:1px inset #c9dde0;
+    border:1px solid black;
     padding: 10px 20px 20px 10px;
 }
 
 .options:hover {
+    cursor: pointer;
     background-color: #d6e0e2;
 }
 

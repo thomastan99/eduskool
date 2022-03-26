@@ -10,6 +10,7 @@ import TeachersHome from '@/views/TeachersHome.vue'
 import TeachersScoreboard from '@/views/TeachersScoreboard.vue'
 import TeachersCS from '@/views/TeachersCS.vue'
 import Quiz from '@/views/Quiz.vue'
+import TopicsView from '@/views/TopicsView.vue'
 
 const routes = [
     {   path: '/home',
@@ -70,6 +71,12 @@ const routes = [
         name: 'TeachersCS',
         component: TeachersCS
     },
+    {
+        path: '/topicsView',
+        name: 'TopicsView',
+        component: TopicsView
+    },
+
 ]
 
 const router = createRouter({
