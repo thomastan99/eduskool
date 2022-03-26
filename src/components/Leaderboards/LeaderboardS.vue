@@ -1,5 +1,5 @@
 <template>
-
+<h1> Science Leaderboard </h1>
   <table id = "table">
       <tr>
           <th> Ranking </th>
@@ -71,7 +71,7 @@ export default {
 
 <style>
 table{
-    width: 100%;
+    width: 70%;
     align-items: center;
 }
 

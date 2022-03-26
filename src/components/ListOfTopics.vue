@@ -1,7 +1,9 @@
 <template>
+
     <div id="main">
         <div id="pageTitle">
             <h1> P5 Maths </h1>
+            
         </div>
 
         <table id = "topicstable"> 
@@ -29,10 +31,9 @@
                         </transition>
                 </td>
                 <td> 
-                    <router-link to="/quiz">
-                        <button id="attempt">Attempt</button>
-                    </router-link>  
-
+                    <!-- <button id="attempt">Attempt</button> -->
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Science')">Attempt </router-link>
+                    <!-- <a id="homeworkText" href="/quiz"> </a> -->
                 </td>
                 <td> 
                     <h3 class="marks"> 10/10 </h3>
@@ -60,7 +61,7 @@
                 </td>
 
                 <td> 
-                    <button id="attempt">Attempt</button>
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Math')">Attempt </router-link>
                 </td>
 
                 <td> 
@@ -207,19 +208,50 @@
 </template>
 
 <script>
+import firebaseApp from '../firebase.js'
+import {getFirestore} from "firebase/firestore";
+import { doc, updateDoc} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
+const db = getFirestore(firebaseApp)
+const auth = getAuth();
+
+
+
 
 export default {
-    data: () => {
-        return {
-            wholeNumbers: false,
-            fractions: false,
-            decimals: false,
-            percent: false,
-            ratio: false,
-            measure:false,
-            geo:false,
+
+    data(){
+        return{
+            currQuizChapter :"1",
+            curQuizSubject :"math",
+            
         }
     },
+    methods : {
+        // update(chapter,subject){
+        //     updateDoc(doc(db,"Questions","index"),{
+        //         chapter: chapter,
+        //         subject: subject
+        //     }).then(() =>{
+        //         console.log("updated")
+        //     })
+
+        // }
+        update(chapter,subject){
+            this.fbuser = auth.currentUser.email
+            console.log(this.fbuser)
+            updateDoc(doc(db,"Students",String(this.fbuser)),{
+                currQuizChapter: chapter,
+                currQuizSubject: subject
+            }).then(() =>{
+                console.log("updated")
+            })
+
+        }
+
+    }
+
 }
 </script>
 

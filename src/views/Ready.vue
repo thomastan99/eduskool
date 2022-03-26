@@ -1,23 +1,25 @@
 <template>
 <BlueBanner/>
 <br><br>
-  <TopBar/>
-  <Question/>
-  <router-view/>
+
+<h1> Are you ready ? </h1>
+<router-link to="/quiz"><button class="button">Enter Quiz</button> </router-link>
+
+
+
 </template>
 
 <script>
-import TopBar from '../components/TopBar.vue'
-import Question from '../components/Question.vue'
+
+
 import BlueBanner from '../components/BlueBanner.vue'
 
 export default {
 
-  name: 'Quiz',
+  name: 'Ready',
 
   components: {
-    TopBar,
-    Question,
+
     BlueBanner
   }
   
@@ -33,5 +35,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   /* margin-top: 60px; */
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 160px;
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: 140px 400px;
 }
 </style>

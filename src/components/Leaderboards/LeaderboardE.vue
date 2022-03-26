@@ -1,5 +1,6 @@
 <template>
-
+<div id="main">
+<h1> English Leaderboard </h1>
   <table id = "table">
       <tr>
           <th> Ranking </th>
@@ -7,6 +8,7 @@
           <th>Score </th>
         </tr>
   </table> <br><br>
+</div>
 </template>
 
 <script>
@@ -69,10 +71,14 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 table{
-    width: 100%;
+    width: 70%;
     align-items: center;
+}
+#main {
+    top:50px;
+    left:100px;
 }
 
 </style>
