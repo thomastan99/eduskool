@@ -67,21 +67,32 @@
 </template>
 
 <script setup>
-  import { ref, computed } from 'vue'
-  import firebaseApp from '../firebase.js'
-  import {getFirestore} from "firebase/firestore";
-  import {collection,getDocs, doc, updateDoc} from "firebase/firestore";
-  import { getAuth } from "firebase/auth";
+import { ref, computed } from 'vue'
+import firebaseApp from '../firebase.js'
+import {getFirestore} from "firebase/firestore";
+import {collection,getDocs, doc, updateDoc, getDoc} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
-  const auth = getAuth();
-  const user = auth.currentUser;
-  console.log(user.email)
-  const db = getFirestore(firebaseApp)
+ const db = getFirestore(firebaseApp)
+const auth = getAuth();
+const user = auth.currentUser;
+console.log(user.email)
+let subject =""
+let chap = ""
 
-    const questions = ref([])
-    getDocs(collection(db,"Questions","Science","Chap1")).then(querySnapshot => {
+const questions = ref([])
+
+
+const docRef = doc(db, "Questions", "index");
+getDoc(docRef).then(doc =>{
+    let s = doc.data()
+    console.log(s)
+    subject = s.subject
+    chap = s.chapter
+getDocs(collection(db,"Questions",String(subject),String(chap))).then(querySnapshot => {
         querySnapshot.forEach((docs) =>{
         let s = docs.data()
+
         questions.value.push({
             question: s.question,
             answer: s.answer,
@@ -93,6 +104,21 @@
     })
 
     })
+    }
+
+)
+console.log(questions)
+// const data = docSnap.data()
+// subject = String(data.subject)
+//  chap = String(data.chapter)
+//  return subject,chap
+
+
+
+
+
+
+    console.log(questions)
          function update(score){
           updateDoc(doc(db,"Students",user.email,"Classes","Sci"),{
         score: score
