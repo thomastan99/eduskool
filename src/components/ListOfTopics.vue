@@ -136,20 +136,34 @@
 import firebaseApp from '../firebase.js'
 import {getFirestore} from "firebase/firestore";
 import { doc, updateDoc} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
 const db = getFirestore(firebaseApp)
+const auth = getAuth();
+const user = auth.currentUser;
+
 export default {
 
     data(){
         return{
-            chapter :1,
-            subject :"math"
+            currQuizChapter :"1",
+            curQuizSubject :"math"
         }
     },
     methods : {
+        // update(chapter,subject){
+        //     updateDoc(doc(db,"Questions","index"),{
+        //         chapter: chapter,
+        //         subject: subject
+        //     }).then(() =>{
+        //         console.log("updated")
+        //     })
+
+        // }
         update(chapter,subject){
-            updateDoc(doc(db,"Questions","index"),{
-                chapter: chapter,
-                subject: subject
+            updateDoc(doc(db,"Students",String(user.email)),{
+                currQuizChapter: chapter,
+                currQuisSubject: subject
             }).then(() =>{
                 console.log("updated")
             })

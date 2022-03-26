@@ -73,7 +73,7 @@ import {getFirestore} from "firebase/firestore";
 import {collection,getDocs, doc, updateDoc, getDoc} from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
- const db = getFirestore(firebaseApp)
+const db = getFirestore(firebaseApp)
 const auth = getAuth();
 const user = auth.currentUser;
 console.log(user.email)
@@ -83,12 +83,15 @@ let chap = ""
 const questions = ref([])
 
 
-const docRef = doc(db, "Questions", "index");
+//const docRef = doc(db, "Questions", "index");
+const docRef = doc(db, "Students", user.email);
+
 getDoc(docRef).then(doc =>{
     let s = doc.data()
     console.log(s)
-    subject = s.subject
-    chap = s.chapter
+    subject = s.currQuizSubject
+    chap = s.currQuizChapter
+
 getDocs(collection(db,"Questions",String(subject),String(chap))).then(querySnapshot => {
         querySnapshot.forEach((docs) =>{
         let s = docs.data()
