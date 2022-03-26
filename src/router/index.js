@@ -13,6 +13,7 @@ import Quiz from '@/views/Quiz.vue'
 import Ready from '@/views/Ready.vue'
 import Profile from '@/views/Profile.vue'
 import TopicsView from '@/views/TopicsView.vue'
+import TeachersAnnouncements from '@/views/TeachersAnnouncements.vue'
 
 const routes = [
     {   path: '/home',
@@ -78,8 +79,13 @@ const routes = [
         path: '/topicsView',
         name: 'TopicsView',
         component: TopicsView
-    }
+    },
+    {
 
+        path: '/teachersannouncements',
+        name: 'TeachersAnnouncements',
+        component: TeachersAnnouncements
+    }
 ]
 
 const router = createRouter({
