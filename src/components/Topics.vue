@@ -32,47 +32,37 @@ export default {
 
 <style scoped>
 #main {
-    top:50px;
-    left:100px;
+    display:inline-block;
+    margin-top:40px;
+    margin-left:150px;
+    text-align: center;
 }
 #pageTitle {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  color: #2c3e50;
-  position:relative;
-  top:25px;
-  left:75px;
-  font-size:30px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    color: #2c3e50;
+    font-size:23px;
+    margin-left:50px;
 }
 
 #maths {
-    margin-top:100px;
-    margin-left:75px;
-    position:relative;
-    text-align:center;
+    text-align: center;
+    margin-top:80px;
+    margin-left:100px;
     display:inline-block;
-    width:20%;
+    padding:0px 80px 0px 0px;
     color: grey;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #english {
-    margin-top:100px;
-    margin-left:100px;
-    position:relative;
     text-align: center;
     display:inline-block;
-    padding:0px 0px 0px 0px;
-    width:20%;
+    padding:0px 80px 0px 0px;
     color: grey;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #science {
-    margin-top:100px;
-    margin-left:100px;
-    position:relative;
     display:inline-block;
     text-align:center;
-    padding:0px 0px 0px 0px;
-    width:20%;
     color: grey;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }

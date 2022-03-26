@@ -17,16 +17,12 @@ export default {
 <style scoped>
 #logo {
     float: left;
-    display: inline-block;
 }
 
 #welcome {
-    display: inline-block;
-    position: relative;
-    left:300px;
-    top:5px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    vertical-align: top;
+    display:inline-block;
+    padding: 5px 200px 0px 200px;
 }
 
 /* welcome {
@@ -41,25 +37,21 @@ h2 {
 
 #main {
     background-color: #00bcd4;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height:10%;
 }
 
 #courses {
-    position:relative;
-    float:right;
-    right: 300px;
-    top:25px;
+    display:inline-block;
+    padding: 0px 100px 0px 0px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 #help {
-    position:relative;
-    float:right;
-    right: 90px;
-    top:25px;
+    display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 button {
