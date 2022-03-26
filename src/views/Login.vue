@@ -13,6 +13,7 @@
       /><br />
       <input type="submit" value="Login" />
     </form>
+    <a href="/"> Back to Register </a>
   </div>
 </template>
 

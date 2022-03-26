@@ -120,8 +120,8 @@ input[type="submit"]:hover {
 #registration {
   text-align: center;
   min-height: 100vh;
-    background-image: linear-gradient(rgba(228, 218, 218, 0.6),
-        rgba(131, 125, 125, 0.6)), url("../assets/teacher2.jpg");
+    background-image: linear-gradient(rgba(228, 218, 218, 0.8),
+        rgba(131, 125, 125, 0.8)), url("../assets/teacher2.jpg");
   background-size: cover;
 }
 
@@ -141,6 +141,7 @@ label {
 p {
   font-weight: bold;
   font-size: 25px;
+  color: black;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
