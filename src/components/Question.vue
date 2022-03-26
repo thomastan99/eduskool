@@ -75,8 +75,8 @@ import { getAuth } from "firebase/auth";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth();
-const user = auth.currentUser;
-console.log(user.email)
+const fbuser = auth.currentUser.email
+
 let subject =""
 let chap = ""
 
@@ -84,7 +84,7 @@ const questions = ref([])
 
 
 //const docRef = doc(db, "Questions", "index");
-const docRef = doc(db, "Students", user.email);
+const docRef = doc(db, "Students", String(fbuser));
 
 getDoc(docRef).then(doc =>{
     let s = doc.data()
@@ -123,7 +123,7 @@ console.log(questions)
 
     console.log(questions)
          function update(score){
-          updateDoc(doc(db,"Students",user.email,"Classes","Sci"),{
+          updateDoc(doc(db,"Students",fbuser,"Classes","Sci"),{
         score: score
     }).then(() =>{
         console.log("updated")

@@ -140,14 +140,17 @@ import { getAuth } from "firebase/auth";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth();
-const user = auth.currentUser;
+
+
+
 
 export default {
 
     data(){
         return{
             currQuizChapter :"1",
-            curQuizSubject :"math"
+            curQuizSubject :"math",
+            
         }
     },
     methods : {
@@ -161,9 +164,11 @@ export default {
 
         // }
         update(chapter,subject){
-            updateDoc(doc(db,"Students",String(user.email)),{
+            this.fbuser = auth.currentUser.email
+            console.log(this.fbuser)
+            updateDoc(doc(db,"Students",String(this.fbuser)),{
                 currQuizChapter: chapter,
-                currQuisSubject: subject
+                currQuizSubject: subject
             }).then(() =>{
                 console.log("updated")
             })
