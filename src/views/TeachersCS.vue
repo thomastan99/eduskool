@@ -1,8 +1,9 @@
 <template>
 <BlueBanner/>
 <LeftPanel/>
-<CSHeader/>
-<div id="accordions">
+<div id="root">
+  <div id="cs"><h1 style="font-size: 40px">Classes & Students</h1></div>
+  <div id="accordions">
   <Accordion class="level1" title="English 1">
     <Accordion class="level2" title="Tay Chung Tak">
       Chapter 1 Score - 95
@@ -55,35 +56,47 @@
     </Accordion>
   </Accordion>
 </div>
-<RightPanel/>
+</div>
+
 
 </template>
 
 <script>
 import BlueBanner from '@/components/BlueBanner.vue'
 import LeftPanel from '@/components/LeftPanel.vue'
-import CSHeader from '@/components/CSHeader.vue'
 import Accordion from '@/components/Accordion.vue'
-import RightPanel from '@/components/RightPanel.vue'
 
 export default {
   name: 'App',
   components: {
     BlueBanner,
     LeftPanel,
-    CSHeader,
-    Accordion,
-    RightPanel
+    Accordion
   }
 }
 </script>
 
 <style scoped>
 #accordions {
-  margin-left: 60px;
-  float: left;
-  width: 1000px;
+  margin-top: 25px;
+  padding-left: 20px;
+  width: 900px;
   background-color: #ececec;
-  border: solid black;
+  border: 1px solid grey;
+  overflow-y: scroll;
+  max-height: 510px;
+  float: left;
+}
+
+#cs {
+    float: left;
+}
+
+#root {
+  float: left;
+  position: absolute;
+  left: 325px;
+  top: 90px;
+  display: inline-block;
 }
 </style>

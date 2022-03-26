@@ -9,27 +9,27 @@
                     <th>Timetable</th>
                 </tr>
                 <tr>
-                    <td><a href="./">Math5A</a></td>
+                    <td><a href="/teacherscs">Math5A</a></td>
                     <td>16</td>
                     <td>Monday 10:00-12:00</td>
                 </tr>
                 <tr>
-                    <td><a href="./">Math5B</a></td>
+                    <td><a href="/teacherscs">Math5B</a></td>
                     <td>24</td>
                     <td>Monday 14:00-16:00</td>
                 </tr>
                 <tr>
-                    <td><a href="./">Math6A</a></td>
+                    <td><a href="/teacherscs">Math6A</a></td>
                     <td>19</td>
                     <td>Tuesday 10:00-12:00</td>
                 </tr>
                 <tr>
-                    <td><a href="./">Math6B</a></td>
+                    <td><a href="/teacherscs">Math6B</a></td>
                     <td>25</td>
                     <td>Tuesday 12:00-14:00</td>
                 </tr>
                 <tr>
-                    <td><a href="./">Math6C</a></td>
+                    <td><a href="/teacherscs">Math6C</a></td>
                     <td>22</td>
                     <td>Thursday 14:00-16:00</td>
                 </tr>
@@ -70,7 +70,7 @@ tr {
 }
 
 table {
-    width: 1500px;
+    width: 875px;
 }
 
 table, th, td {
@@ -86,4 +86,8 @@ a:visited, a:link, a:active {
     text-decoration: none;
 }
 
+#content {
+    float: left;
+    background-color: #ececec;
+}
 </style>

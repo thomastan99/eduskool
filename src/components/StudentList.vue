@@ -92,4 +92,14 @@ a:visited, a:link, a:active {
     text-decoration: none;
 }
 
+#content {
+    float: left;
+    margin-top: -10px;
+    max-height: 510px;
+    max-width: 900px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    background-color: #ececec;
+}
+
 </style>

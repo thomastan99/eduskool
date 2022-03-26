@@ -24,7 +24,6 @@ export default {
 #main {
     text-align: left;
     font-size: 24px;
-    width: 400px;
     line-height: 1.5;
     font-weight: bold;
 }
