@@ -10,6 +10,7 @@ import TeachersHome from '@/views/TeachersHome.vue'
 import TeachersScoreboard from '@/views/TeachersScoreboard.vue'
 import TeachersCS from '@/views/TeachersCS.vue'
 import Quiz from '@/views/Quiz.vue'
+import Profile from '@/views/Profile.vue'
 
 const routes = [
     {   path: '/home',
@@ -70,6 +71,11 @@ const routes = [
         name: 'TeachersCS',
         component: TeachersCS
     },
+    {
+        path: '/profile',
+        name: 'Profile',
+        component: Profile
+    }
 ]
 
 const router = createRouter({

@@ -1,11 +1,13 @@
 import { createStore } from 'vuex'
 import router from '../router/index.js'
-// import firebaseApp from '../firebase.js'
+import firebaseApp from '../firebase.js'
 import { getAuth, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { doc, setDoc, getFirestore } from "firebase/firestore";
 
 
 const auth = getAuth();
+const db = getFirestore(firebaseApp)
 
 export default createStore({
     state: {
@@ -48,16 +50,30 @@ export default createStore({
 
         async register({ commit }, details) {
             // const { fname, lname, email, password, role } = details
-            const { fname, email, password, role } = details
-
+            const { fname, lname, email, password, role } = details
             try {
                 await createUserWithEmailAndPassword(auth, email, password)
-                console.log(role);
-                console.log(fname);
+                // console.log(role);
+                // console.log(fname);
                 await updateProfile(auth.currentUser, {
-                    photoURL: role,
                     displayName: fname,
-                })
+                    photoURL: role
+                });
+                if (role == "Student") {
+                    await setDoc(doc(db, "Students", email), {
+                        ID: email,
+                        Name: fname + " " + lname,
+                        wk_eng: 0,
+                        wk_math: 0,
+                        wk_sci: 0
+                    })
+                } else {
+                    await setDoc(doc(db, "Teachers", email), {
+                        ID: email,
+                        Name: fname + " " + lname,
+                    })
+                }
+
             } catch (error) {
                 switch (error.code) {
                     case 'auth/email-already-in-use':
