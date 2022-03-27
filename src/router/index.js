@@ -1,9 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"
-import MathsTopics from '@/views/MathsTopics.vue'
 import Homepage from '@/views/Homepage.vue'
 import LeaderboardMath from '@/views/LeaderboardMath.vue'
-
-
 import Register from '@/views/Register.vue'
 import Login from '@/views/Login.vue'
 import TeachersHome from '@/views/TeachersHome.vue'
@@ -12,6 +9,10 @@ import TeachersCS from '@/views/TeachersCS.vue'
 import Quiz from '@/views/Quiz.vue'
 import Ready from '@/views/Ready.vue'
 import Profile from '@/views/Profile.vue'
+import TopicsView from '@/views/TopicsView.vue'
+import P5Maths from '@/views/P5Maths.vue'
+import P5English from '@/views/P5English.vue'
+import P5Science from '@/views/P5Science.vue'
 
 const routes = [
     {   path: '/home',
@@ -22,12 +23,6 @@ const routes = [
         path: "/ready",
         name: "Ready",
         component: Ready
-    },
-
-    {
-        path: '/mathstopics',
-        name: 'MathsTopics',
-        component: MathsTopics
     },
     {
         path: '/quiz',
@@ -52,7 +47,6 @@ const routes = [
         //     requiresAuth: true
         // }
     },
- 
 
     {
         path: '/TeachersHome',
@@ -67,13 +61,33 @@ const routes = [
     {
         path: '/teacherscs',
         name: 'TeachersCS',
-        component: TeachersCS
+        component: TeachersCS,
     },
     {
         path: '/profile',
         name: 'Profile',
-        component: Profile
-    }
+        component: Profile,
+    },
+    {        
+        path: '/topicsview',
+        name: 'TopicsView',
+        component: TopicsView,
+    },
+    {
+        path: '/p5maths',
+        name: 'P5Maths',
+        component: P5Maths,
+    },
+    {
+        path: '/p5english',
+        name: 'P5English',
+        component: P5English,
+    },
+    {
+        path: '/p5science',
+        name: 'P5Science',
+        component: P5Science,
+    },
 ]
 
 const router = createRouter({

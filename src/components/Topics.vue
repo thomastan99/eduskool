@@ -5,19 +5,23 @@
         </div>
 
         <div id="maths">
-            <router-link to="MathsTopics">
+            <router-link to="p5maths">
                 <img src="../assets/maths.png"  alt="Maths">
                 </router-link>
             <h2> Maths </h2>
         </div>
 
         <div id="english">
-            <img src="../assets/english.png" alt="English">
+            <router-link to="p5english">
+                <img src="../assets/english.png" alt="English">
+            </router-link>
             <h2> English </h2>
         </div>
 
         <div id="science">
-            <img src="../assets/science.png" alt="Science">
+            <router-link to="p5science">
+                <img src="../assets/science.png" alt="Science">
+            </router-link>
             <h2> Science </h2>
         </div>
 
@@ -25,8 +29,9 @@
 </template>
 
 <script>
-export default {
 
+
+export default {
 }
 </script>
 

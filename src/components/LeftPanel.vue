@@ -1,7 +1,8 @@
 <template>
     <div id="main">
-        <div id="personal">
-            <div id="photo"><img src="../assets/photo.png" alt="Profile Pic"></div>
+        <div id="personal" onclick="location.href='/profile'">
+            <div id="photo"> <img src="../assets/photo.png" alt="Profile Pic">
+            </div>
             <div id="overview">
                 <h4 id="details">James Ng Chung Tak
                 <br>Primary 5 Student
@@ -143,12 +144,13 @@ export default {
 #photo {
     float: left;
     display: inline-block;
-    vertical-align: top;
 }
 
+#personal {
+    cursor:pointer;
+}
 #overview {
     float: left;
-    display: inline-block;
     color: #00bcd4;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     text-align: left;
@@ -156,16 +158,10 @@ export default {
 }
 
 #details {
-    margin-top: 0;
-    margin-bottom: 0;
+    width:100%;
     position: relative;
     left: 10px;
     top: 5px;
-}
-
-#personal {
-    margin-top:10px;
-    margin-bottom:120px;
 }
 
 #main {
@@ -180,6 +176,7 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     height: 522.5px;
     width: 250px;
+    margin-top:25px;
 }
 
 .options {

@@ -1,5 +1,6 @@
 <template>
   <BlueBanner />
+  <LeftPanel/>
   <h1>Profile Details</h1>
   <div id="userDetails">
     <div id="details">
@@ -15,6 +16,7 @@
 <script>
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import BlueBanner from "../components/BlueBanner.vue";
+import LeftPanel from "../components/LeftPanel.vue"
 import firebaseApp from "../firebase.js"
 import { getFirestore } from "firebase/firestore";
 import { getDoc, doc } from "firebase/firestore";
@@ -24,6 +26,7 @@ export default {
   name: "Profile",
   components: {
     BlueBanner,
+    LeftPanel
   },
 
   data() {
@@ -87,6 +90,7 @@ export default {
 }
 
 h1 {
+  display:inline-block;
   margin-bottom: 30px;
   margin-top: 45px;
 }

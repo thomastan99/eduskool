@@ -4,7 +4,6 @@
         <h2 id="welcome">Welcome Back James!</h2>
         <a id="courses" href="./">Courses</a>
         <a id="help" href="./">Help</a>
-        <a id="profile" href="./profile">Profile</a>
     </div><br><br>
 </template>
 
@@ -41,7 +40,6 @@ h2 {
     top: 0;
     left: 0;
     width: 100%;
-    height:10%;
 }
 
 #courses {

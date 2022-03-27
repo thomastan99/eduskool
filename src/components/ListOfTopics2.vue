@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <div id="pageTitle">
-            <h1> {{title}} </h1>
+            {{title}}
         </div>
         <table id = "topicstable"> 
             <tr>
@@ -22,11 +22,9 @@ import { collection, getDocs } from "firebase/firestore";
 const db = getFirestore(firebaseApp);
 
 export default {
-    data: () => {
-        return {
-            title: getDocs(collection(db, ))
-        }
-    },
+    name: "ListOfTopics2",
+    props: ["title"],
+
     mounted() {
         async function display() {
             let z = await getDocs(collection(db, "Primary5"))
@@ -52,7 +50,7 @@ export default {
         display()
     }
 
-}
+};
 </script>
 
 <style scoped>
