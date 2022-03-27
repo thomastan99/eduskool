@@ -13,6 +13,9 @@ import TopicsView from '@/views/TopicsView.vue'
 import P5Maths from '@/views/P5Maths.vue'
 import P5English from '@/views/P5English.vue'
 import P5Science from '@/views/P5Science.vue'
+import P6Maths from '@/views/P6Maths.vue'
+import P6English from '@/views/P6English.vue'
+import P6Science from '@/views/P6Science.vue'
 
 const routes = [
     {   path: '/home',
@@ -87,6 +90,21 @@ const routes = [
         path: '/p5science',
         name: 'P5Science',
         component: P5Science,
+    },
+    {
+        path: '/p6maths',
+        name: 'P6Maths',
+        component: P6Maths,
+    },
+    {
+        path: '/p6english',
+        name: 'P6English',
+        component: P6English,
+    },
+    {
+        path: '/p6science',
+        name: 'P6Science',
+        component: P6Science,
     },
 ]
 
