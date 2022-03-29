@@ -39,9 +39,11 @@
                 </label>
             </div>
             <div class="buttons">
-                <button class="hintButton">
-                    Hint
-                </button>
+                <button class="hintButton" @click="() => TogglePopup('buttonTrigger')">Hint</button>
+                <Hint v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
+                  <h2>Hint</h2>
+                  <p>{{getCurrentQuestion.hint}}</p> <br>
+                </Hint>
 
                 <button class="nextButton"
         @click="nextQuestion" 
@@ -72,6 +74,7 @@ import firebaseApp from '../firebase.js'
 import {getFirestore} from "firebase/firestore";
 import {collection,getDocs, doc, updateDoc, getDoc} from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import Hint from "./Hint.vue";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth();
@@ -81,8 +84,6 @@ let subject =""
 let chap = ""
 
 const questions = ref([])
-
-
 //const docRef = doc(db, "Questions", "index");
 const docRef = doc(db, "Students", String(fbuser));
 
@@ -100,8 +101,8 @@ getDocs(collection(db,"Questions",String(subject),String(chap))).then(querySnaps
             question: s.question,
             answer: s.answer,
             options: s.Options,
-            selected: null
-
+            selected: null,
+            hint: s.hint
         })
 
     })
@@ -174,7 +175,12 @@ console.log(questions)
         quizCompleted.value = true
     }
 
-
+  const popupTriggers = ref({
+			buttonTrigger: false,
+		});
+	const TogglePopup = (trigger) => {
+			popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+		}
 </script>
 
 <style scoped>
@@ -186,7 +192,7 @@ console.log(questions)
 }
 
 .question {
-    display: flex;
+  display: flex;
   flex-direction: column;
   padding: 2rem;
   height: 100vh;
@@ -261,5 +267,18 @@ h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
   text-align: center;
+}
+
+.hint {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99;
+	background-color: rgba(0, 0, 0, 0.2);
+	align-items: center;
+	justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 </style>
