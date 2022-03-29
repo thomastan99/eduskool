@@ -52,11 +52,16 @@
 import { ref } from "vue";
 import { useStore } from "vuex";
 
+
+
+
+
 export default {
   name: "Registration",
 
   components: [
   ],
+
 
   setup() {
     const register_form = ref({});
@@ -71,6 +76,7 @@ export default {
       register,
     };
   },
+
 };
 </script>
 

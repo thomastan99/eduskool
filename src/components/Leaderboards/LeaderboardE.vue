@@ -20,7 +20,45 @@ const db = getFirestore(firebaseApp)
 
 
 export default {
-   
+//    beforeMount(){
+//        async function updateScores(){
+//            let x = await getDocs(collection(db,"Students"))
+//            x.forEach((docs)=>{
+//                if(docs.id =="testnew2@gmail.com"){
+//                let s= docs.data()
+//                let scores = s.scores
+//                let eng = scores.eng
+//                let math = scores.math
+//                let sci = scores.sci
+//                let temp_eng = 0
+//                let temp_sci = 0
+//                let temp_math = 0
+//                for (const [key,value] of Object.entries(eng)){
+//                    console.log(key,value)
+//                    temp_eng = temp_eng + value
+//                }
+//             for (const [key,value] of Object.entries(math)){
+//                    console.log(key,value)
+//                    temp_math = temp_math + value
+//                }
+//             for (const [key,value] of Object.entries(sci)){
+//                    console.log(key,value)
+//                    temp_sci = temp_sci + value
+//                }
+//                updateDoc(docs.ref,{
+//                    wk_eng: temp_eng,
+//                    wk_math: temp_math,
+//                    wk_sci: temp_sci
+//                })
+//            }
+//            })
+//            console.log("Leaderboard Updated")
+
+
+//        }
+//        updateScores()
+
+//    },
 
     mounted() {
         async function getScores(){

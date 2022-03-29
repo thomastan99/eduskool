@@ -65,7 +65,12 @@ export default createStore({
                         Name: fname + " " + lname,
                         wk_eng: 0,
                         wk_math: 0,
-                        wk_sci: 0
+                        wk_sci: 0,
+                        scores:{
+                            sci:{},
+                            eng:{},
+                            math:{}
+                        }
                     })
                 } else {
                     await setDoc(doc(db, "Teachers", email), {
