@@ -59,8 +59,7 @@ export default createStore({
                 // console.log(role);
                 // console.log(fname);
                 await updateProfile(auth.currentUser, {
-                    displayName: fname,
-                    photoURL: role,
+                    displayName: fname
                 });
                 if (role == "Student") {
                     await setDoc(doc(db, "Students", email), {

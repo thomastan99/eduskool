@@ -30,6 +30,7 @@ export default {
 </script>
 
 <style scoped>
+
 #logo {
     float: left;
 }
@@ -92,7 +93,24 @@ button {
     border: none;
     color: white;
     font-size: 24px;
-    
+}
+#body {
+    display: inline-block;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+a {
+ margin-right: 130px;
+  margin-left: 130px;
+  /*   background-color:rgb(217, 224, 224);
+  border-radius: 8px; */
+  font-size: 28px;
+  padding: 8px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: black;
+  padding-bottom: 2s0px;
+}
+a:hover {
+  color: rgb(101, 181, 235)
 }
 
 /* #courses {

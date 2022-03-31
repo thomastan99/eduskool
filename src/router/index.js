@@ -21,6 +21,8 @@ import AchievementsPage from '@/views/AchievementsPage.vue'
 import Classes from '@/views/Classes.vue'
 import StudentAnnouncemnets from '@/views/StudentAnnouncements.vue'
 import ViewStats from '@/views/ViewStats.vue'
+import EditProfile from '@/views/EditProfile.vue'
+import EditPic from '@/views/EditPic.vue'
 
 const routes = [
     {   path: '/home',
@@ -135,7 +137,17 @@ const routes = [
         path: '/viewstats',
         name: 'ViewStats',
         component: ViewStats
-    }
+    },
+    {
+        path: '/editprofile',
+        name: 'EditProfile',
+        component: EditProfile,
+    },
+    {
+        path: '/editPic',
+        name: 'EditPic',
+        component: EditPic,
+    },
 ]
 
 const router = createRouter({

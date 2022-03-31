@@ -29,8 +29,6 @@ export default {
   
 
   setup() {
-     
-    
     const store = useStore();
 
     const login = () => {
@@ -57,13 +55,13 @@ input {
   margin-left: 5px;
   margin-bottom: 20px;
   box-sizing: border-box;
-  height: 30px;
+  height: auto;
+  font-size: 25px;
 }
 
 input[type="submit"] {
   border-radius: none;
-  font-size: 20px;
-  padding: 0;
+  font-size: 30px;
   border: none;
   background: none;
   text-decoration: underline;
@@ -71,7 +69,6 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   color: rgb(22, 25, 231);
-  font-size: 20px;
 }
 
 .title {
@@ -99,9 +96,9 @@ input[type="submit"]:hover {
 label {
   display: inline-block;
   text-align: right;
-  width: 100px;
+  width: 150px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 p {
@@ -109,5 +106,29 @@ p {
   font-size: 25px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+a {
+  margin-right: 130px;
+  margin-left: 130px;
+  /*   background-color:rgb(217, 224, 224);
+  border-radius: 8px; */
+  padding: 8px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgb(68, 68, 70);
+  padding-bottom: 2s0px;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(19, 20, 20);
+  text-decoration: underline;
 }
 </style>

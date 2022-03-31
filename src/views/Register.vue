@@ -1,6 +1,6 @@
 <template>
   <div id="registration">
-      <img src="../assets/eduLogo.png" />
+    <img src="../assets/eduLogo.png" />
     <form id="registrationForm" class="register" @submit.prevent="register">
       <h1 class="title">Register for eduSkool</h1>
       <label for="fname">First name:</label>
@@ -19,7 +19,7 @@
       <input
         type="password"
         id="password-confirmation"
-        v-model="register_form.password_confirmation"
+        v-model="register_form.passwordConfirmation"
       />
       <p>Choose your role for eduSkool:</p>
       <input
@@ -42,8 +42,7 @@
     </form>
     <div id="loginBtns">
       <p>Already have an account?</p>
-      <a href="/login" class="loginBtn">Login</a
-      >
+      <a href="/login" id="loginBtn">Login</a>
     </div>
   </div>
 </template>
@@ -55,15 +54,39 @@ import { useStore } from "vuex";
 export default {
   name: "Registration",
 
-  components: [
-  ],
-
   setup() {
     const register_form = ref({});
     const store = useStore();
 
     const register = () => {
-      store.dispatch("register", register_form.value);
+      if (
+        register_form.value.password != register_form.value.passwordConfirmation
+      ) {
+        return alert("Passwords don't match");
+      } else if (
+        register_form.value.password.length < 6
+      ) {
+        return alert("Passwords have to be at least 6 characters long")
+      } else if (
+        register_form.value.role != "Student" &&
+        register_form.value.role != "Teacher"
+      ) {
+        return alert("Please choose a role")
+      } else if (
+        register_form.value.fname == null
+      ) {
+        return alert("Please enter a name")
+      } else if (
+        register_form.value.lname == null
+      ) {
+        return alert("Please enter a name")
+      } else if (
+        register_form.value.email == null
+      ) {
+        return alert("Please enter a valid email")
+      } else {
+        store.dispatch("register", register_form.value);
+      }
     };
 
     return {
@@ -75,12 +98,15 @@ export default {
 </script>
 
 <style scoped>
+#loginBtn {
+  font-size: 40px;
+}
+
 a {
- margin-right: 130px;
+  margin-right: 130px;
   margin-left: 130px;
   /*   background-color:rgb(217, 224, 224);
   border-radius: 8px; */
-  font-size: 28px;
   padding: 8px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: black;
@@ -88,59 +114,66 @@ a {
 }
 
 a:hover {
-  color: rgb(101, 181, 235)
+  color: rgb(101, 181, 235);
 }
 
+h1 {
+  font-size: 40px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
 
 input {
   margin-right: 5px;
   margin-left: 5px;
   margin-bottom: 20px;
-  box-sizing: border-box;
-  height: 30px;
+  /* box-sizing: border-box; */
+  height: auto;
+  font-size: 25px;
 }
+
 input[type="submit"] {
   /* background-color: rgb(217, 224, 224); */
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 30px;
+  height: 40px;
 }
 
 input[type="submit"]:hover {
   background-color: rgb(230, 46, 40);
   border-radius: 8px;
-  font-size: 20px;
 }
 
-.title {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  /* padding-top: 10px; */
+input[type="radio"] {
+  transform: scale(2);
 }
 
 #registration {
   text-align: center;
   min-height: 100vh;
-    background-image: linear-gradient(rgba(228, 218, 218, 0.8),
-        rgba(131, 125, 125, 0.8)), url("../assets/teacher2.jpg");
+  background-image: linear-gradient(
+      rgba(228, 218, 218, 0.8),
+      rgba(131, 125, 125, 0.8)
+    ),
+    url("../assets/teacher2.jpg");
   background-size: cover;
 }
 
 #registrationForm {
-  align-self: right;
-  /* min-height:100vh; */
+  /* align-self: right; */
 }
 
 label {
   display: inline-block;
   text-align: right;
-  width: 100px;
+  width: 150px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 p {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 40px;
   color: black;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
