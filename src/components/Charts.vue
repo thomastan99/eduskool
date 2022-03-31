@@ -29,85 +29,92 @@
 
 <script>
 import Plotly from 'plotly.js-dist-min'
-// import firebaseApp from "../firebase.js"
-// import { getFirestore, collection, getDocs } from "firebase/firestore"
+import firebaseApp from "../firebase.js"
+import { getFirestore, collection, getDocs } from "firebase/firestore"
 
-// const db = getFirestore(firebaseApp)
+const db = getFirestore(firebaseApp)
 
 export default{
-    mounted() {
-        async function foo() {
-            var y0 = [1,2,3,4,5];
-            var y1 = [6,7,8,9,10];
-
-            let traces = [
-                {
-                    y: y0,
-                    type: "box",
-                    name: "Class 1"
-                },
-                {
-                    y: y1,
-                    type: "box",
-                    name: "Class 2"
-                }
-            ];
-
-            let layout = {
-                title: "Sample Box Plot",
-            };
-
-            let config = { respoinsive: true };
-            
-            Plotly.newPlot("plot", traces, layout, config);
-            
-        }
-        foo()
-
-        // async function getStats(subject, topic) {
-        //     let z = await getDocs(collection(db, "Students"))
-        //     let class1 = []
-        //     let class2 = []
-
-        //     z.forEach((docs) => {
-        //         let d = docs.data()
-        //         let scores = d.scores
-        //         let c = d.class
-        //         console.log(scores)
-                
-        //         if (c == "class1") {
-        //             class1.push(scores.get(String(subject)).get(String(topic)))
-        //         }
-
-        //         else {
-        //             class2.push(scores.get(String(subject)).get(String(topic)))
-        //         }
-                
-        //     })
+    // mounted() {
+        // async function foo() {
+        //     var y0 = [1,2,3,4,5];
+        //     var y1 = [6,7,8,9,10];
 
         //     let traces = [
         //         {
-        //             y: class1,
+        //             y: y0,
         //             type: "box",
         //             name: "Class 1"
         //         },
         //         {
-        //             y: class2,
+        //             y: y1,
         //             type: "box",
         //             name: "Class 2"
         //         }
         //     ];
 
         //     let layout = {
-        //         title: String(subject) + " " + String(topic) + " Statistics",
+        //         title: "Sample Box Plot",
         //     };
 
-        //     let config = { responsive: true };
+        //     let config = { respoinsive: true };
             
         //     Plotly.newPlot("plot", traces, layout, config);
+            
         // }
-        // getStats()
+        // foo()
+    methods: {
+        async getStats(subject, topic) {
+            let z = await getDocs(collection(db, "Students"))
+            let class1 = []
+            let class2 = []
+
+            z.forEach((docs) => {
+                let d = docs.data()
+                let scores = d.scores
+                if (subject == "eng" && topic == "chap1"){
+                    let sub = scores.subject
+                    let top = sub.get(topic)
+
+                    let c = d.class
+                
+                if (c == "class1") {
+                    class1.push(top)
+                }
+
+                else {
+                    class2.push(top)
+                }
+                }
+                
+                
+                
+            })
+
+            let traces = [
+                {
+                    y: class1,
+                    type: "box",
+                    name: "Class 1"
+                },
+                {
+                    y: class2,
+                    type: "box",
+                    name: "Class 2"
+                }
+            ];
+
+            let layout = {
+                title: String(subject) + " " + String(topic) + " Statistics",
+            };
+
+            let config = { responsive: true };
+            
+            Plotly.newPlot("plot", traces, layout, config);
+        }
     }
+        // getStats()
+    // }
 }
 </script>
 
