@@ -11,7 +11,14 @@ import Ready from '@/views/Ready.vue'
 import Profile from '@/views/Profile.vue'
 import TopicsView from '@/views/TopicsView.vue'
 import TeachersAnnouncements from '@/views/TeachersAnnouncements.vue'
-
+import P5Maths from '@/views/P5Maths.vue'
+import P5English from '@/views/P5English.vue'
+import P5Science from '@/views/P5Science.vue'
+import P6Maths from '@/views/P6Maths.vue'
+import P6English from '@/views/P6English.vue'
+import P6Science from '@/views/P6Science.vue'
+import AchievementsPage from '@/views/AchievementsPage.vue'
+import Classes from '@/views/Classes.vue'
 const routes = [
     {   path: '/home',
     name: 'Homepage',
