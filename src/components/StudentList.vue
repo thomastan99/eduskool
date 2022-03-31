@@ -51,9 +51,8 @@ export default {
 
 <style scoped>
 #main {
-    position: absolute;
-    left: 350px;
-    top: 90px;
+    margin-top: 50px;
+    margin-left: 300px;
     display: inline-block;
 }
 
@@ -95,11 +94,8 @@ a:visited, a:link, a:active {
 #content {
     float: left;
     margin-top: -10px;
-    max-height: 510px;
     max-width: 900px;
-    overflow-y: scroll;
     overflow-x: scroll;
-    background-color: #ececec;
 }
 
 </style>

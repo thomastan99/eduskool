@@ -19,6 +19,9 @@ import P6English from '@/views/P6English.vue'
 import P6Science from '@/views/P6Science.vue'
 import AchievementsPage from '@/views/AchievementsPage.vue'
 import Classes from '@/views/Classes.vue'
+import StudentAnnouncemnets from '@/views/StudentAnnouncements.vue'
+import ViewStats from '@/views/ViewStats.vue'
+
 const routes = [
     {   path: '/home',
     name: 'Homepage',
@@ -122,6 +125,16 @@ const routes = [
         path: '/teachersannouncements',
         name: 'TeachersAnnouncements',
         component: TeachersAnnouncements
+    },
+    {
+        path: '/studentsannouncements',
+        name: 'StudentsAnnouncements',
+        component: StudentAnnouncemnets
+    },
+    {
+        path: '/viewstats',
+        name: 'ViewStats',
+        component: ViewStats
     }
 ]
 

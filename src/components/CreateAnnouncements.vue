@@ -60,36 +60,17 @@ export default {
 
 <style scoped>
 #main {
-    position: absolute;
-    left: 350px;
-    top: 90px;
+    margin-top: 60px;
+    margin-left: 280px;
     display: inline-block;
 }
 
 #header {
     float: left;
-    margin-bottom: 20px;
-}
-
-#content {
-    float: left;
-    max-width: 900px;
-    text-align: left;
-    margin-top: 15px;
-    max-height: 530px;
-    overflow-y: scroll;
 }
 
 h3 {
     color: #00bcd4;
-}
-
-article {
-    background-color: #ececec;
-    border-radius: 5px;
-    padding: 5px;
-    padding-left: 20px;
-    margin-bottom: 20px;
 }
 
 #create {

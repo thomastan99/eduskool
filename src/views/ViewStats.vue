@@ -1,20 +1,26 @@
 <template>
-<BlueBanner/>
-<LeftPanelTeachers/>
-<ClassList/>
+    <BlueBanner/>
+    <LeftPanelTeachers/>
+    <Charts/>
 </template>
 
 <script>
 import BlueBanner from '@/components/BlueBanner.vue'
 import LeftPanelTeachers from '@/components/LeftPanelTeachers.vue'
-import ClassList from '@/components/ClassList.vue'
+import Charts from '@/components/Charts.vue'
 
 export default {
   name: 'App',
   components: {
     BlueBanner,
     LeftPanelTeachers,
-    ClassList
+    Charts
   }
 }
+
+
 </script>
+
+<style scoped>
+
+</style>

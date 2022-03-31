@@ -1,19 +1,19 @@
 <template>
 <BlueBanner/>
-<LeftPanel/>
+<LeftPanelTeachers/>
 <StudentList/>
 </template>
 
 <script>
 import BlueBanner from '@/components/BlueBanner.vue'
-import LeftPanel from '@/components/LeftPanel.vue'
+import LeftPanelTeachers from '@/components/LeftPanelTeachers.vue'
 import StudentList from '@/components/StudentList.vue'
 
 export default {
   name: 'App',
   components: {
     BlueBanner,
-    LeftPanel,
+    LeftPanelTeachers,
     StudentList
   }
 }

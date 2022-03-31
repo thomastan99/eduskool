@@ -30,7 +30,7 @@
             </div>
 
             <div class="options" onclick="location.href='/viewstats'">
-                <img id="statisticsImage" src="../assets/leaderboard.png" alt="ScoreBoard Image">
+                <img id="statisticsImage" src="../assets/statistics.png" alt="ScoreBoard Image">
                 <a id="statisticsText">Statistics</a>
             </div>
 
@@ -46,71 +46,66 @@ export default {
 </script>
 
 <style scoped>
-#commentsText {
-    position: relative;
-    left: 75px;
-    top: 15px;
-}
-#commentsImage {
-    height:20%;
-    width:20%;
-    position: relative;
-    top:7px;
-    right: 120px;
-}
-
 #scoreboardText {
     position: relative;
-    left: 75px;
+    left: 70px;
     top: 20px;
 }
+
 #scoreboardImage {
-    height:20%;
-    width:28%;
+    height:100%;
     position: relative;
     top: 5px;
-    right: 125px;
+    right: 110px;
 }
 
 #homeText {
     position: relative;
-    left: 75px;
+    left: 10px;
     top: 24px;
 }
 
 #homeImage {
-    height:20%;
-    width:20%;
-    position: relative;
-    top:4px;
-    right: 125px;
+    height: 120%;
+    float: left;
+    margin-left: 20px;
 }
 
 #announcementText {
-    position: relative;
-    left: 75px;
-    top: 20px;
+    margin-top: -35px;
+    margin-left: 50px;
 }
+
 #announcementImage {
-    height:50%;
-    width:30%;
-    position: relative;
-    top:6px;
-    right: 145px;
+    height:100%;
+    float: left;
+    margin-top: 3px;
+    
 }
 #classesText {
-    position: relative;
-    top: -32px;
-    left: 50px;
+    margin-top: -27px;
+    margin-left: 23px;
 }
  
 #classesImage {
-    height:50%;
-    width:25%;
-    position: relative;
-    right: 90px;
-    top:3px;
+    height:60%;
+    float: left;
+    margin-left: -10px;
+    margin-top: 15px;
 }
+
+#statisticsImage {
+    float: left;
+    height: 60%;
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+#statisticsText {
+    margin-left: 15px;
+    margin-top: 22px;
+}
+
 #photo {
     float: left;
     display: inline-block;
@@ -149,13 +144,15 @@ export default {
     float: left;
     background-color: #ececec;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    height: 356px;
+    max-height: 356px;
     width: 250px;
+    overflow-y: scroll;
 }
 
 .options {
-    border:1px solid black;
+    border: 1px solid grey;
     padding: 10px 20px 20px 10px;
+    height: 50px;
 }
 
 .options:hover {
