@@ -72,7 +72,7 @@
 import { ref, computed } from 'vue'
 import firebaseApp from '../firebase.js'
 import {getFirestore} from "firebase/firestore";
-import {collection,getDocs, doc, updateDoc, getDoc} from "firebase/firestore";
+import {collection,getDocs, doc, getDoc, updateDoc} from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import Hint from "./Hint.vue";
 
@@ -123,13 +123,45 @@ console.log(questions)
 
 
     console.log(questions)
-         function update(score){
-          updateDoc(doc(db,"Students",fbuser,"Classes","Sci"),{
-        score: score
+         function update(score, subject, chapter){
+            let sub = subject.toLowerCase()
+            if (sub == "science"){
+                sub = "sci"
+            }
+     
+             
+          updateDoc(doc(db,"Students",fbuser),{
+        ["scores."+sub+"."+chapter] : score
+
     }).then(() =>{
         console.log("updated")
     })
         }
+    // function update(score, subject, chapter){
+    //     let scores = null
+    //     console.log(scores)
+    //     getDocs (db,"Students",String(fbuser)).then(doc=>{
+    //         let s = doc.data()
+    //         console.log(s)
+    //         let scores = s.scores
+    //         console.log(score, subject,chapter,scores)
+            
+    //     //     if(subject == "Math"){
+    //     //         scores = s.scores.math
+    //     //     }
+    //     //     else if(subject =="Sci"){
+    //     //         scores = s.scores.sci
+    //     //     }
+    //     //     scores.set(chapter, score)
+    //     //     updateDoc(doc.ref,{
+    //     //         scores: scores
+    //     //     })
+    //     // }).then(()=>{
+    //     //     console.log("Updated")
+    //     }).then(()=>{
+    //         console.log("done")
+    //     })
+    // }
 
 
 
@@ -150,7 +182,7 @@ console.log(questions)
         })
    
         
-        update(value)
+        update(value, subject, chap)
         return value
     })
 

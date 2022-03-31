@@ -1,8 +1,8 @@
 <template>
   <div id="loggingIn">
     <img src="../assets/eduLogo.png" />
-    <form id="loginForm" class="register" @submit.prevent="login">
-      <h1 class="title">Login to eduSkool</h1>
+    <form id="loginForm" class="register" @submit.prevent="login" >
+      <h1 class="title" > Login to eduSkool</h1>
       <label for="email">Email:</label>
       <input type="text" id="email" v-model="login_form.email" /><br />
       <label for="password">Password:</label>
@@ -19,13 +19,18 @@
 
 <script>
 import { ref } from "vue";
+
+
 import { useStore } from "vuex";
+
+
  const login_form = ref({});
 
 export default {
   name: "Login",
 
   components: [],
+
   
 
   setup() {
@@ -44,7 +49,10 @@ export default {
   },
 
 
+
+
 };
+
 
 export const loginData = login_form.value.email
 </script>

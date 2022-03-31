@@ -51,6 +51,10 @@
 import { ref } from "vue";
 import { useStore } from "vuex";
 
+
+
+
+
 export default {
   name: "Registration",
 
@@ -94,6 +98,7 @@ export default {
       register,
     };
   },
+
 };
 </script>
 
