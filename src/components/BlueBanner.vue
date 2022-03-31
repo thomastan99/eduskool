@@ -50,17 +50,15 @@ h2 {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: max-content;
 }
 #courses {
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    padding: 5px 100px 0px 0px;
 }
 #welcome {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     display:inline-block;
-    padding: 5px 200px 0px 200px;
 }
 #help {
     display:inline-block;

@@ -70,7 +70,6 @@ export default {
         async function updateScores(){
            let x = await getDocs(collection(db,"Students"))
            x.forEach((docs)=>{
-               if(docs.id =="testnew2@gmail.com"){
                let s= docs.data()
                let scores = s.scores
                let eng = scores.eng
@@ -96,7 +95,6 @@ export default {
                    wk_math: temp_math,
                    wk_sci: temp_sci
                })
-           }
            })
            
 

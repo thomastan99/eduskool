@@ -1,5 +1,6 @@
 <template>
-  <BlueBanner />
+  <BlueBanner/>
+  <LeftPanel/>
   <div id = 'header'>
     <a href = './editPic'><img id="profilePic" alt="Click to add a Profile Picture"></a>
   <h1>Profile Details <a href='/editprofile'><img id = "editlogo" src = "../assets/edit.png"></a> </h1>
@@ -19,10 +20,10 @@
 <script>
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import BlueBanner from "../components/BlueBanner.vue";
-import LeftPanel from "../components/LeftPanel.vue"
+import LeftPanel from "../components/LeftPanel.vue";
 import firebaseApp from "../firebase.js"
 import { getFirestore } from "firebase/firestore";
-import { getDoc, doc, updateDoc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 const db = getFirestore(firebaseApp);
 
 

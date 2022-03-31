@@ -1,5 +1,6 @@
 <template>
   <BlueBanner />
+  <LeftPanel />
   <div id="editProfile">
     <form
       id="editProfileForm"
@@ -38,12 +39,13 @@ import { ref } from "vue";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useStore } from "vuex";
 import BlueBanner from "../components/BlueBanner.vue";
-
+import LeftPanel from "../components/LeftPanel.vue";
 export default {
   name: "EditProfile",
 
   components: {
     BlueBanner,
+    LeftPanel
   },
 
   data() {
