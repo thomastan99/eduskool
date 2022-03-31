@@ -1,7 +1,5 @@
 <template>
-  <div id ="nav">
-    <router-link to="/Homepage"></router-link>
-  </div>
+    <!-- <router-link to="/Homepage"></router-link> -->
   <router-view/>
 
 </template>

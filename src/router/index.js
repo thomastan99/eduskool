@@ -14,6 +14,8 @@ import Ready from '@/views/Ready.vue'
 import Profile from '@/views/Profile.vue'
 import TopicsView from '@/views/TopicsView.vue'
 import TeachersAnnouncements from '@/views/TeachersAnnouncements.vue'
+import EditProfile from '@/views/EditProfile.vue'
+import EditPic from '@/views/EditPic.vue'
 
 const routes = [
     {   path: '/home',
@@ -54,8 +56,6 @@ const routes = [
         //     requiresAuth: true
         // }
     },
- 
-
     {
         path: '/TeachersHome',
         name: 'TeachersHome',
@@ -85,7 +85,17 @@ const routes = [
         path: '/teachersannouncements',
         name: 'TeachersAnnouncements',
         component: TeachersAnnouncements
-    }
+    },
+    {
+        path: '/editprofile',
+        name: 'EditProfile',
+        component: EditProfile,
+    },
+    {
+        path: '/editPic',
+        name: 'EditPic',
+        component: EditPic,
+    },
 ]
 
 const router = createRouter({

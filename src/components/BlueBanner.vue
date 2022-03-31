@@ -1,10 +1,12 @@
 <template>
     <div id="main">
-        <a href = "/home" > <img id ="logo" src="../assets/elogo.png" alt="EDU'skool logo" > </a>
+        <div id = "body">
+        <a href = "/home" > <img id ="logo" src="../assets/eduLogo.png" alt="EDU'skool logo" > </a>
         <h2 id="welcome">Welcome Back James!</h2>
         <a id="courses" href="./">Courses</a>
         <a id="help" href="./">Help</a>
         <a id="profile" href="./profile">Profile</a>
+        </div>
     </div><br><br>
 </template>
 
@@ -15,6 +17,7 @@ export default {
 </script>
 
 <style scoped>
+
 #logo {
     float: left;
 }
@@ -22,7 +25,7 @@ export default {
 #welcome {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     display:inline-block;
-    padding: 5px 200px 0px 200px;
+    /* padding: 5px 200px 0px 200px; */
 }
 
 /* welcome {
@@ -37,16 +40,17 @@ h2 {
 
 #main {
     background-color: #00bcd4;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height:10%;
+    /* position: fixed; */
+    /* top: 0;
+    left: 0; */
+    /* width: 100%;
+    height:100%; */
+    min-height: 100%;
 }
 
 #courses {
     display:inline-block;
-    padding: 0px 100px 0px 0px;
+    /* padding: 0px 100px 0px 0px; */
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -59,7 +63,24 @@ button {
     border: none;
     color: white;
     font-size: 24px;
-    
+}
+#body {
+    display: inline-block;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+a {
+ margin-right: 130px;
+  margin-left: 130px;
+  /*   background-color:rgb(217, 224, 224);
+  border-radius: 8px; */
+  font-size: 28px;
+  padding: 8px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: black;
+  padding-bottom: 2s0px;
+}
+a:hover {
+  color: rgb(101, 181, 235)
 }
 
 /* #courses {

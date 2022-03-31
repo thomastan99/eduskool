@@ -33,7 +33,7 @@ export default {
 
 <style>
 #nav {
-    padding: 30px;
+    padding: 20px;
     text-align: center;
 }
 
