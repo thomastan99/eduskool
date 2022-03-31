@@ -4,10 +4,11 @@ import firebaseApp from '../firebase.js'
 import { getAuth, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, setDoc, getFirestore } from "firebase/firestore";
-
+import { ref } from "vue"
 
 const auth = getAuth();
 const db = getFirestore(firebaseApp)
+var userrole = ref("Hello");
 
 export default createStore({
     state: {
@@ -17,6 +18,7 @@ export default createStore({
     mutations: {
         SET_USER(state, user) {
             state.user = user
+            user.role = userrole
         },
 
         CLEAR_USER(state) {
@@ -51,13 +53,14 @@ export default createStore({
         async register({ commit }, details) {
             // const { fname, lname, email, password, role } = details
             const { fname, lname, email, password, role } = details
+            userrole.value = role
             try {
                 await createUserWithEmailAndPassword(auth, email, password)
                 // console.log(role);
                 // console.log(fname);
                 await updateProfile(auth.currentUser, {
                     displayName: fname,
-                    photoURL: role
+                    photoURL: role,
                 });
                 if (role == "Student") {
                     await setDoc(doc(db, "Students", email), {
@@ -65,8 +68,46 @@ export default createStore({
                         Name: fname + " " + lname,
                         wk_eng: 0,
                         wk_math: 0,
-                        wk_sci: 0
-                    })
+                        wk_sci: 0,
+                        scores:{
+                            sci:{},
+                            eng:{},
+                            math:{}
+                        },
+                        timetable:{
+                            satTenToTwelve: true,
+                            sunTenToTwelve: true,
+                            satTwelveToTwo: true,
+                            sunTwelveToTwo: true,
+                            monTwoToFour: true,
+                            tuesTwoToFour: true,
+                            wedsTwoToFour: true,
+                            thursTwoToFour: true,
+                            friTwoToFour: true,
+                            satTwoToFour: true,
+                            sunTwoToFour: true,
+                            monFourToSix: true,
+                            tuesFourToSix: true,
+                            wedsFourToSix: true,
+                            thursFourToSix: true,
+                            friFourToSix: true,
+                            satFourToSix: true,
+                            sunFourToSix: true,
+                            monSixToEight: true,
+                            tuesSixToEight: true,
+                            wedsSixToEight: true,
+                            thursSixToEight: true,
+                            friSixToEight: true,
+                            satSixToEight: true,
+                            sunSixToEight: true,
+                        }
+                    },
+                    await setDoc(doc(db, "Achievements", email), {
+                        loading:false,
+                        firststeps: true,
+                        firstmaths: false,
+                        smile:false,
+                    }))
                 } else {
                     await setDoc(doc(db, "Teachers", email), {
                         ID: email,

@@ -16,6 +16,8 @@ import P5Science from '@/views/P5Science.vue'
 import P6Maths from '@/views/P6Maths.vue'
 import P6English from '@/views/P6English.vue'
 import P6Science from '@/views/P6Science.vue'
+import AchievementsPage from '@/views/AchievementsPage.vue'
+import Classes from '@/views/Classes.vue'
 
 const routes = [
     {   path: '/home',
@@ -105,6 +107,16 @@ const routes = [
         path: '/p6science',
         name: 'P6Science',
         component: P6Science,
+    },
+    {
+        path: '/achievements',
+        name: 'AchievementsPage',
+        component: AchievementsPage,
+    },
+    {
+        path: '/classes',
+        name: 'Classes',
+        component: Classes,
     },
 ]
 

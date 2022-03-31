@@ -2,7 +2,7 @@
   <BlueBanner/>
   <LeftPanel/>
      <div id="main">
-        <div id="pageTitle"><h1> P5 Science </h1></div>
+        <div id="pageTitle"><h1> P6 Science </h1></div>
         <table id = "topicstable"> 
             <th> Syllabus </th>
             <th> Learning Videos </th>
@@ -10,7 +10,7 @@
             <th> Last Attempted Score </th>
             <tr>
                 <td> 
-                    <h3 class="syllabus"> Chapter 1: Diversity </h3>
+                    <h3 class="syllabus"> Chapter 1: Listening and Viewing </h3>
                 </td>
                 <td> 
                     <button id="button" @click="wholeNumbers=!wholeNumbers">Watch</button>
@@ -37,7 +37,7 @@
             </tr>
             <tr>
                 <td>
-                    <h2 class="syllabus"> Chapter 2: Cycles </h2>
+                    <h2 class="syllabus"> Chapter 2:  </h2>
                 </td>
                 <td> 
                      <button id="button" @click="fractions=!fractions">Watch</button>

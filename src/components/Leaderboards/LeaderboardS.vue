@@ -69,7 +69,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 table{
     width: 70%;
     align-items: center;

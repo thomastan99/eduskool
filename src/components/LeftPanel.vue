@@ -4,9 +4,7 @@
             <div id="photo"> <img src="../assets/photo.png" alt="Profile Pic">
             </div>
             <div id="overview">
-                <h4 id="details">James Ng Chung Tak
-                <br>Primary 5 Student
-                <br>Ximin Primary School</h4>
+                <h4 id="details">{{ user.displayName }} </h4>
             </div>
         </div>
         <div id="menu">
@@ -17,19 +15,17 @@
 
             <div class="options" onclick="location.href='/home'">
                 <img id="topicsImage" src="../assets/topics.png" alt="Topics Image">
-                <a id="homeworkText">Topics</a>
+                <a id="topicsText">Topics</a>
             </div>
 
-            <div class="options">
-                <img id="homeworkImage" src="../assets/homework.png" alt="Homework Image">
-                <a id="homeworkText" href="/">Homework</a>
-                <a href="/"></a>
+            <div class="options" onclick="location.href='/classes'">
+                <img id="classesImage" src="../assets/classes.png" alt="Classes Image">
+                <a id="classesText" >Classes</a>
             </div>
 
-            <div class="options">
+            <div class="options" onclick="location.href='/achievements'">
                 <img id="achievementsImage" src="../assets/achievements.png" alt="Achievements Image">
-                <a id="achievementsText" href="/">Achievements</a>
-                <a href="/"></a>
+                <a id="achievementsText">Achievements</a>
             </div>
 
             <div class="options">
@@ -50,9 +46,24 @@
 </template>
 
 <script>
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
 
 export default {
-}
+    data: () => {
+        return {
+            user: false,
+        }
+    },
+    mounted() {
+    const auth = getAuth(auth);
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+          this.user = user;
+      }
+    });
+  }
+}  
 </script>
 
 <style scoped>
@@ -138,10 +149,11 @@ export default {
     height:50%;
     width:20%;
     position: relative;
-    right: 55px;
+    right: 108px;
     top:3px;
 }
 #photo {
+    margin-top:8%;
     float: left;
     display: inline-block;
 }
@@ -161,12 +173,12 @@ export default {
     width:100%;
     position: relative;
     left: 10px;
-    top: 5px;
+    top: 25px;
 }
 
 #main {
     position: fixed;
-    margin-top:50px;
+    margin-top:35px;
     margin-left:20px;
 }
 
@@ -176,7 +188,7 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     height: 522.5px;
     width: 250px;
-    margin-top:25px;
+    margin-top:10px;
 }
 
 .options {
