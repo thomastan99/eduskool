@@ -1,9 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"
-import MathsTopics from '@/views/MathsTopics.vue'
 import Homepage from '@/views/Homepage.vue'
 import LeaderboardMath from '@/views/LeaderboardMath.vue'
-
-
 import Register from '@/views/Register.vue'
 import Login from '@/views/Login.vue'
 import TeachersHome from '@/views/TeachersHome.vue'
@@ -24,12 +21,6 @@ const routes = [
         path: "/ready",
         name: "Ready",
         component: Ready
-    },
-
-    {
-        path: '/mathstopics',
-        name: 'MathsTopics',
-        component: MathsTopics
     },
     {
         path: '/quiz',
@@ -54,7 +45,6 @@ const routes = [
         //     requiresAuth: true
         // }
     },
- 
 
     {
         path: '/TeachersHome',
@@ -69,7 +59,7 @@ const routes = [
     {
         path: '/teacherscs',
         name: 'TeachersCS',
-        component: TeachersCS
+        component: TeachersCS,
     },
     {
         path: '/profile',
@@ -78,7 +68,47 @@ const routes = [
     },{
         path: '/topicsView',
         name: 'TopicsView',
-        component: TopicsView
+        component: TopicsView,
+    },
+    {
+        path: '/p5maths',
+        name: 'P5Maths',
+        component: P5Maths,
+    },
+    {
+        path: '/p5english',
+        name: 'P5English',
+        component: P5English,
+    },
+    {
+        path: '/p5science',
+        name: 'P5Science',
+        component: P5Science,
+    },
+    {
+        path: '/p6maths',
+        name: 'P6Maths',
+        component: P6Maths,
+    },
+    {
+        path: '/p6english',
+        name: 'P6English',
+        component: P6English,
+    },
+    {
+        path: '/p6science',
+        name: 'P6Science',
+        component: P6Science,
+    },
+    {
+        path: '/achievements',
+        name: 'AchievementsPage',
+        component: AchievementsPage,
+    },
+    {
+        path: '/classes',
+        name: 'Classes',
+        component: Classes,
     },
     {
 

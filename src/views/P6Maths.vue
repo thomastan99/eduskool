@@ -1,20 +1,16 @@
 <template>
-
-    <div id="main">
-        <div id="pageTitle">
-            <h1> P5 Maths </h1>
-            
-        </div>
-
+  <BlueBanner/>
+  <LeftPanel/>
+     <div id="main">
+        <div id="pageTitle"><h1> P6 Maths </h1></div>
         <table id = "topicstable"> 
             <th> Syllabus </th>
             <th> Learning Videos </th>
             <th> Quiz Score </th>
             <th> Last Attempted Score </th>
-
             <tr>
                 <td> 
-                    <h3 class="syllabus"> Chapter 1: Whole Numbers </h3>
+                    <h3 class="syllabus"> Chapter 1: Number & Algebra </h3>
                 </td>
                 <td> 
                     <button id="button" @click="wholeNumbers=!wholeNumbers">Watch</button>
@@ -39,12 +35,10 @@
                     <h3 class="marks"> 10/10 </h3>
                 </td>
             </tr>
-
             <tr>
                 <td>
-                    <h2 class="syllabus"> Chapter 2: Fractions </h2>
+                    <h2 class="syllabus"> Chapter 2: Statistics </h2>
                 </td>
-
                 <td> 
                      <button id="button" @click="fractions=!fractions">Watch</button>
                         <transition name="fade" appear>
@@ -59,7 +53,6 @@
                             </div>
                         </transition>
                 </td>
-
                 <td> 
                     <router-link to="/ready" tag="button" v-on:click="update('Chap1','Math')">Attempt </router-link>
                 </td>
@@ -68,10 +61,9 @@
                     <h3 class="marks"> 10/10 </h3>
                 </td>
             </tr>
-
             <tr>
                 <td>
-                    <h3 class="syllabus"> Chapter 3: Decimals </h3>
+                    <h3 class="syllabus"> Chapter 3: Fractions </h3>
                 </td>
                 <td> 
                     <button id="button" @click="decimals=!decimals">Watch</button>
@@ -93,12 +85,10 @@
                 <td> 
                     <h3 class="marks"> 8/10 </h3>
                 </td>
-
             </tr>
-
              <tr>
                 <td>
-                    <h3 class="syllabus"> Chapter 4: Percentage </h3>
+                    <h3 class="syllabus"> Chapter 4: Geometry </h3>
                 </td>
                 <td> 
                     <button id="button" @click="percent=!percent">Watch</button>
@@ -140,7 +130,6 @@
                                 </div>
                             </transition>
                 </td>
-                
                 <td> 
                     <button id="attempt">Attempt</button>
                 </td>
@@ -148,10 +137,9 @@
                     <h3 class="marks"> No Attempt </h3>
                 </td>
             </tr>
-
              <tr>
                 <td>
-                    <h3 class="syllabus"> Chapter 6: Measurement </h3>
+                    <h3 class="syllabus"> Chapter 6: Data Analysis </h3>
                 </td>
                 <td> 
                     <button id="button" @click="measure=!measure">Watch</button>
@@ -175,7 +163,6 @@
                     <h3 class="marks"> No Attempt </h3>
                 </td>
             </tr>
-            
              <tr>
                 <td>
                     <h3 class="syllabus"> Chapter 7: Geometry </h3>
@@ -194,14 +181,12 @@
                         </div>
                     </transition>        
                 </td>
-                
                 <td> 
                     <button id="attempt">Attempt</button>
                 </td>
                 <td> 
                     <h3 class="marks"> No Attempt </h3>
                 </td>
-
             </tr>
         </table>
     </div>
@@ -212,16 +197,20 @@ import firebaseApp from '../firebase.js'
 import {getFirestore} from "firebase/firestore";
 import { doc, updateDoc} from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import BlueBanner from "@/components/BlueBanner.vue"
+import LeftPanel from "@/components/LeftPanel.vue"
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth();
 
-
-
-
 export default {
+    name: 'P5Maths',
+    components: {
+    LeftPanel,
+    BlueBanner,
+  },
 
-    data(){
+  data(){
         return{
             currQuizChapter :"1",
             curQuizSubject :"math",
@@ -230,9 +219,8 @@ export default {
             decimals: false,
             percent: false,
             ratio: false,
-            measure:false,
-            geo:false,
-            
+            measure: false,
+            geo: false,
         }
     },
     methods : {
@@ -294,18 +282,20 @@ export default {
 }
 
 #main{
-    margin-top: 3%;
-    margin-left:400px;
+    display:inline-block;
+    margin-left:25%;
+    width: 100%;
 }
+
 #pageTitle {
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     color: #2c3e50;
     font-size:23px;
-    margin-right:180px;
+    margin-right:35%;
+    margin-top:1%;
 }
 #topicstable {
-    display: inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 .marks {

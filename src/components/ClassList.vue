@@ -70,6 +70,7 @@ tr {
 }
 
 table {
+    
     width: 875px;
 }
 

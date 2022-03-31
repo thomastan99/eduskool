@@ -1,28 +1,36 @@
 <template>
     <div id="main">
         <a href = "/home" > <img id ="logo" src="../assets/elogo.png" alt="EDU'skool logo" > </a>
-        <h2 id="welcome">Welcome Back James!</h2>
+        <h2 id="welcome">Welcome Back {{user.displayName}} </h2>
         <a id="courses" href="./">Courses</a>
         <a id="help" href="./">Help</a>
-        <a id="profile" href="./profile">Profile</a>
     </div><br><br>
 </template>
 
 <script>
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
 
 export default {
-}
+    data: () => {
+        return {
+            user: false,
+        }
+    },
+    mounted() {
+    const auth = getAuth(auth);
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+          this.user = user;
+      }
+    });
+  }
+}  
 </script>
 
 <style scoped>
 #logo {
     float: left;
-}
-
-#welcome {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    display:inline-block;
-    padding: 5px 200px 0px 200px;
 }
 
 /* welcome {
@@ -41,19 +49,43 @@ h2 {
     top: 0;
     left: 0;
     width: 100%;
-    height:10%;
 }
-
 #courses {
     display:inline-block;
-    padding: 0px 100px 0px 0px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
+    padding: 5px 100px 0px 0px;
 }
-
+#welcome {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    display:inline-block;
+    padding: 5px 200px 0px 200px;
+}
 #help {
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
+@media all and (max-width: 1300px) {
+    #courses {
+        display:inline-block;
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        display:none;
+        visibility: hidden;
+    }
+    #welcome {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        display:inline-block;
+        padding: 5px 200px 0px 200px;
+        display:none;
+        visibility: hidden;
+    }
+    #help {
+        display:inline-block;
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        display:none;
+        visibility: hidden;
+    }
+}
+
 button {
     background-color: #00bcd4;
     border: none;

@@ -10,7 +10,7 @@ import BlueBanner from '../components/BlueBanner.vue'
 import ListOfTopics2 from '../components/ListOfTopics2.vue'
 
 export default {
-  name: 'App',
+  name: 'TopicsView',
   components: {
     LeftPanel,
     BlueBanner,
