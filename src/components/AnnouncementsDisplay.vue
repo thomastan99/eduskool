@@ -33,10 +33,11 @@ export default {
 
 <style scoped>
 #content {
+    display: inline-block;
     float: left;
     width: 900px;
-    margin-top: 165px;
-    margin-left: 342px;
+    margin-top: 20px;
+    margin-left: 336px;
     text-align: left;
 }
 </style>

@@ -4,7 +4,7 @@
         <h2 id="welcome">Welcome Back James!</h2>
         <a id="courses" href="./">Courses</a>
         <a id="help" href="./">Help</a>
-        <a id="profile" href="./profile">Profile</a>
+        <!-- <a id="profile" href="./profile">Profile</a> -->
     </div><br><br>
 </template>
 
@@ -41,7 +41,6 @@ h2 {
     top: 0;
     left: 0;
     width: 100%;
-    height:10%;
 }
 
 #courses {
@@ -85,4 +84,25 @@ a:hover {
     color: #ececec;
 }
 
+@media all and (max-width: 900px) {
+    #courses {
+        display:inline-block;
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        display:none;
+        visibility: hidden;
+    }
+    #welcome {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        display:inline-block;
+        padding: 5px 200px 0px 200px;
+        display:none;
+        visibility: hidden;
+    }
+    #help {
+        display:inline-block;
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        display:none;
+        visibility: hidden;
+    }
+}
 </style>

@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 #app {
   font-family: 'Varela Round', sans-serif;

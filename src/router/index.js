@@ -14,6 +14,8 @@ import Ready from '@/views/Ready.vue'
 import Profile from '@/views/Profile.vue'
 import TopicsView from '@/views/TopicsView.vue'
 import TeachersAnnouncements from '@/views/TeachersAnnouncements.vue'
+import StudentAnnouncemnets from '@/views/StudentAnnouncements.vue'
+import ViewStats from '@/views/ViewStats.vue'
 
 const routes = [
     {   path: '/home',
@@ -85,6 +87,16 @@ const routes = [
         path: '/teachersannouncements',
         name: 'TeachersAnnouncements',
         component: TeachersAnnouncements
+    },
+    {
+        path: '/studentsannouncements',
+        name: 'StudentsAnnouncements',
+        component: StudentAnnouncemnets
+    },
+    {
+        path: '/viewstats',
+        name: 'ViewStats',
+        component: ViewStats
     }
 ]
 

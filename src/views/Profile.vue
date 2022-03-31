@@ -69,7 +69,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #userDetails {
   text-align: center;
   border: 1px solid black;

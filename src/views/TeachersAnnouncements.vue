@@ -1,20 +1,20 @@
 <template>
     <BlueBanner/>
-    <LeftPanel/>
+    <LeftPanelTeachers/>
     <CreateAnnouncements @created="change"/>
     <AnnouncementsDisplay :key="refreshComp"/>
 </template>
 
 <script>
 import BlueBanner from '@/components/BlueBanner.vue'
-import LeftPanel from '@/components/LeftPanel.vue'
+import LeftPanelTeachers from '@/components/LeftPanelTeachers.vue'
 import CreateAnnouncements from '@/components/CreateAnnouncements.vue'
 import AnnouncementsDisplay from '@/components/AnnouncementsDisplay.vue'
 
 export default {
   name: 'App',
   components: {
-    LeftPanel,
+    LeftPanelTeachers,
     BlueBanner,
     CreateAnnouncements,
     AnnouncementsDisplay
@@ -32,5 +32,7 @@ export default {
 }
 </script>
 
+<style scoped>
 
+</style>
 

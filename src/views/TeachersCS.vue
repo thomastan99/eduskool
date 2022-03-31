@@ -1,6 +1,6 @@
 <template>
 <BlueBanner/>
-<LeftPanel/>
+<LeftPanelTeachers/>
 <div id="root">
   <div id="cs"><h1 style="font-size: 40px">Classes & Students</h1></div>
   <div id="accordions">
@@ -63,14 +63,14 @@
 
 <script>
 import BlueBanner from '@/components/BlueBanner.vue'
-import LeftPanel from '@/components/LeftPanel.vue'
+import LeftPanelTeachers from '@/components/LeftPanelTeachers.vue'
 import Accordion from '@/components/Accordion.vue'
 
 export default {
   name: 'App',
   components: {
     BlueBanner,
-    LeftPanel,
+    LeftPanelTeachers,
     Accordion
   }
 }
@@ -78,13 +78,9 @@ export default {
 
 <style scoped>
 #accordions {
-  margin-top: 25px;
+  margin-top: 20px;
   padding-left: 20px;
   width: 900px;
-  background-color: #ececec;
-  border: 1px solid grey;
-  overflow-y: scroll;
-  max-height: 510px;
   float: left;
 }
 
@@ -93,10 +89,8 @@ export default {
 }
 
 #root {
-  float: left;
-  position: absolute;
-  left: 325px;
-  top: 90px;
+  margin-top: 50px;
+  margin-left: 320px;
   display: inline-block;
 }
 </style>

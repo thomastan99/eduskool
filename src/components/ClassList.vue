@@ -45,9 +45,8 @@ export default {
 
 <style scoped>
 #main {
-    position: absolute;
-    left: 350px;
-    top: 90px;
+    margin-top: 50px;
+    margin-left: 250px;
     display: inline-block;
 }
 
@@ -70,7 +69,7 @@ tr {
 }
 
 table {
-    width: 875px;
+    width: 800px;
 }
 
 table, th, td {
@@ -87,7 +86,6 @@ a:visited, a:link, a:active {
 }
 
 #content {
-    float: left;
-    background-color: #ececec;
+    margin-top: 110px;
 }
 </style>
