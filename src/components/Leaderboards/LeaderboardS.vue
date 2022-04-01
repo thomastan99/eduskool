@@ -1,4 +1,5 @@
 <template>
+<div id="main">
 <h1> Science Leaderboard </h1>
   <table id = "table">
       <tr>
@@ -6,21 +7,72 @@
           <th> Name </th>
           <th>Score </th>
         </tr>
-  </table> <br><br>
+  </table> 
+  <br><br>
+
+</div>
+
+
+  
+  <div id="prog">
+          <div id="test" class="prog">
+<circle-progress id = "progress" :show-percent=true :percent='this.pSci'/>
+<p id = "subject"> % Completion for Science</p>
+          </div>
+
+<div id="test2" class = "prog">
+    <circle-progress id = "progress" :show-percent=true :percent='this.pTot'/>
+<p id = "subject"> % Overall Progress</p>
+</div>
+  </div>
 </template>
 
 <script>
 import firebaseApp from '../../firebase.js'
 import {getFirestore} from "firebase/firestore";
-import {collection,getDocs} from "firebase/firestore";
+import {collection,getDocs, getDoc, doc} from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import "vue3-circle-progress/dist/circle-progress.css";
+import CircleProgress from "vue3-circle-progress";
+
 const db = getFirestore(firebaseApp)
 
 
 
 export default {
    
+components: {CircleProgress},
+data(){
+    return {
+        user: false,
+        sci:0,
+        total:0,
+        pSci:0,
+        pTot:0
 
+
+
+    }
+    
+},
     mounted() {
+            const auth = getAuth();
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+                    getDoc(doc(db,"Students",user.email)).then((x) =>{
+            let s = x.data()
+            this.sci = s.wk_sci
+            this.pSci = s.wk_sci/70 * 100
+            this.total = s.wk_eng + s.wk_math + s.wk_sci
+            this.pTot = this.total/210 * 100
+
+            }).then(()=>{
+                console.log("total added")
+            })
+      }
+    });
+
         async function getScores(){
           
             let x = await getDocs(collection(db,"Students"))
@@ -57,7 +109,12 @@ export default {
                 ind ++
             }
         }
-        getScores()
+                getScores()
+
+
+          
+
+  console.log(this.total)
         
 
 
@@ -71,8 +128,42 @@ export default {
 
 <style scoped>
 table{
+    float: left;
     width: 70%;
     align-items: center;
 }
+#main {
+    top:50px;
+    left:100px;
+    
+}
+#prog{
+display: inline-block;
+padding: 2px;
+
+/* margin-left:670px */
+
+}
+#subject{
+    display: inline-block
+
+/* margin-left: -550px */
+}
+#test{
+    float: left;
+    padding-right: 50px;
+
+
+    /* margin-left: 30%;
+    margin-right: 58%; */
+}
+#test2{
+float: right
+
+
+    /* margin-left: 50%;
+    margin-right: 38%; */
+}
+
 
 </style>
