@@ -34,10 +34,18 @@
         type="radio"
         id="student"
         name="role"
-        value="Student"
+        value="P5Student"
         v-model="register_form.role"
       />
-      <label for="student">Student</label> <br />
+      <label for="student">Primary 5 Student</label> <br />
+       <input
+        type="radio"
+        id="student"
+        name="role"
+        value="P6Student"
+        v-model="register_form.role"
+      />
+      <label for="student">Primary 6 Student</label> <br />
       <input type="submit" value="Register" />
     </form>
     <div id="loginBtns">
@@ -68,7 +76,8 @@ export default {
       ) {
         return alert("Passwords have to be at least 6 characters long")
       } else if (
-        register_form.value.role != "Student" &&
+        register_form.value.role != "P5Student" &&
+        register_form.value.role != "P6Student" &&
         register_form.value.role != "Teacher"
       ) {
         return alert("Please choose a role")
@@ -99,7 +108,7 @@ export default {
 
 <style scoped>
 #loginBtn {
-  font-size: 40px;
+  font-size: 35px;
 }
 
 a {
@@ -118,7 +127,7 @@ a:hover {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 30px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
@@ -135,7 +144,7 @@ input {
 input[type="submit"] {
   /* background-color: rgb(217, 224, 224); */
   border-radius: 8px;
-  font-size: 30px;
+  font-size: 25px;
   height: 40px;
 }
 
@@ -168,12 +177,12 @@ label {
   text-align: right;
   width: 150px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 p {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 30px;
   color: black;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
