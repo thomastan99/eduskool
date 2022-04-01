@@ -20,10 +20,10 @@
 <script>
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import BlueBanner from "../components/BlueBanner.vue";
-import LeftPanel from "../components/LeftPanel.vue";
+import LeftPanel from "../components/LeftPanel.vue"
 import firebaseApp from "../firebase.js"
 import { getFirestore } from "firebase/firestore";
-import { getDoc, doc } from "firebase/firestore";
+import { getDoc, doc,  } from "firebase/firestore"; //updateDoc
 const db = getFirestore(firebaseApp);
 
 
@@ -82,7 +82,7 @@ export default {
       let docRef = doc(db, "Users", user.email);
       let docSnap = await getDoc(docRef);
       let role = docSnap.data().role;
-      if (role == "Student") {
+      if (role == "P5Student" || role == "P6Student") {
         let docRef = doc(db, "Students", user.email);
         let docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
