@@ -1,9 +1,9 @@
 import { createStore } from 'vuex'
 import router from '../router/index.js'
 import firebaseApp from '../firebase.js'
-import { getAuth, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword, signOut, updateProfile, updatePassword } from "firebase/auth"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, setDoc, getFirestore } from "firebase/firestore";
+import { doc, setDoc, getFirestore, getDoc, updateDoc } from "firebase/firestore";
 import { ref } from "vue"
 
 const auth = getAuth();
@@ -138,6 +138,54 @@ export default createStore({
             }
             commit('SET_USER', auth.currentUser);
             router.push('/home');
+        },
+
+        async editProfile({ commit }, details) {
+            // const { fname, lname, email, password, role } = details
+            const { fname, lname, password } = details
+            // update displayname to fname, update in either Student or Teacher collection
+            // the Name to fname + lname
+            let email = auth.currentUser.email;
+
+            try {
+                await updatePassword(auth.currentUser, password);
+                await updateProfile(auth.currentUser, {
+                    displayName: fname,
+                });
+                let docRef = doc(db, "Users", email);
+                let docSnap = await getDoc(docRef);
+                let role = docSnap.data().role;
+                if (role == "P5Student" || role == "P6Student") {
+                    await updateDoc(doc(db, "Students", email), {
+                        Name: fname + " " + lname,
+                    })
+                } else {
+                    await updateDoc(doc(db, "Teachers", email), {
+                        Name: fname + " " + lname,
+                    })
+                }
+            } catch (error) {
+                switch (error.code) {
+                    case 'auth/email-already-in-use':
+                        alert("Email already in use")
+                        break
+                    case 'auth/invalid-email':
+                        alert("Invalid email used")
+                        break
+                    case 'auth/operation-not-allowed':
+                        alert("Operation not allowed")
+                        break
+                    case 'auth/weak-password':
+                        alert("Weak password")
+                        break
+                    default:
+                        alert("Something went wrong")
+                }
+                return
+            }
+
+            commit('SET_USER', auth.currentUser)
+            router.push('/profile')
         },
 
         async logout({ commit }) {

@@ -4,22 +4,24 @@
     <form id="registrationForm" class="register" @submit.prevent="register">
       <h1 class="title">Register for eduSkool</h1>
       <label for="fname">First name:</label>
-      <input type="text" id="fname" v-model="register_form.fname" /><br />
+      <input type="text" id="fname" v-model="register_form.fname" required /><br />
       <label for="lname">Last name:</label>
-      <input type="text" id="lname" v-model="register_form.lname" /><br />
+      <input type="text" id="lname" v-model="register_form.lname" required /><br />
       <label for="email">Email:</label>
-      <input type="text" id="email" v-model="register_form.email" /><br />
+      <input type="text" id="email" v-model="register_form.email" required /><br />
       <label for="password">Password:</label>
       <input
         type="password"
         id="password"
         v-model="register_form.password"
+        required
       /><br />
       <label for="password-confirmation">Confirm Password:</label>
       <input
         type="password"
         id="password-confirmation"
         v-model="register_form.passwordConfirmation"
+        required
       />
       <p>Choose your role for eduSkool:</p>
       <input
@@ -28,6 +30,7 @@
         name="role"
         value="Teacher"
         v-model="register_form.role"
+        required
       />
       <label for="teacher">Teacher</label><br />
       <input
@@ -36,6 +39,7 @@
         name="role"
         value="P5Student"
         v-model="register_form.role"
+        required
       />
       <label for="student">Primary 5 Student</label> <br />
        <input
@@ -44,6 +48,7 @@
         name="role"
         value="P6Student"
         v-model="register_form.role"
+        required
       />
       <label for="student">Primary 6 Student</label> <br />
       <input type="submit" value="Register" />

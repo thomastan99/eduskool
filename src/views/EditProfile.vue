@@ -1,5 +1,6 @@
 <template>
   <BlueBanner />
+  <LeftPanel />
   <div id="editProfile">
     <form
       id="editProfileForm"
@@ -8,20 +9,22 @@
     >
       <h1 class="title">Edit Profile</h1>
       <label for="fname">First name:</label>
-      <input type="text" id="fname" v-model="editProfile_form.fname" /><br />
+      <input type="text" id="fname" v-model="editProfile_form.fname" required /><br />
       <label for="lname">Last name:</label>
-      <input type="text" id="lname" v-model="editProfile_form.lname" /><br />
+      <input type="text" id="lname" v-model="editProfile_form.lname" required /><br />
       <label for="password">Password:</label>
       <input
         type="password"
         id="password"
         v-model="editProfile_form.password"
+        required
       /><br />
       <label for="password-confirmation">Confirm Password:</label>
       <input
         type="password"
         id="password-confirmation"
         v-model="editProfile_form.passwordConfirmation"
+        required
       />
       <br />
       <!-- <p>Upload a Profile Picture:</p>
@@ -38,14 +41,14 @@ import { ref } from "vue";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useStore } from "vuex";
 import BlueBanner from "../components/BlueBanner.vue";
-
+import LeftPanel from "../components/LeftPanel.vue";
 export default {
   name: "EditProfile",
 
   components: {
     BlueBanner,
+    LeftPanel
   },
-
   data() {
     return {
       user: false,
