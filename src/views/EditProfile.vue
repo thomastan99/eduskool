@@ -47,7 +47,6 @@ export default {
     BlueBanner,
     LeftPanel
   },
-
   data() {
     return {
       user: false,

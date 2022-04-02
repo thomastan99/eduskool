@@ -53,18 +53,20 @@ export default createStore({
         async register({ commit }, details) {
             // const { fname, lname, email, password, role } = details
             const { fname, lname, email, password, role } = details
-            userrole.value = role
             try {
                 await createUserWithEmailAndPassword(auth, email, password)
-                // console.log(role);
-                // console.log(fname);
                 await updateProfile(auth.currentUser, {
-                    displayName: fname
+                    displayName: fname,
                 });
-                if (role == "Student") {
+                await setDoc(doc(db, "Users", email), {
+                    ID: email,
+                    role: role,
+                })
+                if (role == "P5Student" || role == "P6Student") {
                     await setDoc(doc(db, "Students", email), {
                         ID: email,
                         Name: fname + " " + lname,
+                        role: role,
                         wk_eng: 0,
                         wk_math: 0,
                         wk_sci: 0,
@@ -111,6 +113,7 @@ export default createStore({
                     await setDoc(doc(db, "Teachers", email), {
                         ID: email,
                         Name: fname + " " + lname,
+                        role: role,
                     })
                 }
 
@@ -133,9 +136,8 @@ export default createStore({
                 }
                 return
             }
-
-            commit('SET_USER', auth.currentUser)
-            router.push('/home')
+            commit('SET_USER', auth.currentUser);
+            router.push('/home');
         },
 
         async logout({ commit }) {

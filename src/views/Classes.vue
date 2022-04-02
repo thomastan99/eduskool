@@ -20,10 +20,12 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td v-if="satTenToTwelveStatus" class="classoptions" id="Maths5" @click="isOpen=!isOpen; updateSatTenToTwelve()"> Maths 5C Class Size: {{maths5Csize}} </td>
-                <td v-if="!satTenToTwelveStatus" class="classoptionsOccupied"> Maths 5C Class Size: {{maths5Csize}} </td>
-                <td v-if="sunTenToTwelveStatus" class="classoptions" id="sun10-12" @click="isOpen=!isOpen; updateSunTenToTwelve()"> Science 5C Class Size: {{science5Csize}} </td>
-                <td v-if="!sunTenToTwelveStatus" class="classoptionsOccupied" id="sun10-12"> Science 5C Class Size: {{science5Csize}} </td>
+                <td v-if="satTenToTwelveStatus && userrole == 'P5Student'" class="classoptions" id="Maths5" @click="isOpen=!isOpen; updateSatTenToTwelve()"> Maths 5C Class Size: {{maths5Csize}} </td>
+                <td v-if="!satTenToTwelveStatus" class="classoptionsSelected"> Maths 5C Class Size: {{maths5Csize}} </td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied"> Maths 5C Class Size: {{maths5Csize}} </td>
+                <td v-if="sunTenToTwelveStatus && userrole == 'P5Student'" class="classoptions" id="sun10-12" @click="isOpen=!isOpen; updateSunTenToTwelve()"> Science 5C Class Size: {{science5Csize}} </td>
+                <td v-if="!sunTenToTwelveStatus" class="classoptionsSelected" id="sun10-12"> Science 5C Class Size: {{science5Csize}} </td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="sun10-12"> Science 5C Class Size: {{science5Csize}} </td>
             </tr>
             <tr> 
                 <td>12:00 PM - 2:00 PM</td> 
@@ -32,44 +34,72 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td v-if="satTwelveToTwoStatus" class="classoptions" id="sat12-2" @click="isOpen=!isOpen; updateSatTwelveToTwo()">English 5B Class Size: {{english5Bsize}}</td>
-                <td v-if="!satTwelveToTwoStatus" class="classoptionsOccupied" id="sat12-2">English 5B Class Size: {{english5Bsize}}</td>
-                <td v-if="sunTwelveToTwoStatus" class="classoptions" id="sun12-2" @click="isOpen=!isOpen; updateSunTwelveToTwo()">English 5C Class Size: {{english5Csize}}</td>
-                <td v-if="!sunTwelveToTwoStatus" class="classoptionsOccupied" id="sun12-2">English 5C Class Size: {{english5Csize}}</td>
+                <td v-if="satTwelveToTwoStatus && userrole == 'P5Student'" class="classoptions" id="sat12-2" @click="isOpen=!isOpen; updateSatTwelveToTwo()">English 5B Class Size: {{english5Bsize}}</td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="sat12-2">English 5B Class Size: {{english5Bsize}}</td>
+                <td v-if="!satTwelveToTwoStatus" class="classoptionsSelected" id="sat12-2">English 5B Class Size: {{english5Bsize}}</td>
+                <td v-if="sunTwelveToTwoStatus && userrole == 'P5Student'" class="classoptions" id="sun12-2" @click="isOpen=!isOpen; updateSunTwelveToTwo()">English 5C Class Size: {{english5Csize}}</td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="sun12-2">English 5C Class Size: {{english5Csize}}</td>
+                <td v-if="!sunTwelveToTwoStatus" class="classoptionsSelected" id="sun12-2">English 5C Class Size: {{english5Csize}}</td>
             </tr>
             <tr > 
                 <td>2:00 PM - 4:00 PM</td> 
-                <td v-if="monTwoToFourStatus" class="classoptions" id="mon2-4" @click="isOpen=!isOpen; updateMonTwoToFour()"> Science 5A Class Size: {{science5Asize}}</td>
-                <td v-if="!monTwoToFourStatus" class="classoptionsOccupied" id="mon2-4">Science 5A Class Size: {{science5Asize}}</td>
-                <td v-if="tuesTwoToFourStatus" class="classoptions" id="tues2-4" @click="isOpen=!isOpen; updateTuesTwoToFour()">English 5A Class Size: {{english5Asize}}</td>
-                <td v-if="!tuesTwoToFourStatus" class="classoptionsOccupied" id="tues2-4">English 5A Class Size: {{english5Asize}}</td>
-                <td v-if="wedsTwoToFourStatus" class="classoptions" id="weds2-4" @click="isOpen=!isOpen; updateWedsTwoToFour()">Maths 5A Class Size: {{maths5Asize}}</td>
-                <td v-if="!wedsTwoToFourStatus" class="classoptionsOccupied" id="weds2-4">Maths 5A Class Size: {{maths5Asize}}</td>
-                <td v-if="thursTwoToFourStatus" class="classoptions" id="thurs2-4" @click="isOpen=!isOpen; updateThursTwoToFour()">Maths 6B Class Size: {{maths6Bsize}}</td>
-                <td v-if="!thursTwoToFourStatus" class="classoptionsOccupied" id="thurs2-4">Maths 6B Class Size: {{maths6Bsize}}</td>
-                <td v-if="friTwoToFourStatus" class="classoptions" id="fri2-4" @click="isOpen=!isOpen; updateFriTwoToFour()">Science 5B Class Size: {{science5Bsize}}</td>
-                <td v-if="!friTwoToFourStatus" class="classoptionsOccupied" id="fri2-4">Science 5B Class Size: {{science5Bsize}}</td>
-                <td v-if="satTwoToFourStatus" class="classoptions" id="sat2-4" @click="isOpen=!isOpen; updateSatTwoToFour()">English 6B Class Size: {{english6Bsize}}</td>
-                <td v-if="!satTwoToFourStatus" class="classoptionsOccupied" id="sat2-4">English 6B Class Size: {{english6Bsize}}</td>
-                <td v-if="sunTwoToFourStatus" class="classoptions" id="sun2-4" @click="isOpen=!isOpen; updateSunTwoToFour()">English 6C Class Size: {{english6Csize}}</td>
-                <td v-if="!sunTwoToFourStatus" class="classoptionsOccupied" id="sun2-4">English 6C Class Size: {{english6Csize}}</td>
+                <td v-if="monTwoToFourStatus && userrole == 'P5Student'" class="classoptions" id="mon2-4" @click="isOpen=!isOpen; updateMonTwoToFour()"> Science 5A Class Size: {{science5Asize}}</td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="mon2-4">Science 5A Class Size: {{science5Asize}}</td>
+                <td v-if="!monTwoToFourStatus" class="classoptionsSelected" id="mon2-4">Science 5A Class Size: {{science5Asize}}</td>
+
+                <td v-if="tuesTwoToFourStatus && userrole == 'P5Student'" class="classoptions" id="tues2-4" @click="isOpen=!isOpen; updateTuesTwoToFour()">English 5A Class Size: {{english5Asize}}</td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="tues2-4">English 5A Class Size: {{english5Asize}}</td>
+                <td v-if="!tuesTwoToFourStatus" class="classoptionsSelected" id="tues2-4">English 5A Class Size: {{english5Asize}}</td>
+
+                <td v-if="wedsTwoToFourStatus && userrole == 'P5Student'" class="classoptions" id="weds2-4" @click="isOpen=!isOpen; updateWedsTwoToFour()">Maths 5A Class Size: {{maths5Asize}}</td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="weds2-4">Maths 5A Class Size: {{maths5Asize}}</td>
+                <td v-if="!wedsTwoToFourStatus" class="classoptionsSelected" id="weds2-4">Maths 5A Class Size: {{maths5Asize}}</td>
+
+                <td v-if="thursTwoToFourStatus && userrole == 'P6Student'" class="classoptions" id="thurs2-4" @click="isOpen=!isOpen; updateThursTwoToFour()">Maths 6B Class Size: {{maths6Bsize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="thurs2-4">Maths 6B Class Size: {{maths6Bsize}}</td>
+                <td v-if="!thursTwoToFourStatus" class="classoptionsSelected" id="thurs2-4">Maths 6B Class Size: {{maths6Bsize}}</td>
+
+                <td v-if="friTwoToFourStatus && userrole == 'P5Student'" class="classoptions" id="fri2-4" @click="isOpen=!isOpen; updateFriTwoToFour()">Science 5B Class Size: {{science5Bsize}}</td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="fri2-4">Science 5B Class Size: {{science5Bsize}}</td>
+                <td v-if="!friTwoToFourStatus" class="classoptionsSelected" id="fri2-4">Science 5B Class Size: {{science5Bsize}}</td>
+
+                <td v-if="satTwoToFourStatus && userrole == 'P6Student'" class="classoptions" id="sat2-4" @click="isOpen=!isOpen; updateSatTwoToFour()">English 6B Class Size: {{english6Bsize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="sat2-4">English 6B Class Size: {{english6Bsize}}</td>
+                <td v-if="!satTwoToFourStatus" class="classoptionsSelected" id="sat2-4">English 6B Class Size: {{english6Bsize}}</td>
+
+                <td v-if="sunTwoToFourStatus && userrole == 'P6Student'" class="classoptions" id="sun2-4" @click="isOpen=!isOpen; updateSunTwoToFour()">English 6C Class Size: {{english6Csize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="sun2-4">English 6C Class Size: {{english6Csize}}</td>
+                <td v-if="!sunTwoToFourStatus" class="classoptionsSelected" id="sun2-4">English 6C Class Size: {{english6Csize}}</td>
             </tr>
             <tr> 
                 <td>4:00 PM - 6:00 PM</td> 
-                <td v-if="monFourToSixStatus" class="classoptions" id="mon4-6" @click="isOpen=!isOpen; updateMonFourToSix()">Maths 6A Class Size: {{maths6Asize}}</td>
-                <td v-if="!monFourToSixStatus" class="classoptionsOccupied" id="mon4-6">Maths 6A Class Size: {{maths6Asize}}</td>
-                <td v-if="tuesFourToSixStatus" class="classoptions" id="tues4-6" @click="isOpen=!isOpen; updateTuesFourToSix()">English 6A Class Size: {{english6Asize}}</td>
-                <td v-if="!tuesFourToSixStatus" class="classoptionsOccupied" id="tues4-6">English 6A Class Size: {{english6Asize}}</td>
-                <td v-if="wedsFourToSixStatus" class="classoptions" id="weds4-6" @click="isOpen=!isOpen; updateWedsFourToSix()">Science 6A Class Size: {{science6Asize}}</td>
-                <td v-if="!wedsFourToSixStatus" class="classoptionsOccupied" id="weds2-4">Science 6A Class Size: {{science6Asize}}</td>
-                <td v-if="thursFourToSixStatus" class="classoptions" id="thurs4-6" @click="isOpen=!isOpen; updateThursFourToSix()">Maths 6C Class Size: {{maths6Csize}}</td>
-                <td v-if="!thursFourToSixStatus" class="classoptionsOccupied" id="thurs4-6">Maths 6C Class Size: {{maths6Csize}}</td>
-                <td v-if="friFourToSixStatus" class="classoptions" id="fri4-6" @click="isOpen=!isOpen; updateFriFourToSix()">Maths 5B Class Size: {{maths5Bsize}}</td>
-                <td v-if="!friFourToSixStatus" class="classoptionsOccupied" id="fri4-6">Maths 5B Class Size: {{maths5Bsize}}</td>
-                <td v-if="satFourToSixStatus" class="classoptions" id="sat4-6" @click="isOpen=!isOpen; updateSatFourToSix()">Science 6C Class Size: {{science6Csize}}</td>
-                <td v-if="!satFourToSixStatus" class="classoptionsOccupied" id="sat4-6">Science 6C Class Size: {{science6Csize}}</td>
-                <td v-if="sunFourToSixStatus" class="classoptions" id="sun4-6" @click="isOpen=!isOpen; updateSunFourToSix()">Science 6B Class Size: {{science6Bsize}}</td>
-                <td v-if="!sunFourToSixStatus" class="classoptionsOccupied" id="sun4-6">Science 6B Class Size: {{science6Bsize}}</td>
+                <td v-if="monFourToSixStatus && userrole == 'P6Student'" class="classoptions" id="mon4-6" @click="isOpen=!isOpen; updateMonFourToSix()">Maths 6A Class Size: {{maths6Asize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="mon4-6">Maths 6A Class Size: {{maths6Asize}}</td>
+                <td v-if="!monFourToSixStatus" class="classoptionsSelected" id="mon4-6">Maths 6A Class Size: {{maths6Asize}}</td>
+
+                <td v-if="tuesFourToSixStatus && userrole == 'P6Student'" class="classoptions" id="tues4-6" @click="isOpen=!isOpen; updateTuesFourToSix()">English 6A Class Size: {{english6Asize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="tues4-6">English 6A Class Size: {{english6Asize}}</td>
+                <td v-if="!tuesFourToSixStatus" class="classoptionsSelected" id="tues4-6">English 6A Class Size: {{english6Asize}}</td>
+
+                <td v-if="wedsFourToSixStatus && userrole == 'P6Student'" class="classoptions" id="weds4-6" @click="isOpen=!isOpen; updateWedsFourToSix()">Science 6A Class Size: {{science6Asize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="weds2-4">Science 6A Class Size: {{science6Asize}}</td>
+                <td v-if="!wedsFourToSixStatus" class="classoptionsSelected" id="weds2-4">Science 6A Class Size: {{science6Asize}}</td>
+
+                <td v-if="thursFourToSixStatus && userrole == 'P6Student'" class="classoptions" id="thurs4-6" @click="isOpen=!isOpen; updateThursFourToSix()">Maths 6C Class Size: {{maths6Csize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="thurs4-6">Maths 6C Class Size: {{maths6Csize}}</td>
+                <td v-if="!thursFourToSixStatus" class="classoptionsSelected" id="thurs4-6">Maths 6C Class Size: {{maths6Csize}}</td>
+                
+                <td v-if="friFourToSixStatus && userrole == 'P5Student'" class="classoptions" id="fri4-6" @click="isOpen=!isOpen; updateFriFourToSix()">Maths 5B Class Size: {{maths5Bsize}}</td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="fri4-6">Maths 5B Class Size: {{maths5Bsize}}</td>
+                <td v-if="!friFourToSixStatus" class="classoptionsSelected" id="fri4-6">Maths 5B Class Size: {{maths5Bsize}}</td>
+
+                <td v-if="satFourToSixStatus && userrole == 'P6Student'" class="classoptions" id="sat4-6" @click="isOpen=!isOpen; updateSatFourToSix()">Science 6C Class Size: {{science6Csize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="sat4-6">Science 6C Class Size: {{science6Csize}}</td>
+                <td v-if="!satFourToSixStatus" class="classoptionsSelected" id="sat4-6">Science 6C Class Size: {{science6Csize}}</td>
+
+                <td v-if="sunFourToSixStatus && userrole == 'P6Student'" class="classoptions" id="sun4-6" @click="isOpen=!isOpen; updateSunFourToSix()">Science 6B Class Size: {{science6Bsize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="sun4-6">Science 6B Class Size: {{science6Bsize}}</td>
+                <td v-if="!sunFourToSixStatus" class="classoptionsSelected" id="sun4-6">Science 6B Class Size: {{science6Bsize}}</td>
             </tr>
             <tr> 
                 <td>6:00 PM - 8:00 PM</td> 
@@ -102,6 +132,9 @@
                 <button id="no" @click="isOpen=!isOpen">No</button>
             </div>
         </transition>
+        <div>
+            <div id="legend"></div>
+        </div>
     </div>
 </template>
 
@@ -110,7 +143,7 @@ import BlueBanner from "@/components/BlueBanner.vue"
 import LeftPanel from "@/components/LeftPanel.vue"
 import firebaseApp from '../firebase.js'
 import {getFirestore} from "firebase/firestore";
-import {getDoc, updateDoc, doc, arrayUnion, increment} from "firebase/firestore";
+import {getDoc, updateDoc, doc, arrayUnion, increment, collection, getDocs} from "firebase/firestore";
 import Preloader from '../components/Preloader.vue'
 import { ref } from 'vue';
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
@@ -134,9 +167,12 @@ var maths5Asize = ref(0); var maths5Bsize = ref(0); var maths5Csize = ref(0);
 var english6Asize = ref(0); var english6Bsize = ref(0); var english6Csize = ref(0);
 var science6Asize = ref(0); var science6Bsize = ref(0); var science6Csize = ref(0);
 var maths6Asize = ref(0); var maths6Bsize = ref(0); var maths6Csize = ref(0);
+var userrole = ref("");
+
 export default {
     data: () => {
         return {
+            userrole: userrole,
             english5Asize: english5Asize, english5Bsize: english5Bsize, english5Csize: english5Csize,
             science5Asize: science5Asize, science5Bsize: science5Bsize, science5Csize: science5Csize,
             maths5Asize: maths5Asize, maths5Bsize: maths5Bsize, maths5Csize: maths5Csize,
@@ -435,9 +471,12 @@ name: 'Classes',
       }
     });
     async function timetable(user) {
-        email.value = user.email;
-        let docRef = doc(db, "Students", user.email);
+        let docRef = doc(db, "Users", user.email);
         let docSnap = await getDoc(docRef);
+        userrole.value = docSnap.data().role;
+        email.value = user.email;
+        docRef = doc(db, "Students", user.email);
+        docSnap = await getDoc(docRef);
         var snapData = docSnap.data();
         var timetable = snapData.timetable;
         loading.value = timetable.loading;
@@ -471,19 +510,58 @@ name: 'Classes',
         friSixToEightStatus.value = timetable.friSixToEight;
         satSixToEightStatus.value = timetable.satSixToEight;
         sunSixToEightStatus.value = timetable.sunSixToEight;
-        english5Asize.value = (await getDoc(doc(db, "Classes", "English5A"))).data().size; english5Bsize.value = (await getDoc(doc(db, "Classes", "English5B"))).data().size;  english5Csize.value = (await getDoc(doc(db, "Classes", "English5C"))).data().size;
-        maths5Asize.value = (await getDoc(doc(db, "Classes", "Maths5A"))).data().size; maths5Bsize.value = (await getDoc(doc(db, "Classes", "Maths5B"))).data().size; maths5Csize.value = (await getDoc(doc(db, "Classes", "Maths5C"))).data().size;
-        science5Asize.value = (await getDoc(doc(db, "Classes", "Science5A"))).data().size; science5Bsize.value = (await getDoc(doc(db, "Classes", "Science5B"))).data().size; science5Csize.value = (await getDoc(doc(db, "Classes", "Science5C"))).data().size;
-        english6Asize.value = (await getDoc(doc(db, "Classes", "English6A"))).data().size;  english6Bsize.value = (await getDoc(doc(db, "Classes", "English6B"))).data().size;  english6Csize.value = (await getDoc(doc(db, "Classes", "English6C"))).data().size;
-        maths6Asize.value = (await getDoc(doc(db, "Classes", "Maths6A"))).data().size; maths6Bsize.value = (await getDoc(doc(db, "Classes", "Maths6B"))).data().size; maths6Csize.value = (await getDoc(doc(db, "Classes", "Maths6C"))).data().size;
-        science6Asize.value = (await getDoc(doc(db, "Classes", "Science6A"))).data().size; science6Bsize.value = (await getDoc(doc(db, "Classes", "Science6B"))).data().size; science6Csize.value = (await getDoc(doc(db, "Classes", "Science6C"))).data().size;
-    }
+        docRef = await getDocs(collection(db, "Classes"))    
+        docRef.forEach((docs) => {
+            let d = docs.data()
+            if (docs.id == "English5A") {
+                english5Asize.value = d.size;
+            } if (docs.id == "English5B") {
+                english5Bsize.value = d.size;
+            } if (docs.id == "English5C") {
+                english5Csize.value = d.size;
+            } if (docs.id == "Maths5A") {
+                maths5Asize.value = d.size;
+            } if (docs.id == "Maths5B") {
+                maths5Bsize.value = d.size;
+            } if (docs.id == "Maths5C") {
+                maths5Csize.value = d.size;
+            } if (docs.id == "Science5A") {
+                science5Asize.value = d.size;
+            } if (docs.id == "Science5B") {
+                science5Bsize.value = d.size;
+            } if (docs.id == "Science5A") {
+                science5Csize.value = d.size;
+            } if (docs.id == "English6A") {
+                english6Asize.value = d.size;
+            } if (docs.id == "English6B") {
+                english6Bsize.value = d.size;
+            } if (docs.id == "English6C") {
+                english6Csize.value = d.size;
+            } if (docs.id == "Maths6A") {
+                maths6Asize.value = d.size;
+            } if (docs.id == "Maths6B") {
+                maths6Bsize.value = d.size;
+            } if (docs.id == "Maths6C") {
+                maths6Csize.value = d.size;
+            } if (docs.id == "Science6A") {
+                science6Asize.value = d.size;
+            } if (docs.id == "Science6B") {
+                science6Bsize.value = d.size;
+            } if (docs.id == "Science6A") {
+                science6Csize.value = d.size;
+            }
+        })
+    }   
   }
 }
-
 </script>
 
 <style scoped>
+#legend {
+    background-color: grey;
+    margin: 0 0 0; 
+    width:10%;
+}
 #create {
     float: left;
     margin-left: 350px;
@@ -595,6 +673,10 @@ a {
 .classoptions:hover {
     cursor: pointer;
     background-color: #d6e0e2;
+}
+.classoptionsSelected {
+    padding: 30px 25px 30px 25px;
+    background-color: lightgreen;
 }
 a:visited, a:link, a:active {
     text-decoration: none;
