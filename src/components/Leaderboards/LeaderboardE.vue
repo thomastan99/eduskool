@@ -13,12 +13,12 @@
   
   <div id="prog">
           <div id="test" class="prog">
-<circle-progress id = "progress" :show-percent=true :percent='this.pEng'/>
+<circle-progress id = "progress" :show-percent=true :percent='this.pEng' :transition=20 />
 <p id = "subject"> % Completion for English</p>
           </div>
 
 <div id="test2" class = "prog">
-    <circle-progress id = "progress" :show-percent=true :percent='this.pTot'/>
+    <circle-progress id = "progress" :show-percent=true :percent='this.pTot' :transition=20 />
 <p id = "subject"> % Overall Progress</p>
 </div>
   </div>
