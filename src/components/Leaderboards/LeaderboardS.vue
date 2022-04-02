@@ -63,9 +63,9 @@ data(){
                     getDoc(doc(db,"Students",user.email)).then((x) =>{
             let s = x.data()
             this.sci = s.wk_sci
-            this.pSci = s.wk_sci/70 * 100
+            this.pSci = s.wk_sci/35 * 100
             this.total = s.wk_eng + s.wk_math + s.wk_sci
-            this.pTot = this.total/210 * 100
+            this.pTot = this.total/105 * 100
 
             }).then(()=>{
                 console.log("total added")

@@ -28,7 +28,7 @@
                 </td>
                 <td> 
                     <!-- <button id="attempt">Attempt</button> -->
-                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Science')">Attempt </router-link>
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Primary5Maths')">Attempt </router-link>
                     <!-- <a id="homeworkText" href="/quiz"> </a> -->
                 </td>
                 <td> 
@@ -54,7 +54,7 @@
                         </transition>
                 </td>
                 <td> 
-                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Math')">Attempt </router-link>
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap2','Primary5Maths')">Attempt </router-link>
                 </td>
 
                 <td> 

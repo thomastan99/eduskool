@@ -88,9 +88,9 @@ export default {
             getDoc(doc(db,"Students",this.user)).then((x) =>{
             let s = x.data()
             this.math = s.wk_math
-            this.pMath = s.wk_math/70 * 100
+            this.pMath = s.wk_math/35 * 100
             this.total = s.wk_eng + s.wk_math + s.wk_sci
-            this.pTot = this.total/210 * 100
+            this.pTot = this.total/105 * 100
 
 
             }).then(()=>{

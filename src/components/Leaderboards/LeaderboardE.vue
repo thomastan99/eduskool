@@ -110,9 +110,9 @@ methods(){
             let s = x.data()
 
             this.eng = s.wk_eng
-            this.pEng = s.wk_eng/70 * 100
+            this.pEng = s.wk_eng/35 * 100
             this.total = s.wk_eng + s.wk_math + s.wk_sci
-            this.pTot = this.total/210 * 100
+            this.pTot = this.total/105 * 100
 
             }).then(()=>{
                 console.log("total added")
