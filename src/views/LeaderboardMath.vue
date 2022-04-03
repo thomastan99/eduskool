@@ -17,7 +17,7 @@ import BlueBanner from '../components/BlueBanner.vue'
 import LeaderboardM from '../components/Leaderboards/LeaderboardM.vue'
 import LeaderboardS from '../components/Leaderboards/LeaderboardS.vue'
 import LeaderboardE from '../components/Leaderboards/LeaderboardE.vue'
-
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
 
 export default {
     name: "App",
@@ -43,6 +43,16 @@ export default {
         change3(){
             this.sub = "eng"
         }
+    },
+    mounted(){
+
+    const auth = getAuth();
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        user= auth.currentUser
+      }
+    });
     }
 
 }

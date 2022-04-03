@@ -9,58 +9,65 @@
         </tr>
   </table> <br><br>
 </div>
+
+  
+  <div id="prog">
+          <div id="test" class="prog">
+<circle-progress id = "progress" :show-percent=true :percent='this.pEng' :transition=20 />
+<p id = "subject"> % Completion for English</p>
+          </div>
+
+<div id="test2" class = "prog">
+    <circle-progress id = "progress" :show-percent=true :percent='this.pTot' :transition=20 />
+<p id = "subject"> % Overall Progress</p>
+</div>
+  </div>
 </template>
 
 <script>
 import firebaseApp from '../../firebase.js'
 import {getFirestore} from "firebase/firestore";
-import {collection,getDocs} from "firebase/firestore";
-const db = getFirestore(firebaseApp)
+import {collection,getDocs, getDoc, doc} from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import "vue3-circle-progress/dist/circle-progress.css";
+import CircleProgress from "vue3-circle-progress";
 
+const db = getFirestore(firebaseApp);
+const auth = getAuth(auth);
 
 
 export default {
-//    beforeMount(){
-//        async function updateScores(){
-//            let x = await getDocs(collection(db,"Students"))
-//            x.forEach((docs)=>{
-//                if(docs.id =="testnew2@gmail.com"){
-//                let s= docs.data()
-//                let scores = s.scores
-//                let eng = scores.eng
-//                let math = scores.math
-//                let sci = scores.sci
-//                let temp_eng = 0
-//                let temp_sci = 0
-//                let temp_math = 0
-//                for (const [key,value] of Object.entries(eng)){
-//                    console.log(key,value)
-//                    temp_eng = temp_eng + value
-//                }
-//             for (const [key,value] of Object.entries(math)){
-//                    console.log(key,value)
-//                    temp_math = temp_math + value
-//                }
-//             for (const [key,value] of Object.entries(sci)){
-//                    console.log(key,value)
-//                    temp_sci = temp_sci + value
-//                }
-//                updateDoc(docs.ref,{
-//                    wk_eng: temp_eng,
-//                    wk_math: temp_math,
-//                    wk_sci: temp_sci
-//                })
-//            }
-//            })
-//            console.log("Leaderboard Updated")
+components: {CircleProgress},
+data(){
+    return {
+        user: auth.currentUser.email,
+           eng:0,
+        total:0,
+        pEng:0,
+        pTot:0
 
+    }
+    
+},
+methods(){
+    // async function getProg(){
+        
+    // }
 
-//        }
-//        updateScores()
+},
 
-//    },
 
     mounted() {
+
+
+                const auth = getAuth(auth);
+            
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    this.user = user;
+                }
+        });
+        console.log(this.user)
         async function getScores(){
           
             let x = await getDocs(collection(db,"Students"))
@@ -98,11 +105,35 @@ export default {
             }
         }
         getScores()
+
+            getDoc(doc(db,"Students",this.user)).then((x) =>{
+            let s = x.data()
+
+            this.eng = s.wk_eng
+            this.pEng = s.wk_eng/35 * 100
+            this.total = s.wk_eng + s.wk_math + s.wk_sci
+            this.pTot = this.total/105 * 100
+
+            }).then(()=>{
+                console.log("total added")
+            })
+          
+
+  console.log(this.total)
+            
+        }
+
+      
+
         
 
 
 
-    }
+
+
+
+
+    
     
 
 }
@@ -111,12 +142,42 @@ export default {
 
 <style scoped>
 table{
+    float: left;
     width: 70%;
     align-items: center;
 }
 #main {
     top:50px;
     left:100px;
+    
 }
+#prog{
+display: inline-block;
+padding: 2px;
+
+/* margin-left:670px */
+
+}
+#subject{
+    display: inline-block
+
+/* margin-left: -550px */
+}
+#test{
+    float: left;
+    padding-right: 50px;
+
+
+    /* margin-left: 30%;
+    margin-right: 58%; */
+}
+#test2{
+float: right
+
+
+    /* margin-left: 50%;
+    margin-right: 38%; */
+}
+
 
 </style>
