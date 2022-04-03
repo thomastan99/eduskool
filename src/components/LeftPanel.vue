@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div id="menu">
+    <!-- <div id="menu">
       <div class="options" onclick="location.href='/'">
         <img
           id="announcementImage"
@@ -86,7 +86,7 @@
         <a id="commentsText" href="/">Comments</a>
         <a href="/"></a>
       </div>
-    </div>
+    </div> -->
 
   <router-view />
 </template>

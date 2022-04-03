@@ -73,7 +73,7 @@ h2 {
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #welcome {
-    position:fixed;
+    /* position:fixed; */
     font-family: Avenir, Helvetica, Arial, sans-serif;
     display:inline-block;
 }
@@ -81,6 +81,10 @@ h2 {
     float:right;
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+#logout{
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    display:inline-block;
 }
 /* @media all and (max-width: 1300px) {
     #courses {
@@ -176,4 +180,5 @@ a:hover {
         visibility: hidden;
     }
 }
+
 </style>
