@@ -1,15 +1,16 @@
 <template>
     <div id="main">
-        <a href = "/home" > <img id ="logo" src="../assets/elogo.png" alt="EDU'skool logo" > </a>
+        <a href = "/home" > <img id ="logo" src="../assets/eduLogo.png" alt="EDU'skool logo" > </a>
         <h2 id="welcome">Welcome Back {{user.displayName}} </h2>
-        <a id="courses" href="./">Courses</a>
         <a id="help" href="./">Help</a>
+        <a id="logout" href="./" @click="handleLogout">Logout</a>
         <!-- <a id="profile" href="./profile">Profile</a> -->
     </div><br><br>
 </template>
 
 <script>
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { useStore } from "vuex";
 
 export default {
     data: () => {
@@ -25,7 +26,19 @@ export default {
           this.user = user;
       }
     });
-  }
+  },
+  setup() {
+    const store = useStore();
+
+    const handleLogout = () => {
+      store.dispatch("logout");
+    };
+    
+
+    return {
+      handleLogout,
+    };
+  },
 }  
 </script>
 
@@ -47,10 +60,11 @@ h2 {
 
 #main {
     background-color: #00bcd4;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
-    width: max-content;
+    width: 100%;
+    height:fit-content;
 }
 #courses {
     display:inline-block;
@@ -64,7 +78,7 @@ h2 {
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
-@media all and (max-width: 1300px) {
+/* @media all and (max-width: 1300px) {
     #courses {
         display:inline-block;
         font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -84,7 +98,7 @@ h2 {
         display:none;
         visibility: hidden;
     }
-}
+} */
 
 button {
     background-color: #00bcd4;
