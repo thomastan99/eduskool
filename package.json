@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "firebase": "^9.6.9",
     "firebaseui": "^0.600.0",
+    "object-to-array-convert": "^1.1.0",
     "plotly.js-dist": "^2.11.1",
     "plotly.js-dist-min": "^2.11.1",
     "save": "^2.4.0",

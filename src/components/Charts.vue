@@ -17,7 +17,7 @@
                 <option>chap3</option>                
             </select>
             
-            <button @click="getStats(subject, topic)">Get Stats</button><br><br>
+            <button @click="getStats()">Get Stats</button><br><br>
 
             <span>Selected: {{ subject + " " + topic }}</span>
             </div>
@@ -71,23 +71,11 @@ export default{
 
             z.forEach((docs) => {
                 let d = docs.data()
-                let scores = d.scores
-                if (subject == "eng" && topic == "chap1"){
-                    let sub = scores.subject
-                    let top = sub.get(topic)
+                let s = d.scores
+                let e = s.eng
+                console.log(e)
 
-                    let c = d.class
-                
-                if (c == "class1") {
-                    class1.push(top)
-                }
 
-                else {
-                    class2.push(top)
-                }
-                }
-                
-                
                 
             })
 
