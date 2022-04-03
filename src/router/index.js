@@ -23,6 +23,8 @@ import StudentAnnouncemnets from '@/views/StudentAnnouncements.vue'
 import ViewStats from '@/views/ViewStats.vue'
 import EditProfile from '@/views/EditProfile.vue'
 import EditPic from '@/views/EditPic.vue'
+import Help from '@/views/Help.vue'
+import About from '@/views/About.vue'
 
 const routes = [
     {   path: '/home',
@@ -147,6 +149,16 @@ const routes = [
         path: '/editPic',
         name: 'EditPic',
         component: EditPic,
+    },
+    {
+        path:'/help',
+        name: 'Help',
+        component: Help,
+    },
+    {
+        path:'/about',
+        name: 'About',
+        component: About,
     },
 ]
 

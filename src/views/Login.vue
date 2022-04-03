@@ -1,7 +1,10 @@
 <template>
   <div id="loggingIn">
-    <div id="logo"><img src="../assets/elogo.png" alt="EDU'skool logo" ></div>
-    <form id="loginForm" class="register" @submit.prevent="login" >
+    <div id="logo"><img src="../assets/elogo.png" onclick="location.href='/'" alt="EDU'skool logo"> 
+            <h2 id="about" onclick="location.href='/about'"> About Us </h2>
+            <h2 id="help" onclick="location.href='/help'"> Help </h2>
+    </div>
+    <form id="loginForm" class="register" @submit.prevent="login">
       <h1 class="title" > Login To EDU'skool</h1>
       <label for="email">Email:</label>
       <input type="text" id="email" v-model="login_form.email" /><br />
@@ -54,9 +57,35 @@ export const loginData = login_form.value.email
 </script>
 
 <style scoped>
+#about:hover, #help:hover, img:hover {
+  cursor:pointer;
+}
+@media all and (max-width: 900px) {
+    #about, #help {
+        display:none;
+        visibility: hidden;
+    }
+}
+img {
+    position: relative;
+    left: 80px;
+}
+#about {
+  top:10px;
+  float:right;
+  position: relative;
+  right: 200px;
+  color: black;
+
+}
+#help {
+  top: 9px;
+  position: relative;
+  float:right;
+  color: black;
+}
 #logo {
   background-color: #00bcd4;
-  width: 100%;
 }
 input {
   margin-right: 5px;

@@ -2,7 +2,7 @@
     <div id="main">
         <a href = "/home" > <img id ="logo" src="../assets/eduLogo.png" alt="EDU'skool logo" > </a>
         <h2 id="welcome">Welcome Back {{user.displayName}} </h2>
-        <a id="help" href="./">Help</a>
+        <a id="help" href="./help">Help</a>
         <a id="logout" href="./" @click="handleLogout">Logout</a>
         <!-- <a id="profile" href="./profile">Profile</a> -->
     </div><br><br>
@@ -62,7 +62,7 @@ h2 {
     border-bottom: 3px darkgrey solid;
     box-shadow: 0px 0px 2px 0px;
     background-color: #00bcd4;
-    /* position: fixed; */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -157,9 +157,6 @@ a:hover {
 }
 
 @media all and (max-width: 900px) {
-    #logo {
-
-    }
     #courses {
         display:inline-block;
         font-family: Avenir, Helvetica, Arial, sans-serif;
