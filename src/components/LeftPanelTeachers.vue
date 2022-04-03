@@ -21,9 +21,9 @@
                 <img id="classesImage" src="../assets/classes.png" alt="Classes Image">
                 <a id="classesText">Classes & Students</a>
             </div>
-            <div class="options" onclick="location.href='/teachersscoreboard'">
+            <div class="options" onclick="location.href='/teachersleaderboard'">
                 <img id="scoreboardImage" src="../assets/leaderboard.png" alt="ScoreBoard Image">
-                <a id="scoreboardText">ScoreBoard</a>
+                <a id="scoreboardText">Leaderboard</a>
             </div>
 
             <div class="options" onclick="location.href='/viewstats'">

@@ -4,7 +4,7 @@ import LeaderboardMath from '@/views/LeaderboardMath.vue'
 import Register from '@/views/Register.vue'
 import Login from '@/views/Login.vue'
 import TeachersHome from '@/views/TeachersHome.vue'
-import TeachersScoreboard from '@/views/TeachersScoreboard.vue'
+import TeachersLeaderboard from '@/views/TeachersLeaderboard.vue'
 import TeachersCS from '@/views/TeachersCS.vue'
 import Quiz from '@/views/Quiz.vue'
 import Ready from '@/views/Ready.vue'
@@ -64,9 +64,9 @@ const routes = [
         component: TeachersHome,
     },
     {
-        path: '/teachersscoreboard',
-        name: 'TeachersScoreboard',
-        component: TeachersScoreboard,
+        path: '/teachersleaderboard',
+        name: 'TeachersLeaderboard',
+        component: TeachersLeaderboard,
     },
     {
         path: '/teacherscs',

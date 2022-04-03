@@ -22,7 +22,6 @@ export default {
 
 <style scoped>
 #main {
-    text-align: left;
     font-size: 24px;
     line-height: 1.5;
     font-weight: bold;
@@ -30,6 +29,7 @@ export default {
 
 .header {
     cursor: pointer;
+    text-align: left;
 }
 
 .child {

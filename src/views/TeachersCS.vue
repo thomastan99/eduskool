@@ -4,79 +4,8 @@
 <div id="root">
   <div id="cs"><h1 style="font-size: 40px">Classes & Students</h1></div>
   <div id="accordions">
-  <Accordion class="level1" title="English5A">
+  <Accordion class="level1" title="Math5A">
     <br>
-    <table id="English5A">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
-      </tr>
-    </table>
-    <!-- <Accordion class="level2" title="Tay Chung Tak">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion> -->
-    <!-- <Accordion class="level2" title="Nasry">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-    <Accordion class="level2" title="Chase Ng">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion> -->
-  </Accordion><br><br>
-  <!-- <Accordion class="level1" title="Math 3">
-    <Accordion class="level2" title="Tay Chung Tak">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-    <Accordion class="level2" title="Nasry">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-    <Accordion class="level2" title="Chase Ng">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-  </Accordion>
-  <Accordion class="level1" title="Science 2">
-    <Accordion class="level2" title="Tay Chung Tak">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-    <Accordion class="level2" title="Nasry">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-    <Accordion class="level2" title="Chase Ng">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-  </Accordion> -->
-  <Accordion class="level1" title="English5B">
-    <br>
-    <table id="English5B">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
-      </tr>
-    </table>
-    </Accordion><br><br>
-    <Accordion class="level1" title="Math5A">
-      <br>
     <table id="Math5A">
       <tr>
         <th>Name</th>
@@ -85,20 +14,9 @@
         <th>Chapter 3 Score</th>
       </tr>
     </table>
-    </Accordion><br><br>
-    <Accordion class="level1" title="Math5B">
-      <br>
-    <table id="Math5B">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
-      </tr>
-    </table>
-    </Accordion><br><br>
-    <Accordion class="level1" title="Science5A">
-      <br>
+  </Accordion><br><br>
+  <Accordion class="level1" title="Science5A">
+    <br>
     <table id="Science5A">
       <tr>
         <th>Name</th>
@@ -108,9 +26,9 @@
       </tr>
     </table>
     </Accordion><br><br>
-    <Accordion class="level1" title="Science5B">
+    <Accordion class="level1" title="Science6B">
       <br>
-    <table id="Science5B">
+    <table id="Science6B">
       <tr>
         <th>Name</th>
         <th>Chapter 1 Score</th>
@@ -130,7 +48,8 @@ import BlueBanner from '@/components/BlueBanner.vue'
 import LeftPanelTeachers from '@/components/LeftPanelTeachers.vue'
 import Accordion from '@/components/Accordion.vue'
 import firebaseApp from "../firebase.js"
-import { getFirestore, collection, getDocs } from "firebase/firestore"
+import { getFirestore, getDoc, doc } from "firebase/firestore"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const db = getFirestore(firebaseApp)
 
@@ -143,67 +62,91 @@ export default {
     Accordion
   },
   mounted() {
-    async function display() {
-      let z = await getDocs(collection(db, "Students2"))
-      
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user
+        display(user)
+      }
+    })
 
-      z.forEach((docs) => {
-        let d = docs.data()
-        let eclass = d.classes.eng
-        let mclass = d.classes.math
-        let sclass = d.classes.sci
+    async function display(user) {
+      let z = await getDoc(doc(db, "Teachers", user.email))
+      let c = z.data().Classes
+      let studentsList = []
+      for (let i = 0; i < c.Math5A.Students.length; i++) {
+        if (!studentsList.includes((c.Math5A.Students)[i])) {
+          studentsList.push((c.Math5A.Students)[i])
+        }
+      }
+      for (let i = 0; i < c.Science5A.Students.length; i++) {
+        if (!studentsList.includes((c.Science5A.Students)[i])) {
+          studentsList.push((c.Science5A.Students)[i])
+        }
+      }
 
-        let escore1 = d.scores.eng.chap1
-        let escore2 = d.scores.eng.chap2
-        let escore3 = d.scores.eng.chap3
+      for (let i = 0; i < c.Science6B.Students.length; i++) {
+        if (!studentsList.includes((c.Science6B.Students)[i])) {
+          studentsList.push((c.Science6B.Students)[i])
+        }
+      }
 
-        let mscore1 = d.scores.math.chap1
-        let mscore2 = d.scores.math.chap2
-        let mscore3 = d.scores.math.chap3
+      for (let i = 0; i < studentsList.length; i++) {
+        let x = await getDoc(doc(db, "Students2", studentsList[i]))
+        let d = x.data()
+        if (d.classes.math == "Math5A") {
+          let mscore1 = d.scores.math.chap1
+          let mscore2 = d.scores.math.chap2
+          let mscore3 = d.scores.math.chap3
 
-        let sscore1 = d.scores.sci.chap1
-        let sscore2 = d.scores.sci.chap2
-        let sscore3 = d.scores.sci.chap3
+          let mtable = document.getElementById("Math5A")
+          let mrow = mtable.insertRow(-1)
+          let mcell0 = mrow.insertCell(0)
+          let mcell1 = mrow.insertCell(1)
+          let mcell2 = mrow.insertCell(2)
+          let mcell3 = mrow.insertCell(3)
 
-        var etable = document.getElementById(eclass)
-        var erow = etable.insertRow(-1)
-        var ecell0 = erow.insertCell(0)
-        var ecell1 = erow.insertCell(1)
-        var ecell2 = erow.insertCell(2)
-        var ecell3 = erow.insertCell(3)
+          mcell0.innerHTML = d.name
+          mcell1.innerHTML = mscore1
+          mcell2.innerHTML = mscore2
+          mcell3.innerHTML = mscore3
+        }
+        if (d.classes.sci == "Science5A") {
+          let sscore1 = d.scores.sci.chap1
+          let sscore2 = d.scores.sci.chap2
+          let sscore3 = d.scores.sci.chap3
 
-        ecell0.innerHTML = d.name
-        ecell1.innerHTML = escore1
-        ecell2.innerHTML = escore2
-        ecell3.innerHTML = escore3
+          let stable = document.getElementById("Science5A")
+          let srow = stable.insertRow(-1)
+          let scell0 = srow.insertCell(0)
+          let scell1 = srow.insertCell(1)
+          let scell2 = srow.insertCell(2)
+          let scell3 = srow.insertCell(3)
 
-        var mtable = document.getElementById(mclass)
-        var mrow = mtable.insertRow(-1)
-        var mcell0 = mrow.insertCell(0)
-        var mcell1 = mrow.insertCell(1)
-        var mcell2 = mrow.insertCell(2)
-        var mcell3 = mrow.insertCell(3)
+          scell0.innerHTML = d.name
+          scell1.innerHTML = sscore1
+          scell2.innerHTML = sscore2
+          scell3.innerHTML = sscore3
+        }
+        if (d.classes.sci == "Science6B") {
+          let sscore1 = d.scores.sci.chap1
+          let sscore2 = d.scores.sci.chap2
+          let sscore3 = d.scores.sci.chap3
 
-        mcell0.innerHTML = d.name
-        mcell1.innerHTML = mscore1
-        mcell2.innerHTML = mscore2
-        mcell3.innerHTML = mscore3
+          let stable = document.getElementById("Science6B")
+          let srow = stable.insertRow(-1)
+          let scell0 = srow.insertCell(0)
+          let scell1 = srow.insertCell(1)
+          let scell2 = srow.insertCell(2)
+          let scell3 = srow.insertCell(3)
 
-        var stable = document.getElementById(sclass)
-        var srow = stable.insertRow(-1)
-        var scell0 = srow.insertCell(0)
-        var scell1 = srow.insertCell(1)
-        var scell2 = srow.insertCell(2)
-        var scell3 = srow.insertCell(3)
-
-        scell0.innerHTML = d.name
-        scell1.innerHTML = sscore1
-        scell2.innerHTML = sscore2
-        scell3.innerHTML = sscore3
-
-      })
+          scell0.innerHTML = d.name
+          scell1.innerHTML = sscore1
+          scell2.innerHTML = sscore2
+          scell3.innerHTML = sscore3
+        }
+      }     
     }
-    display()
   }
 }
 </script>
