@@ -1,6 +1,5 @@
 <template>
 <BlueBanner/>
-<br><br>
   <!-- <TopBar/> -->
   <Question/>
   <router-view/>

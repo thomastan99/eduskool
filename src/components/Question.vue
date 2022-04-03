@@ -1,7 +1,6 @@
 <template>
   <div class="top">
-        <br>
-        <h1>Subject - Topic</h1>
+        <h1>{{subject}} - Topic</h1>
         <hr>
     </div>
 
@@ -132,6 +131,8 @@ getDocs(collection(db,"Questions",String(subject),String(chap))).then(querySnaps
 
 )
 console.log(questions)
+console.log(subject)
+console.log(chap)
 // const data = docSnap.data()
 // subject = String(data.subject)
 //  chap = String(data.chapter)
@@ -349,7 +350,7 @@ h2 {
 .top {
     overflow: hidden;
     font-family: 'Varela Round', sans-serif;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 h1 {
