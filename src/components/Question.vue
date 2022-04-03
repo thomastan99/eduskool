@@ -6,7 +6,7 @@
     </div>
 
     <div class="exit">
-      <router-link to="/home" tag="button" style="appearance: none;
+      <a href="/home" tag="button" style="appearance: none;
   outline: none;
   border: none;
   cursor: pointer;
@@ -17,7 +17,7 @@
   font-size: 1.2rem;
   display: inline-block;
   text-align: right;
-  align-items: right;">Exit </router-link>
+  align-items: right;">Exit </a>
     </div> 
     
 
