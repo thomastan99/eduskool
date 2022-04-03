@@ -1,74 +1,114 @@
 <template>
-    <div id="main">
+    <div v-if="userlevel == 'P5Student'" id="main">
         <div id="pageTitle">
             <h1> Topics </h1>
         </div>
 
         <div id="maths">
             <router-link to="p5maths">
-                <img src="../assets/maths.png"  alt="Maths">
+                <img src="../assets/maths.png"  alt="Maths" width="800" height="130">
                 </router-link>
-            <h2> Maths </h2>
         </div>
 
         <div id="english">
             <router-link to="p5english">
-                <img src="../assets/english.png" alt="English">
+                <img src="../assets/english.png" alt="English" width="800" height="130">
             </router-link>
-            <h2> English </h2>
         </div>
-
         <div id="science">
             <router-link to="p5science">
-                <img src="../assets/science.png" alt="Science">
+                <img src="../assets/science.png" alt="Science" width="800" height="130">
             </router-link>
-            <h2> Science </h2>
+        </div>
+    </div>
+        <div v-if="userlevel == 'P6Student'" id="main">
+        <div id="pageTitle">
+            <h1> Topics </h1>
         </div>
 
+        <div id="maths">
+            <router-link to="p6maths">
+                <img src="../assets/maths.png"  alt="Maths">
+            </router-link>
+        </div>
+
+        <div id="english">
+            <router-link to="p6english">
+                <img src="../assets/english.png" alt="English">
+            </router-link>
+        </div>
+        <div id="science">
+            <router-link to="p6science">
+                <img src="../assets/science.png" alt="Science">
+            </router-link>
+        </div>
     </div>
 </template>
 
 <script>
+import { ref } from 'vue'
+import firebaseApp from '../firebase.js'
+import {getFirestore} from "firebase/firestore";
+import {doc, getDoc} from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
 
+const db = getFirestore(firebaseApp)
+var userlevel = ref("");
 
 export default {
-}
+  data: () => {
+    return {
+        userlevel: userlevel,
+    }
+  },
+
+  mounted() {
+    const auth = getAuth();
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        check(user);
+      }
+    });
+
+    async function check(user) {
+      let docRef = doc(db, "Users", user.email);
+      let docSnap = await getDoc(docRef);
+      userlevel.value = docSnap.data().role
+    }
+  }
+} 
 </script>
 
 <style scoped>
+img {
+    margin-left: 120px;
+}
 #main {
     display:inline-block;
-    margin-top:40px;
     margin-left:150px;
+    margin-top: 40px;
     text-align: center;
 }
 #pageTitle {
+    display: inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     color: #2c3e50;
     font-size:23px;
     margin-left:50px;
+    width: max-content;
+    max-height: 90px;
 }
 
 #maths {
-    text-align: center;
-    margin-top:80px;
-    margin-left:100px;
-    display:inline-block;
-    padding:0px 80px 0px 0px;
-    color: grey;
     font-family: Avenir, Helvetica, Arial, sans-serif;
+    padding: 30px 0px 20px 0px;
 }
 #english {
-    text-align: center;
-    display:inline-block;
-    padding:0px 80px 0px 0px;
-    color: grey;
+    padding: 0px 0px 20px 0px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #science {
-    display:inline-block;
-    text-align:center;
-    color: grey;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 </style>

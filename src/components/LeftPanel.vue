@@ -33,13 +33,6 @@
                 <a id="leaderboardText"  href="/LeaderboardMath">Leaderboard</a>
 
             </div>
-
-            <div class="options">
-                <img id="commentsImage" src="../assets/comments.png" alt="Comments Image">
-                <a id="commentsText" href="/">Comments</a>
-                <a href="/"></a>
-            </div>
-
         </div>
     </div>
     <router-view/>
@@ -119,7 +112,6 @@ export default {
     top:7px;
     right: 120px;
 }
-
 #leaderboardText {
     position: relative;
     left: 75px;
@@ -203,6 +195,7 @@ export default {
 }
 #overview {
     float: left;
+    display: inline-block;
     color: #00bcd4;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     text-align: left;
@@ -226,13 +219,14 @@ export default {
     float: left;
     background-color: #ececec;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    height: 522.5px;
+    height: 442px;
     width: 250px;
     margin-top:10px;
 }
 
 .options {
-    border:1px solid black;
+    border:1px solid grey;
+    border-radius: 5px;
     padding: 10px 20px 20px 10px;
 }
 

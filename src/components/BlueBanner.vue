@@ -2,7 +2,6 @@
     <div id="main">
         <a href = "/home" > <img id ="logo" src="../assets/elogo.png" alt="EDU'skool logo" > </a>
         <h2 id="welcome">Welcome Back {{user.displayName}} </h2>
-        <a id="courses" href="./">Courses</a>
         <a id="help" href="./">Help</a>
         <!-- <a id="profile" href="./profile">Profile</a> -->
     </div><br><br>
@@ -46,43 +45,38 @@ h2 {
 }
 
 #main {
+    border-bottom: 3px darkgrey solid;
+    box-shadow: 0px 0px 2px 0px;
     background-color: #00bcd4;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: max-content;
+    width: 100%;
 }
 #courses {
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #welcome {
+    position:fixed;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     display:inline-block;
 }
 #help {
+    float:right;
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
-@media all and (max-width: 1300px) {
-    #courses {
-        display:inline-block;
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        display:none;
-        visibility: hidden;
-    }
+@media all and (max-width: 1200px) {
     #welcome {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         display:inline-block;
-        padding: 5px 200px 0px 200px;
+        visibility:hidden;
         display:none;
-        visibility: hidden;
     }
     #help {
         display:inline-block;
         font-family: Avenir, Helvetica, Arial, sans-serif;
-        display:none;
         visibility: hidden;
+        display:none;
     }
 }
 
@@ -135,6 +129,9 @@ a:hover {
 }
 
 @media all and (max-width: 900px) {
+    #logo {
+
+    }
     #courses {
         display:inline-block;
         font-family: Avenir, Helvetica, Arial, sans-serif;

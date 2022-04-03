@@ -1,27 +1,27 @@
 <template>
   <div id="registration">
-    <img src="../assets/eduLogo.png" />
+    <div id="logo"><img src="../assets/elogo.png" alt="EDU'skool logo" ></div>
     <form id="registrationForm" class="register" @submit.prevent="register">
-      <h1 class="title">Register for eduSkool</h1>
-      <label for="fname">First name:</label>
+      <h1 class="title">Register For EDU'skool</h1>
+      <label id="des" for="fname">First name:</label>
       <input type="text" id="fname" v-model="register_form.fname" /><br />
-      <label for="lname">Last name:</label>
+      <label id="des" for="lname">Last name:</label>
       <input type="text" id="lname" v-model="register_form.lname" /><br />
-      <label for="email">Email:</label>
+      <label id="des" for="email">Email:</label>
       <input type="text" id="email" v-model="register_form.email" /><br />
-      <label for="password">Password:</label>
+      <label id="des" for="password">Password:</label>
       <input
         type="password"
         id="password"
         v-model="register_form.password"
       /><br />
-      <label for="password-confirmation">Confirm Password:</label>
+      <label id="des" for="password-confirmation">Confirm Password:</label>
       <input
         type="password"
         id="password-confirmation"
         v-model="register_form.passwordConfirmation"
       />
-      <p>Choose your role for eduSkool:</p>
+      <h1>Choose your role for eduSkool:</h1>
       <input
         type="radio"
         id="teacher"
@@ -29,7 +29,7 @@
         value="Teacher"
         v-model="register_form.role"
       />
-      <label for="teacher">Teacher</label><br />
+      <label id="option" for="teacher">Teacher</label><br />
       <input
         type="radio"
         id="student"
@@ -37,7 +37,7 @@
         value="P5Student"
         v-model="register_form.role"
       />
-      <label for="student">Primary 5 Student</label> <br />
+      <label id= "option" for="student">Primary 5 Student</label> <br />
        <input
         type="radio"
         id="student"
@@ -45,12 +45,13 @@
         value="P6Student"
         v-model="register_form.role"
       />
-      <label for="student">Primary 6 Student</label> <br />
-      <input type="submit" value="Register" />
+      <label id= "option" for="student">Primary 6 Student</label> <br />
+      <input id="register" type="submit" value="Register" />
     </form>
     <div id="loginBtns">
-      <p>Already have an account?</p>
-      <a href="/login" id="loginBtn">Login</a>
+      <h1>Already have an account?</h1> 
+      <input id="register" type="submit" value="Login" onclick="location.href='/login'"/>
+      
     </div>
   </div>
 </template>
@@ -61,6 +62,8 @@ import { useStore } from "vuex";
 
 export default {
   name: "Registration",
+  components: {
+  },
 
   setup() {
     const register_form = ref({});
@@ -107,10 +110,36 @@ export default {
 </script>
 
 <style scoped>
+#fname, #lname, #password-confirmation, #password, #email {
+  font-size: 18px;
+}
+#des {
+  font-size: 18
+  px;
+  margin-right: 30px;
+}
+h1 {
+  font-size: 20px;
+}
+#logo {
+  background-color: #00bcd4;
+  width: 100%;
+}
+#register {
+  font-size: 15px;
+}
+#option {
+  font-size: 16px;
+  text-align: center;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+#register:hover, #option:hover {
+  cursor: pointer;
+}
 #loginBtn {
   font-size: 35px;
 }
-
 a {
   margin-right: 130px;
   margin-left: 130px;
@@ -126,19 +155,14 @@ a:hover {
   color: rgb(101, 181, 235);
 }
 
-h1 {
-  font-size: 30px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-}
-
 input {
   margin-right: 5px;
   margin-left: 5px;
   margin-bottom: 20px;
   /* box-sizing: border-box; */
   height: auto;
-  font-size: 25px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 15px;
 }
 
 input[type="submit"] {
@@ -146,6 +170,7 @@ input[type="submit"] {
   border-radius: 8px;
   font-size: 25px;
   height: 40px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 input[type="submit"]:hover {
@@ -161,30 +186,19 @@ input[type="radio"] {
   text-align: center;
   min-height: 100vh;
   background-image: linear-gradient(
-      rgba(228, 218, 218, 0.8),
-      rgba(131, 125, 125, 0.8)
+      rgba(228, 218, 218, 0.9),
+      rgba(131, 125, 125, 0.6)
     ),
     url("../assets/teacher2.jpg");
   background-size: cover;
-}
-
-#registrationForm {
-  /* align-self: right; */
 }
 
 label {
   display: inline-block;
   text-align: right;
   width: 150px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 25px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-weight: bold;
 }
 
-p {
-  font-weight: bold;
-  font-size: 30px;
-  color: black;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-}
 </style>
