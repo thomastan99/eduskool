@@ -59,6 +59,8 @@ h2 {
 }
 
 #main {
+    border-bottom: 3px darkgrey solid;
+    box-shadow: 0px 0px 2px 0px;
     background-color: #00bcd4;
     /* position: fixed; */
     top: 0;
@@ -71,10 +73,12 @@ h2 {
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #welcome {
+    position:fixed;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     display:inline-block;
 }
 #help {
+    float:right;
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
@@ -85,18 +89,18 @@ h2 {
         display:none;
         visibility: hidden;
     }
+@media all and (max-width: 1200px) {
     #welcome {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         display:inline-block;
-        padding: 5px 200px 0px 200px;
+        visibility:hidden;
         display:none;
-        visibility: hidden;
     }
     #help {
         display:inline-block;
         font-family: Avenir, Helvetica, Arial, sans-serif;
-        display:none;
         visibility: hidden;
+        display:none;
     }
 } */
 
@@ -149,6 +153,9 @@ a:hover {
 }
 
 @media all and (max-width: 900px) {
+    #logo {
+
+    }
     #courses {
         display:inline-block;
         font-family: Avenir, Helvetica, Arial, sans-serif;

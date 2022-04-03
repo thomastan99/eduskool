@@ -1,10 +1,39 @@
 <template>
-  <div id="main">
-    <div id="personal" onclick="location.href='/profile'">
-      <div id="photo"><img id="profilePic" src ="../assets/photo.png" alt="No Profile Pic" /></div>
-      <div id="overview">
-        <h4 id="details">{{ user.displayName }}</h4>
-      </div>
+    <div id="main">
+        <div id="personal" onclick="location.href='/profile'">
+            <div id="photo"> <img src="../assets/photo.png" alt="Profile Pic">
+            </div>
+            <div id="overview">
+                <h4 id="details">{{ user.displayName }} </h4>
+            </div>
+        </div>
+        <div id="menu">
+            <div class="options" onclick="location.href='/'">
+                <img id="announcementImage" src="../assets/announcement.png" alt="Announcement Image">
+                <a id="announcementText">Announcements</a>
+            </div>
+
+            <div class="options" onclick="location.href='/home'">
+                <img id="topicsImage" src="../assets/topics.png" alt="Topics Image">
+                <a id="topicsText">Topics</a>
+            </div>
+
+            <div class="options" onclick="location.href='/classes'">
+                <img id="classesImage" src="../assets/classes.png" alt="Classes Image">
+                <a id="classesText" >Classes</a>
+            </div>
+
+            <div class="options" onclick="location.href='/achievements'">
+                <img id="achievementsImage" src="../assets/achievements.png" alt="Achievements Image">
+                <a id="achievementsText">Achievements</a>
+            </div>
+
+            <div class="options">
+                <img id="leaderboardImage" src="../assets/leaderboard.png" alt="Leaderboard Image">
+                <a id="leaderboardText"  href="/LeaderboardMath">Leaderboard</a>
+
+            </div>
+        </div>
     </div>
     <div id="menu">
       <div class="options" onclick="location.href='/'">
@@ -58,7 +87,7 @@
         <a href="/"></a>
       </div>
     </div>
-  </div>
+
   <router-view />
 </template>
 
@@ -140,7 +169,6 @@ export default {
   top: 7px;
   right: 120px;
 }
-
 #leaderboardText {
   position: relative;
   left: 75px;
@@ -223,11 +251,12 @@ export default {
   cursor: pointer;
 }
 #overview {
-  float: left;
-  color: #00bcd4;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: left;
-  line-height: 1.5;
+    float: left;
+    display: inline-block;
+    color: #00bcd4;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    text-align: left;
+    line-height: 1.5;
 }
 
 #details {
@@ -248,17 +277,18 @@ export default {
 }
 
 #menu {
-  float: left;
-  background-color: #ececec;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  height: 522.5px;
-  width: 250px;
-  margin-top: 10px;
+    float: left;
+    background-color: #ececec;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    height: 442px;
+    width: 250px;
+    margin-top:10px;
 }
 
 .options {
-  border: 1px solid black;
-  padding: 10px 20px 20px 10px;
+    border:1px solid grey;
+    border-radius: 5px;
+    padding: 10px 20px 20px 10px;
 }
 
 .options:hover {

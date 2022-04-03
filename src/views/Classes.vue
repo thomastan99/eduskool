@@ -1,9 +1,15 @@
 <template>
     <BlueBanner/>
     <LeftPanel/>
-    <div id="main">
+    <div id="pageLoader" v-if="loading"> <Preloader color="grey" scale = "0.8"/> </div>
+    <div id="main" v-if="!loading">
         <div id="pageTitle"><h1> Classes </h1></div>
-        <div id="pageLoader" v-if="loading"> <Preloader color="grey" scale = "0.8"/> </div>
+        <div id="legend">
+            <h3><u> Legend </u></h3>
+            <div id="lightgrey" class="block"> Available Class </div>
+            <div id="green" class="block"> Chosen Class </div>
+            <div id="grey" class="block"> Unavailable Class</div>
+        </div>
         <table v-if="!loading" id ="classestable"> 
             <th> </th>
             <th> Monday </th>
@@ -14,7 +20,7 @@
             <th> Saturday </th>
             <th> Sunday </th>
             <tr> 
-                <td>10:00 AM - 12:00 PM</td> 
+                <td id="timeslot">10:00 AM - 12:00 PM</td> 
                 <td></td>
                 <td></td>
                 <td></td>
@@ -28,7 +34,7 @@
                 <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="sun10-12"> Science 5C Class Size: {{science5Csize}} </td>
             </tr>
             <tr> 
-                <td>12:00 PM - 2:00 PM</td> 
+                <td id="timeslot">12:00 PM - 2:00 PM</td> 
                 <td></td>
                 <td></td>
                 <td></td>
@@ -42,7 +48,7 @@
                 <td v-if="!sunTwelveToTwoStatus" class="classoptionsSelected" id="sun12-2">English 5C Class Size: {{english5Csize}}</td>
             </tr>
             <tr > 
-                <td>2:00 PM - 4:00 PM</td> 
+                <td id="timeslot">2:00 PM - 4:00 PM</td> 
                 <td v-if="monTwoToFourStatus && userrole == 'P5Student'" class="classoptions" id="mon2-4" @click="isOpen=!isOpen; updateMonTwoToFour()"> Science 5A Class Size: {{science5Asize}}</td>
                 <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="mon2-4">Science 5A Class Size: {{science5Asize}}</td>
                 <td v-if="!monTwoToFourStatus" class="classoptionsSelected" id="mon2-4">Science 5A Class Size: {{science5Asize}}</td>
@@ -72,7 +78,7 @@
                 <td v-if="!sunTwoToFourStatus" class="classoptionsSelected" id="sun2-4">English 6C Class Size: {{english6Csize}}</td>
             </tr>
             <tr> 
-                <td>4:00 PM - 6:00 PM</td> 
+                <td id="timeslot">4:00 PM - 6:00 PM</td> 
                 <td v-if="monFourToSixStatus && userrole == 'P6Student'" class="classoptions" id="mon4-6" @click="isOpen=!isOpen; updateMonFourToSix()">Maths 6A Class Size: {{maths6Asize}}</td>
                 <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="mon4-6">Maths 6A Class Size: {{maths6Asize}}</td>
                 <td v-if="!monFourToSixStatus" class="classoptionsSelected" id="mon4-6">Maths 6A Class Size: {{maths6Asize}}</td>
@@ -102,21 +108,31 @@
                 <td v-if="!sunFourToSixStatus" class="classoptionsSelected" id="sun4-6">Science 6B Class Size: {{science6Bsize}}</td>
             </tr>
             <tr> 
-                <td>6:00 PM - 8:00 PM</td> 
-                <td v-if="monSixToEightStatus" class="classoptions" id="mon6-8" @click="isOpen=!isOpen; updateMonSixToEight()">P5 Maths Optional</td>
-                <td v-if="!monSixToEightStatus" class="classoptionsOccupied" id="mon6-8">P5 Maths Optional</td>
-                <td v-if="tuesSixToEightStatus" class="classoptions" id="tues6-8" @click="isOpen=!isOpen; updateTuesSixToEight()">P5 English Optional</td>
-                <td v-if="!tuesSixToEightStatus" class="classoptionsOccupied" id="tues6-8">P5 English Optional</td>
-                <td v-if="wedsSixToEightStatus" class="classoptions" id="weds6-8" @click="isOpen=!isOpen; updateWedsSixToEight()">P5 Science Optional</td>
-                <td v-if="!wedsSixToEightStatus" class="classoptionsOccupied" id="weds6-8">P5 Science Optional</td>
-                <td v-if="thursSixToEightStatus" class="classoptions" id="thurs6-8" @click="isOpen=!isOpen; updateThursSixToEight()">P6 Maths Optional</td>
-                <td v-if="!thursSixToEightStatus" class="classoptionsOccupied" id="thurs6-8">P6 Maths Optional</td>
-                <td v-if="friSixToEightStatus" class="classoptions" id="fri6-8" @click="isOpen=!isOpen; updateFriSixToEight()">P6 Science Optional</td>
-                <td v-if="!friSixToEightStatus" class="classoptionsOccupied" id="fri6-8">P6 Science Optional</td>
-                <td v-if="satSixToEightStatus" class="classoptions" id="sat4-6" @click="isOpen=!isOpen; updateSatSixToEight()">P6 English Optional</td>
-                <td v-if="!satSixToEightStatus" class="classoptionsOccupied" id="sat6-8">P6 English Optional</td>
-                <td v-if="sunSixToEightStatus" class="classoptions" id="sun4-6" @click="isOpen=!isOpen; updateSunSixToEight()">Break!</td>
-                <td v-if="!sunSixToEightStatus" class="classoptionsOccupied" id="sun6-8">Break!</td>
+                <td id="timeslot">6:00 PM - 8:00 PM</td> 
+                <td v-if="monSixToEightStatus && userrole == 'P5Student'" class="classoptions" id="mon6-8" @click="isOpen=!isOpen; updateMonSixToEight()">P5 Maths Optional Class Size: {{p5mathsoptionalsize}}</td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="mon6-8">P5 Maths Optional Class Size: {{p5mathsoptionalsize}}</td>
+                <td v-if="!monSixToEightStatus" class="classoptionsSelected" id="mon6-8">P5 Maths Optional Class Size: {{p5mathsoptionalsize}}</td>
+
+                <td v-if="tuesSixToEightStatus && userrole == 'P5Student'" class="classoptions" id="tues6-8" @click="isOpen=!isOpen; updateTuesSixToEight()">P5 English Optional Class Size: {{p5englishoptionalsize}}</td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="tues6-8">P5 English Optional Class Size: {{p5englishoptionalsize}}</td>
+                <td v-if="!tuesSixToEightStatus" class="classoptionsSelected" id="tues6-8">P5 English Optional Class Size: {{p5englishoptionalsize}}</td>
+
+                <td v-if="wedsSixToEightStatus && userrole == 'P5Student'" class="classoptions" id="weds6-8" @click="isOpen=!isOpen; updateWedsSixToEight()">P5 Science Optional Class Size: {{p5scienceoptionalsize}}</td>
+                <td v-if="userrole != 'P5Student'" class="classoptionsOccupied" id="weds6-8">P5 Science Optional Class Size: {{p5scienceoptionalsize}}</td>
+                <td v-if="!wedsSixToEightStatus" class="classoptionsSelected" id="weds6-8">P5 Science Optional Class Size: {{p5scienceoptionalsize}}</td>
+
+                <td v-if="thursSixToEightStatus && userrole == 'P6Student'" class="classoptions" id="thurs6-8" @click="isOpen=!isOpen; updateThursSixToEight()">P6 Maths Optional Class Size: {{p6mathsoptionalsize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="thurs6-8">P6 Maths Optional Class Size: {{p6mathsoptionalsize}}</td>
+                <td v-if="!thursSixToEightStatus" class="classoptionsSelected" id="thurs6-8">P6 Maths Optional Class Size: {{p6mathsoptionalsize}}</td>
+
+                <td v-if="friSixToEightStatus && userrole == 'P6Student'" class="classoptions" id="fri6-8" @click="isOpen=!isOpen; updateFriSixToEight()">P6 Science Optional Class Size: {{p6scienceoptionalsize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="fri6-8">P6 Science Optional Class Size: {{p6scienceoptionalsize}}</td>
+                <td v-if="!friSixToEightStatus" class="classoptionsSelected" id="fri6-8">P6 Science Optional Class Size: {{p6scienceoptionalsize}}</td>
+
+                <td v-if="satSixToEightStatus && userrole == 'P6Student'" class="classoptions" id="sat4-6" @click="isOpen=!isOpen; updateSatSixToEight()">P6 English Optional Class Size: {{p6englishoptionalsize}}</td>
+                <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="sat6-8">P6 English Optional Class Size: {{p6englishoptionalsize}}</td>
+                <td v-if="!satSixToEightStatus" class="classoptionsSelected" id="sat6-8">P6 English Optional Class Size: {{p6englishoptionalsize}}</td>
+                <td></td>
             </tr>
         </table>
         <transition name="fade" appear>
@@ -132,9 +148,6 @@
                 <button id="no" @click="isOpen=!isOpen">No</button>
             </div>
         </transition>
-        <div>
-            <div id="legend"></div>
-        </div>
     </div>
 </template>
 
@@ -167,11 +180,15 @@ var maths5Asize = ref(0); var maths5Bsize = ref(0); var maths5Csize = ref(0);
 var english6Asize = ref(0); var english6Bsize = ref(0); var english6Csize = ref(0);
 var science6Asize = ref(0); var science6Bsize = ref(0); var science6Csize = ref(0);
 var maths6Asize = ref(0); var maths6Bsize = ref(0); var maths6Csize = ref(0);
+var p5mathsoptionalsize = ref(0); var p5englishoptionalsize = ref(0); var p5scienceoptionalsize = ref(0);
+var p6mathsoptionalsize = ref(0); var p6englishoptionalsize = ref(0); var p6scienceoptionalsize = ref(0);
 var userrole = ref("");
 
 export default {
     data: () => {
         return {
+            p5mathsoptionalsize: p5mathsoptionalsize, p5englishoptionalsize: p5englishoptionalsize, p5scienceoptionalsize: p5scienceoptionalsize,
+            p6mathsoptionalsize: p6mathsoptionalsize, p6englishoptionalsize: p6englishoptionalsize, p6scienceoptionalsize: p6scienceoptionalsize,
             userrole: userrole,
             english5Asize: english5Asize, english5Bsize: english5Bsize, english5Csize: english5Csize,
             science5Asize: science5Asize, science5Bsize: science5Bsize, science5Csize: science5Csize,
@@ -216,13 +233,12 @@ export default {
         updateSatFourToSix(){classtimeinfo.value = "Saturday 4:00PM - 6:00PM", classinfo.value = "Science 6C"},
         updateSunFourToSix(){classtimeinfo.value = "Sunday 4:00PM - 6:00PM", classinfo.value = "Science 6B"},
 
-        updateMonSixToEight(){classtimeinfo.value = "Monday 6:00PM - 8:00PM", classinfo.value = "P5 Maths Optional"},
-        updateTuesSixToEight(){classtimeinfo.value = "Tuesday 6:00PM - 8:00PM", classinfo.value = "P5 English Optional"},
-        updateWedsSixToEight(){classtimeinfo.value = "Wednesday 6:00PM - 8:00PM", classinfo.value = "P5 Science Optional"},
-        updateThursSixToEight(){classtimeinfo.value = "Thursday 6:00PM - 8:00PM", classinfo.value = "P6 Maths Optional"},
-        updateFriSixToEight(){classtimeinfo.value = "Friday 6:00PM - 8:00PM", classinfo.value = "P6 Science Optional"}, 
-        updateSatSixToEight(){classtimeinfo.value = "Saturday 6:00PM - 8:00PM", classinfo.value = "P6 English Optional"},
-        updateSunSixToEight(){classtimeinfo.value = "Sunday 6:00PM - 8:00PM", classinfo.value = "Break"},
+        updateMonSixToEight(){classtimeinfo.value = "Monday 6:00PM - 8:00PM", classinfo.value = "P5MathsOptional"},
+        updateTuesSixToEight(){classtimeinfo.value = "Tuesday 6:00PM - 8:00PM", classinfo.value = "P5EnglishOptional"},
+        updateWedsSixToEight(){classtimeinfo.value = "Wednesday 6:00PM - 8:00PM", classinfo.value = "P5ScienceOptional"},
+        updateThursSixToEight(){classtimeinfo.value = "Thursday 6:00PM - 8:00PM", classinfo.value = "P6MathsOptional"},
+        updateFriSixToEight(){classtimeinfo.value = "Friday 6:00PM - 8:00PM", classinfo.value = "P6ScienceOptional"}, 
+        updateSatSixToEight(){classtimeinfo.value = "Saturday 6:00PM - 8:00PM", classinfo.value = "P6EnglishOptional"},
         
         async yes(user) {
             //10AM - 12PM
@@ -396,7 +412,7 @@ export default {
                 await updateDoc(doc(db, "Students", user.email), {
                     ["timetable.monSixToEight"] : false
             }),
-                await updateDoc(doc(db, "Classes", "P5 Maths Optional"), {
+                await updateDoc(doc(db, "Classes", "P5MathsOptional"), {
                     students: arrayUnion(user.email),
                     size: increment(1)
                 })
@@ -405,7 +421,7 @@ export default {
                 await updateDoc(doc(db, "Students", user.email), {
                     ["timetable.tuesSixToEight"] : false
             }),
-                await updateDoc(doc(db, "Classes", "P5 English Optional"), {
+                await updateDoc(doc(db, "Classes", "P5EnglishOptional"), {
                     students: arrayUnion(user.email),
                     size: increment(1)
                 })
@@ -414,7 +430,7 @@ export default {
                 await updateDoc(doc(db, "Students", user.email), {
                     ["timetable.wedsSixToEight"] : false
             }),
-                await updateDoc(doc(db, "Classes", "P5 Science Optional"), {
+                await updateDoc(doc(db, "Classes", "P5ScienceOptional"), {
                     students: arrayUnion(user.email),
                     size: increment(1)
                 })
@@ -423,7 +439,7 @@ export default {
                 await updateDoc(doc(db, "Students", user.email), {
                     ["timetable.thursSixToEight"] : false
             }),
-                await updateDoc(doc(db, "Classes", "P6 Maths Optional"), {
+                await updateDoc(doc(db, "Classes", "P6MathsOptional"), {
                     students: arrayUnion(user.email),
                     size: increment(1)
                 })
@@ -432,7 +448,7 @@ export default {
                 await updateDoc(doc(db, "Students", user.email), {
                     ["timetable.friSixToEight"] : false
             }),
-                await updateDoc(doc(db, "Classes", "P6 Science Optional"), {
+                await updateDoc(doc(db, "Classes", "P6ScienceOptional"), {
                     students: arrayUnion(user.email),
                     size: increment(1)
                 })
@@ -441,15 +457,11 @@ export default {
                 await updateDoc(doc(db, "Students", user.email), {
                     ["timetable.satSixToEight"] : false
             }),
-                await updateDoc(doc(db, "Classes", "P6 English Optional"), {
+                await updateDoc(doc(db, "Classes", "P6EnglishOptional"), {
                     students: arrayUnion(user.email),
                     size: increment(1)
                 })
             }
-            if (classtimeinfo.value == "Sunday 6:00PM - 8:00PM") {
-                await updateDoc(doc(db, "Students", user.email), {
-                    ["timetable.sunSixToEight"] : false
-            })}
             location.reload();
         }   
   },
@@ -509,7 +521,6 @@ name: 'Classes',
         thursSixToEightStatus.value = timetable.thursSixToEight;
         friSixToEightStatus.value = timetable.friSixToEight;
         satSixToEightStatus.value = timetable.satSixToEight;
-        sunSixToEightStatus.value = timetable.sunSixToEight;
         docRef = await getDocs(collection(db, "Classes"))    
         docRef.forEach((docs) => {
             let d = docs.data()
@@ -549,6 +560,18 @@ name: 'Classes',
                 science6Bsize.value = d.size;
             } if (docs.id == "Science6A") {
                 science6Csize.value = d.size;
+            } if (docs.id == "P5MathsOptional") {
+                p5mathsoptionalsize.value = d.size;
+            } if (docs.id == "P5EnglishOptional") {
+                p5englishoptionalsize.value = d.size;
+            } if (docs.id == "P5ScienceOptional") {
+                p5scienceoptionalsize.value = d.size;
+            } if (docs.id == "P6MathsOptional") {
+                p6mathsoptionalsize.value = d.size;
+            } if (docs.id == "P6EnglishOptional") {
+                p6englishoptionalsize.value = d.size;
+            } if (docs.id == "P6ScienceOptional") {
+                p6scienceoptionalsize.value = d.size;
             }
         })
     }   
@@ -557,23 +580,37 @@ name: 'Classes',
 </script>
 
 <style scoped>
-#legend {
-    background-color: grey;
-    margin: 0 0 0; 
-    width:10%;
+#timeslot {
+    font-size: 15px;
+    font-weight: bold;
 }
-#create {
-    float: left;
-    margin-left: 350px;
-    margin-top: 30px;
-    background-color: #00bcd4;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition-duration: 0.1s;
-    font-size: 18px;
+#pageTitle {
+    display: inline-block;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    color: #2c3e50;
+    font-size:23px;
+    margin-left: 150px;
+}
+#legend {
+    float: right;
+    display: inline-block;
+    margin-right: 20px;
+}
+#lightgrey {
+    background-color: #d6e0e2;
+}
+#grey {
+    background-color: grey;
+}
+#green {
+    background-color: lightgreen;
+}
+.block {
+    font-size: 13px;
+    display: inline-block;
+    width: max-content;
+    margin: 5px 10px 5px 20px;
+    padding: 15px 15px 15px 15px;
 }
 
 #yes, #no {
@@ -588,20 +625,6 @@ name: 'Classes',
     margin-top: 10px;
 }
 
-#save {
-    margin-right: 10px;
-}
-
-#create:hover, #close:hover, #save:hover {
-    background-color: #6cc1cc;
-}
-
-.date {
-    color: #6cc1cc;
-}
-#classinfo, .announcement {
-    margin-top:30px;
-}
 #modal-overlay {
     position: fixed;
     top: 0;
@@ -634,8 +657,8 @@ name: 'Classes',
 }
 #main {
     display: inline-block;
-    margin-top: 20px;
     margin-left: 280px;
+    margin-top: 50px;
 }
 th{
     text-align: center;
@@ -643,18 +666,13 @@ th{
     border-bottom: 1px solid black;
 }
 td {
-    font-size: 15px;
+    font-size: 13px;
     border-bottom: 1px solid;
     text-align:center;
     padding: 30px 20px 30px 20px;
 
 }
-#pageTitle {
-    display:inline-block;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    color: #2c3e50;
-    font-size:23px;
-}
+
 a {
     color: #6cc1cc;
     font-size: 19px;
@@ -682,7 +700,8 @@ a:visited, a:link, a:active {
     text-decoration: none;
 }
 #pageLoader {
-    margin-top: 150px;
+    margin-top: 300px;
+    margin-left: 250px;
 }
 
 </style>
