@@ -11,13 +11,11 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  background-color: #00BCD4;
-  color: #2d213f;
-  font-weight: 700;
+  background-color: #d9534f;
+  color: white;
+  font-weight: 500;
   font-size: 1.2rem;
-  display: inline-block;
-  text-align: right;
-  align-items: right;">Exit </router-link>
+  display: inline-block;">Exit </router-link>
     </div> 
     
 
@@ -299,6 +297,7 @@ console.log(questions)
 .exit {
   text-align: right;
   margin-right: 20px;
+  margin-top: 10px;
 }
 
 button {
