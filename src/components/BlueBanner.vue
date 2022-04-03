@@ -73,13 +73,17 @@ h2 {
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #welcome {
-    position:fixed;
+    /* position:fixed; */
     font-family: Avenir, Helvetica, Arial, sans-serif;
     display:inline-block;
 }
 #help {
-    float:right;
+    /* float:right; */
     display:inline-block;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+#logout {
+    display: inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 /* @media all and (max-width: 1300px) {
@@ -159,21 +163,21 @@ a:hover {
     #courses {
         display:inline-block;
         font-family: Avenir, Helvetica, Arial, sans-serif;
-        display:none;
-        visibility: hidden;
+        /* display:none;
+        visibility: hidden; */
     }
     #welcome {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         display:inline-block;
         padding: 5px 200px 0px 200px;
-        display:none;
-        visibility: hidden;
+        /* display:none;
+        visibility: hidden; */
     }
     #help {
         display:inline-block;
         font-family: Avenir, Helvetica, Arial, sans-serif;
-        display:none;
-        visibility: hidden;
+        /* display:none;
+        visibility: hidden; */
     }
 }
 </style>
