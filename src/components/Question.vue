@@ -1,4 +1,26 @@
 <template>
+  <div class="top">
+        <br>
+        <h1>Subject - Topic</h1>
+        <hr>
+    </div>
+
+    <div class="exit">
+      <router-link to="/home" tag="button" style="appearance: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background-color: #00BCD4;
+  color: #2d213f;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: inline-block;
+  text-align: right;
+  align-items: right;">Exit </router-link>
+    </div> 
+    
+
     <div class="question">
         <h2>Question {{ getCurrentQuestion.index + 1 }}</h2> <!---show question number--->
 
@@ -251,7 +273,7 @@ console.log(questions)
   margin-bottom: 0.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
-    text-align: left;
+  text-align: left;
 }
 
 .option:hover {
@@ -274,6 +296,11 @@ console.log(questions)
     text-align: right;
 }
 
+.exit {
+  text-align: right;
+  margin-right: 20px;
+}
+
 button {
   appearance: none;
   outline: none;
@@ -284,7 +311,7 @@ button {
   color: #2d213f;
   font-weight: 700;
   font-size: 1.2rem;
-    display: inline-block;
+  display: inline-block;
 }
 
 button:disabled {
@@ -313,4 +340,17 @@ h2 {
   text-align: center;
   width: 100%;
 }
+
+.top {
+    overflow: hidden;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 14px;
+}
+
+h1 {
+    font-family: 'Varela Round', sans-serif;
+    text-align: left;  
+}
+
+
 </style>
