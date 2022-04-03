@@ -17,7 +17,7 @@
     </form>
     <br />
     <br />
-    <a href="/profile" id = "cancelBtn"> Cancel </a>
+    <a href="/profile" id = "cancelBtn"> Back to Profile </a>
   </div>
 </template>
 
@@ -79,8 +79,8 @@ export default {
     //   this.image = "";
     // },
     async update() {
-      console.log(this.user.displayName);
-      console.log(this.url);
+      // console.log(this.user.displayName);
+      // console.log(this.url);
       await updateProfile(this.user, {
         photoURL: this.url,
       });

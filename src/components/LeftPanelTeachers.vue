@@ -3,9 +3,7 @@
         <div id="personal">
             <div id="photo"><img src="../assets/photo.png" alt="Profile Pic"></div>
             <div id="overview">
-                <h4 id="details">Shakeshack Treeparty
-                <br>Teacher
-                <br>Ximin Primary School</h4>
+                <h4 id="details">{{user.displayName}}</h4>
             </div>
         </div>
         <div id="menu">
@@ -23,7 +21,6 @@
                 <img id="classesImage" src="../assets/classes.png" alt="Classes Image">
                 <a id="classesText">Classes & Students</a>
             </div>
-
             <div class="options" onclick="location.href='/teachersscoreboard'">
                 <img id="scoreboardImage" src="../assets/leaderboard.png" alt="ScoreBoard Image">
                 <a id="scoreboardText">ScoreBoard</a>
@@ -33,85 +30,101 @@
                 <img id="statisticsImage" src="../assets/statistics.png" alt="ScoreBoard Image">
                 <a id="statisticsText">Statistics</a>
             </div>
-
         </div>
     </div>
     <router-view/>
 </template>
 
 <script>
-
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
 export default {
+    data: () => {
+        return {
+            user: false,
+        }
+    }, 
+    mounted(){
+        const auth = getAuth(auth);
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.user = user;
+            }
+        });
+
+    }
 }
 </script>
 
 <style scoped>
 #scoreboardText {
     position: relative;
-    left: 70px;
-    top: 20px;
+    left: 71px;
+    top: 25px;
 }
 
 #scoreboardImage {
-    height:100%;
     position: relative;
-    top: 5px;
-    right: 110px;
+    width: 30%;
+    right: 135px;
 }
 
 #homeText {
     position: relative;
-    left: 10px;
-    top: 24px;
+    left: 70px;
+    top: 26px;
 }
 
 #homeImage {
-    height: 120%;
-    float: left;
-    margin-left: 20px;
+    position: relative;
+    width:23%;
+    height: 5%;
+    bottom: 3px;
+    right:140px;
 }
-
 #announcementText {
-    margin-top: -35px;
-    margin-left: 50px;
+    position: relative;
+    top: 17px;
+    left: 70px;
 }
 
 #announcementImage {
-    height:100%;
-    float: left;
-    margin-top: 3px;
-    
+    position: relative;
+    width: 30%;
+    right: 155px;
 }
 #classesText {
-    margin-top: -27px;
-    margin-left: 23px;
+    position: relative;
+    top:20px;
+    left:70px;
 }
  
 #classesImage {
-    height:60%;
-    float: left;
-    margin-left: -10px;
-    margin-top: 15px;
+    width: 30%;
+    position: relative;
+    right: 168px;
+
 }
 
 #statisticsImage {
-    float: left;
-    height: 60%;
-    margin-left: 30px;
-    margin-top: 15px;
+    width: 15%;
+    position: relative;
+    right:125px;
 }
 
 #statisticsText {
-    margin-left: 15px;
-    margin-top: 22px;
+    position: relative;
+    top:12px;
+    left:71px;
 }
 
 #photo {
+    margin-top:8%;
     float: left;
     display: inline-block;
-    vertical-align: top;
 }
-
+#personal {
+    cursor:pointer;
+}
 #overview {
     float: left;
     display: inline-block;
@@ -122,21 +135,18 @@ export default {
 }
 
 #details {
-    margin-top: 0;
-    margin-bottom: 0;
+    width:100%;
     position: relative;
     left: 10px;
-    top: 5px;
+    top: 25px;
 }
 
 #personal {
-    margin-top:10px;
-    margin-bottom:120px;
+    cursor:pointer;
 }
-
 #main {
     position: fixed;
-    margin-top:50px;
+    margin-top:35px;
     margin-left:20px;
 }
 
@@ -144,15 +154,15 @@ export default {
     float: left;
     background-color: #ececec;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    max-height: 356px;
+    max-height: 430px;
     width: 250px;
-    overflow-y: scroll;
+    margin-top:10px;
 }
 
 .options {
-    border: 1px solid grey;
-    padding: 10px 20px 20px 10px;
-    height: 50px;
+    border:1px solid grey;
+    border-radius: 5px;
+    padding: 10px 0px 5px 0px;
 }
 
 .options:hover {

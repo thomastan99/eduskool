@@ -1,8 +1,8 @@
 <template>
   <div id="loggingIn">
-    <img src="../assets/eduLogo.png" />
+    <div id="logo"><img src="../assets/elogo.png" alt="EDU'skool logo" ></div>
     <form id="loginForm" class="register" @submit.prevent="login" >
-      <h1 class="title" > Login to eduSkool</h1>
+      <h1 class="title" > Login To EDU'skool</h1>
       <label for="email">Email:</label>
       <input type="text" id="email" v-model="login_form.email" /><br />
       <label for="password">Password:</label>
@@ -41,15 +41,11 @@ export default {
       console.log(login_form.value.email)
     };
     
-
     return {
       login_form,
       login,
     };
   },
-
-
-
 
 };
 
@@ -58,25 +54,31 @@ export const loginData = login_form.value.email
 </script>
 
 <style scoped>
+#logo {
+  background-color: #00bcd4;
+  width: 100%;
+}
 input {
   margin-right: 5px;
   margin-left: 5px;
   margin-bottom: 20px;
   box-sizing: border-box;
   height: auto;
-  font-size: 25px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 15px;
 }
 
 input[type="submit"] {
-  border-radius: none;
-  font-size: 30px;
-  border: none;
-  background: none;
-  text-decoration: underline;
+  border-radius: 8px;
+  font-size: 15px;
+  height: 40px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 input[type="submit"]:hover {
   color: rgb(22, 25, 231);
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 15px;
 }
 
 .title {
@@ -89,7 +91,7 @@ input[type="submit"]:hover {
   text-align: center;
   min-height: 100vh;
   background-image: linear-gradient(
-      rgba(228, 218, 218, 0.6),
+      rgba(228, 218, 218, 0.9),
       rgba(131, 125, 125, 0.6)
     ),
     url("../assets/teacher2.jpg");
@@ -97,6 +99,7 @@ input[type="submit"]:hover {
 }
 
 #loginForm {
+  margin-top: 100px;
   align-self: right;
   /* min-height:100vh; */
 }
@@ -105,21 +108,22 @@ label {
   display: inline-block;
   text-align: right;
   width: 150px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 30px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 50px;
 }
 
 p {
   font-weight: bold;
   font-size: 25px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 h1 {
-  font-size: 40px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-size: 25px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  margin-bottom: 30px;
 }
 
 a {

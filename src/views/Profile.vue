@@ -20,10 +20,10 @@
 <script>
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import BlueBanner from "../components/BlueBanner.vue";
-import LeftPanel from "../components/LeftPanel.vue"
+// import LeftPanel from "../components/LeftPanel.vue";
 import firebaseApp from "../firebase.js"
 import { getFirestore } from "firebase/firestore";
-import { getDoc, doc,  } from "firebase/firestore"; //updateDoc
+import { getDoc, doc } from "firebase/firestore";
 const db = getFirestore(firebaseApp);
 
 

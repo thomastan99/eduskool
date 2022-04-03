@@ -145,8 +145,14 @@ console.log(questions)
     console.log(questions)
          function update(score, subject, chapter){
             let sub = subject.toLowerCase()
-            if (sub == "science"){
+            if (sub.includes("science")){
                 sub = "sci"
+            }
+            else if(sub.includes("math")){
+                sub = "math"
+            }
+            else{
+                sub ="eng"
             }
      
              

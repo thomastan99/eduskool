@@ -7,20 +7,46 @@
           <th>Score </th>
         </tr>
   </table> <br><br>
+  <div id="prog">
+          <div id="test" class="prog">
+<circle-progress id = "progress" :show-percent=true :percent='this.pMath'/>
+<p id = "subject"> % Completion for Math</p>
+          </div>
+
+<div id="test2" class = "prog">
+    <circle-progress id = "progress" :show-percent=true :percent='this.pTot'/>
+<p id = "subject"> % Overall Progress</p>
+</div>
+  </div>
 </template>
 
 <script>
 import firebaseApp from '../../firebase.js'
 import {getFirestore} from "firebase/firestore";
-import {collection,getDocs} from "firebase/firestore";
+import {collection,getDocs, getDoc, doc} from "firebase/firestore";
+import { getAuth} from "@firebase/auth";
+import "vue3-circle-progress/dist/circle-progress.css";
+import CircleProgress from "vue3-circle-progress";
+
+const auth = getAuth(auth);
 const db = getFirestore(firebaseApp)
-
-
-
 export default {
-   
+   components: {CircleProgress},
+   data(){
+    return {
+        user: auth.currentUser.email,
+        math:0,
+        total:0,
+        pMath:0,
+        pTot:0
+
+    }
+    
+},
 
     mounted() {
+
+
         async function getScores(){
           
             let x = await getDocs(collection(db,"Students"))
@@ -57,7 +83,22 @@ export default {
                 ind ++
             }
         }
-        getScores()
+           getScores()
+
+            getDoc(doc(db,"Students",this.user)).then((x) =>{
+            let s = x.data()
+            this.math = s.wk_math
+            this.pMath = s.wk_math/35 * 100
+            this.total = s.wk_eng + s.wk_math + s.wk_sci
+            this.pTot = this.total/105 * 100
+
+
+            }).then(()=>{
+                console.log("total added")
+            })
+          
+
+  console.log(this.total)
         
 
 
@@ -71,8 +112,42 @@ export default {
 
 <style scoped>
 table{
+    float: left;
     width: 70%;
     align-items: center;
 }
+#main {
+    top:50px;
+    left:100px;
+    
+}
+#prog{
+display: inline-block;
+padding: 2px;
+
+/* margin-left:670px */
+
+}
+#subject{
+    display: inline-block
+
+/* margin-left: -550px */
+}
+#test{
+    float: left;
+    padding-right: 50px;
+
+
+    /* margin-left: 30%;
+    margin-right: 58%; */
+}
+#test2{
+float: right
+
+
+    /* margin-left: 50%;
+    margin-right: 38%; */
+}
+
 
 </style>
