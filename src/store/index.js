@@ -1,8 +1,7 @@
 import { createStore } from 'vuex'
 import router from '../router/index.js'
 import firebaseApp from '../firebase.js'
-import { getAuth, signInWithEmailAndPassword, signOut, updateProfile, updatePassword } from "firebase/auth"
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword, signOut, updateProfile, updatePassword, sendPasswordResetEmail, createUserWithEmailAndPassword } from "firebase/auth"
 import { doc, setDoc, getFirestore, getDoc, updateDoc } from "firebase/firestore";
 import { ref } from "vue"
 
@@ -186,6 +185,29 @@ export default createStore({
 
             commit('SET_USER', auth.currentUser)
             router.push('/profile')
+        },
+
+        async resetPassword({ commit }, details) {
+            const { email } = details
+
+            try {
+                await sendPasswordResetEmail(auth, email)
+            } catch (error) {
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        alert("User not found")
+                        break
+                    case 'auth/wrong-password':
+                        alert("Wrong password")
+                        break
+                    default:
+                        alert("Something went wrong")
+                }
+                return
+            }
+
+            commit('CLEAR_USER');
+            router.push('/');
         },
 
         async logout({ commit }) {

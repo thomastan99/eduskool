@@ -23,6 +23,9 @@ import StudentAnnouncemnets from '@/views/StudentAnnouncements.vue'
 import ViewStats from '@/views/ViewStats.vue'
 import EditProfile from '@/views/EditProfile.vue'
 import EditPic from '@/views/EditPic.vue'
+import Help from '@/views/Help.vue'
+import About from '@/views/About.vue'
+import ResetPassword from '@/views/ResetPassword.vue'
 
 const routes = [
     {   path: '/home',
@@ -40,12 +43,12 @@ const routes = [
         component: Quiz
     },
     {
-        path:'/',
+        path:'/register',
         name: "Register",
         component: Register
     },
     {
-        path: '/login',
+        path: '/',
         name: "Login",
         component: Login,
     },
@@ -147,6 +150,21 @@ const routes = [
         path: '/editPic',
         name: 'EditPic',
         component: EditPic,
+    },
+    {
+        path:'/help',
+        name: 'Help',
+        component: Help,
+    },
+    {
+        path:'/about',
+        name: 'About',
+        component: About,
+    },
+    {
+        path:'/resetPassword',
+        name: 'ResetPassword',
+        component: ResetPassword,
     },
 ]
 

@@ -267,9 +267,14 @@ export default {
 }
 
 #main {
+  float: left;
   position: fixed;
-  margin-top: 35px;
   margin-left: 20px;
+  background-color: #ececec;
+  box-shadow: 0px 5px 5px 1px;
+  border-radius: 5px;
+  padding: 0px 10px 10px 10px;
+  margin-top: 80px;
 }
 
 #profilePic {

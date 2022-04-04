@@ -1,5 +1,5 @@
 <template>
-  <div id="loggingIn">
+  <div id="resetPassword">
     <div id="logo">
       <img
         src="../assets/elogo.png"
@@ -9,20 +9,19 @@
       <h2 id="about" onclick="location.href='/about'">About Us</h2>
       <h2 id="help" onclick="location.href='/help'">Help</h2>
     </div>
-    <form id="loginForm" class="login" @submit.prevent="login">
-      <h1 class="title">Login To EDU'skool</h1>
+    <form
+      id="resetPasswordForm"
+      class="resetPassword"
+      @submit.prevent="resetPassword"
+    >
+      <h1 class="title">Enter your email to reset your password</h1>
       <label for="email">Email:</label>
-      <input type="text" id="email" v-model="login_form.email" /><br />
-      <label for="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        v-model="login_form.password"
-      /><br />
-      <input type="submit" value="Login" />
+      <input type="text" id="email" v-model="resetPassword_form.email" /><br />
+      <br />
+      <input type="submit" value="Send Reset Request" />
     </form>
-    <a href="/resetPassword"> Forgot your password? </a>
-    <a href="/register"> Register here! </a>
+
+    <a href="/"> Back to Login </a>
   </div>
 </template>
 
@@ -31,29 +30,29 @@ import { ref } from "vue";
 
 import { useStore } from "vuex";
 
-const login_form = ref({});
+const resetPassword_form = ref({});
 
 export default {
-  name: "Login",
+  name: "ResetPassword",
 
   components: [],
 
   setup() {
     const store = useStore();
 
-    const login = () => {
-      store.dispatch("login", login_form.value);
-      console.log(login_form.value.email);
+    const resetPassword = () => {
+      store.dispatch("resetPassword", resetPassword_form.value);
+      console.log(resetPassword_form.value.email);
     };
 
     return {
-      login_form,
-      login,
+      resetPassword_form,
+      resetPassword,
     };
   },
 };
 
-export const loginData = login_form.value.email;
+export const resetPasswordData = resetPassword_form.value.email;
 </script>
 
 <style scoped>
@@ -118,7 +117,7 @@ input[type="submit"]:hover {
   /* padding-top: 10px; */
 }
 
-#loggingIn {
+#resetPassword {
   text-align: center;
   min-height: 100vh;
   background-image: linear-gradient(
@@ -129,7 +128,7 @@ input[type="submit"]:hover {
   background-size: cover;
 }
 
-#loginForm {
+#resetPasswordForm {
   margin-top: 100px;
   align-self: right;
   /* min-height:100vh; */
