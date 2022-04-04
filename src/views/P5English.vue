@@ -28,11 +28,11 @@
                 </td>
                 <td> 
                     <!-- <button id="attempt">Attempt</button> -->
-                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Science')">Attempt </router-link>
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Primary5English')">Attempt </router-link>
                     <!-- <a id="homeworkText" href="/quiz"> </a> -->
                 </td>
                 <td> 
-                    <h3 class="marks"> 10/10 </h3>
+                    <h3 class="marks"> {{getChap1Score()}}/5 </h3>
                 </td>
             </tr>
             <tr>
@@ -54,11 +54,11 @@
                         </transition>
                 </td>
                 <td> 
-                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Math')">Attempt </router-link>
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap2','Primary5English')">Attempt </router-link>
                 </td>
 
                 <td> 
-                    <h3 class="marks"> 10/10 </h3>
+                    <h3 class="marks"> {{getChap2Score()}}/5 </h3>
                 </td>
             </tr>
             <tr>
@@ -80,10 +80,10 @@
                             </transition>
                 </td>
                 <td> 
-                    <button id="attempt">Attempt</button>
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap3','Primary5English')">Attempt </router-link>
                 </td>
                 <td> 
-                    <h3 class="marks"> 8/10 </h3>
+                    <h3 class="marks"> {{getChap3Score()}}/5 </h3>
                 </td>
             </tr>
              <tr>
@@ -105,10 +105,10 @@
                             </transition>
                 </td>
                 <td> 
-                    <button id="attempt">Attempt</button>
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap4','Primary5English')">Attempt </router-link>
                 </td>
                 <td> 
-                    <h3 class="marks"> No Attempt </h3>
+                    <h3 class="marks"> {{getChap4Score()}}/5 </h3>
                 </td>
 
             </tr>
@@ -131,10 +131,10 @@
                             </transition>
                       </td>
                 <td> 
-                    <button id="attempt">Attempt</button>
+                    <router-link to="/ready" tag="button" v-on:click="update('Chap5','Primary5English')">Attempt </router-link>
                 </td>
                 <td> 
-                    <h3 class="marks"> No Attempt </h3>
+                    <h3 class="marks"> {{getChap5Score()}}/5 </h3>
                 </td>
             </tr>
         </table>
@@ -144,7 +144,7 @@
 <script>
 import firebaseApp from '../firebase.js'
 import {getFirestore} from "firebase/firestore";
-import { doc, updateDoc} from "firebase/firestore";
+import { doc, updateDoc, getDoc} from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import BlueBanner from "@/components/BlueBanner.vue"
 import LeftPanel from "@/components/LeftPanel.vue"
@@ -161,8 +161,13 @@ export default {
 
   data(){
         return{
+            chap1score: 0,
+            chap2score: 0,
+            chap3score: 0,
+            chap4score: 0,
+            chap5score: 0,
             currQuizChapter :"1",
-            curQuizSubject :"math",
+            curQuizSubject :"Primary5English",
             wholeNumbers: false,
             fractions: false,
             decimals: false,
@@ -192,7 +197,77 @@ export default {
                 console.log("updated")
             })
 
-        }
+        },
+        getChap1Score() {
+            let fbuser = auth.currentUser.email
+            const docRef = doc(db, "Students", String(fbuser));
+            getDoc(docRef).then(doc => {
+                let s = doc.data();
+                let scores = s.scores
+                let score = scores["eng"]["Chap1"]
+                if (score != undefined) {
+                    this.chap1score = score
+                }
+                console.log("updated chap1 score: "+ this.chap1score)
+            })
+            return this.chap1score
+        },
+        getChap2Score() {
+            let fbuser = auth.currentUser.email
+            const docRef = doc(db, "Students", String(fbuser));
+            getDoc(docRef).then(doc => {
+                let s = doc.data();
+                let scores = s.scores
+                let score = scores["eng"]["Chap2"]
+                if (score != undefined) {
+                    this.chap2score = score
+                }
+                console.log("updated chap2 score: "+ this.chap2score)
+            })
+            return this.chap2score
+        },
+        getChap3Score() {
+            let fbuser = auth.currentUser.email
+            const docRef = doc(db, "Students", String(fbuser));
+            getDoc(docRef).then(doc => {
+                let s = doc.data();
+                let scores = s.scores
+                let score = scores["eng"]["Chap3"]
+                if (score != undefined) {
+                    this.chap3score = score
+                }
+                console.log("updated chap3 score: "+ this.chap3score)
+            })
+            return this.chap3score
+        },
+        getChap4Score() {
+            let fbuser = auth.currentUser.email
+            const docRef = doc(db, "Students", String(fbuser));
+            getDoc(docRef).then(doc => {
+                let s = doc.data();
+                let scores = s.scores
+                let score = scores["eng"]["Chap4"]
+                if (score != undefined) {
+                    this.chap4score = score
+                }
+                console.log("updated chap4 score: "+ this.chap4score)
+            })
+            return this.chap4score
+        },
+        getChap5Score() {
+            let fbuser = auth.currentUser.email
+            const docRef = doc(db, "Students", String(fbuser));
+            getDoc(docRef).then(doc => {
+                let s = doc.data();
+                let scores = s.scores
+                let score = scores["eng"]["Chap5"]
+                if (score != undefined) {
+                    this.chap5score = score
+                }
+                console.log("updated chap5 score: "+ this.chap5score)
+            })
+            return this.chap5score
+        },
 
     }
 
