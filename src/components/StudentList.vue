@@ -3,7 +3,7 @@
         <div class="container">
             <div class="header"><h1>Math5A</h1></div>
             <div class="content">
-                <table id="Math5A">
+                <table id="Maths5A">
                     <tr>
                         <th>Student Name</th>
                         <th>Score</th>
@@ -58,31 +58,28 @@ export default {
 
         async function display(user) {
             let z = await getDoc(doc(db, "Teachers", user.email))
-            let c = z.data().Classes
-            let classeslist = Object.keys(c)
+            let classeslist = z.data().Classes
             for(let i = 0; i < classeslist.length; i++) {
                 let currclass = classeslist[i]
-                let currlist
                 let nestedlist = []
-                if (currclass == "Math5A") {
-                    currlist = c.Math5A.Students
-                } else if (currclass == "Science5A") {
-                    currlist = c.Science5A.Students
-                } else {
-                    currlist = c.Science6B.Students
-                }
+                let y = await getDoc(doc(db, "Classes", currclass))
+                let studentlist = y.data().students
 
-                for (let j = 0; j < currlist.length; j++) {
-                    let x = await getDoc(doc(db, "Students2", currlist[j]))
+                for (let j = 0; j < studentlist.length; j++) {
+                    let currstudent = studentlist[j]
+                    let x = await getDoc(doc(db, "Students", currstudent))
                     let d = x.data()
+                    let name = d.Name
                     let totalscore
-                    if (currclass == "Math5A") {
-                        totalscore = d.scores.math.chap1 + d.scores.math.chap2 + d.scores.math.chap3
+                    
+
+                    if (currclass == "Maths5A") {
+                        totalscore = d.scores.math.Chap1 + d.scores.math.Chap2 + d.scores.math.Chap3
                     } else {
-                        totalscore = d.scores.sci.chap1 + d.scores.sci.chap2 + d.scores.sci.chap3
+                        totalscore = d.scores.sci.Chap1 + d.scores.sci.Chap2 + d.scores.sci.Chap3
                     }
 
-                    let studenttotalscore = [d.name, totalscore]
+                    let studenttotalscore = [name, totalscore]
                     nestedlist.push(studenttotalscore)
                 }
 
@@ -92,14 +89,14 @@ export default {
                     };
                 })(1))
 
-                for (let j = 0; j < nestedlist.length; j++) {
+                for (let k = 0; k < nestedlist.length; k++) {
                     let table = document.getElementById(currclass)
                     let row = table.insertRow(-1)
                     let cell0 = row.insertCell(0)
                     let cell1 = row.insertCell(1)
                     let cell2 = row.insertCell(2)
-                    cell0.innerHTML = nestedlist[j][0]
-                    cell1.innerHTML = nestedlist[j][1]
+                    cell0.innerHTML = nestedlist[k][0]
+                    cell1.innerHTML = nestedlist[k][1]
                     cell2.innerHTML = "<p>temp</p>"
                 }
                 
@@ -128,6 +125,10 @@ h1 {
 th, tr {
     font-size: 20px;
     font-weight: bold;
+}
+
+th {
+    color: #00bcd4;
 }
 
 tr {

@@ -32,22 +32,14 @@ export default {
 
         async function display(user) {
             let z = await getDoc(doc(db, "Teachers", user.email))
-            let c = z.data().Classes
-            let classeslist = Object.keys(c)
+            let classeslist = z.data().Classes
+
             for(let i = 0; i < classeslist.length; i++) {
                 let currclass = classeslist[i]
-                let currlist
-                let time
-                if (currclass == "Math5A") {
-                    currlist = c.Math5A.Students
-                    time = c.Math5A.Timing
-                } else if (currclass == "Science5A") {
-                    currlist = c.Science5A.Students
-                    time = c.Science5A.Timing
-                } else {
-                    currlist = c.Science6B.Students
-                    time = c.Science6B.Timing
-                }
+
+                let x = await getDoc(doc(db, "Classes", currclass))
+                let studentcount = x.data().students.length
+                let time = x.data().Timing
 
                 let table = document.getElementById("tab")
                 let row = table.insertRow(-1)
@@ -55,7 +47,7 @@ export default {
                 let cell1 = row.insertCell(1)
                 let cell2 = row.insertCell(2)
                 cell0.innerHTML = "<a href='/teacherscs' style='color:#00bcd4'>" + currclass + "</a>"
-                cell1.innerHTML = currlist.length
+                cell1.innerHTML = studentcount
                 cell2.innerHTML = time
             }
         }
@@ -93,7 +85,7 @@ a:visited, a:link, a:active {
     text-decoration: none;
 }
 
-th, tr {
+table, tr {
     font-size: 18px;
     font-weight: bold;
 }

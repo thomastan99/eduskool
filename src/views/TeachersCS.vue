@@ -4,36 +4,36 @@
 <div id="root">
   <div id="cs"><h1 style="font-size: 40px">Classes & Students</h1></div>
   <div id="accordions">
-  <Accordion class="level1" title="Math5A">
+  <Accordion class="level1" title="Maths5A">
     <br>
-    <table id="Math5A">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
+    <table id="Maths5A" class="noscopetable">
+      <tr class="noscopetr">
+        <th class="noscopeth">Name</th>
+        <th class="noscopeth">Chapter 1 Score</th>
+        <th class="noscopeth">Chapter 2 Score</th>
+        <th class="noscopeth">Chapter 3 Score</th>
       </tr>
     </table>
   </Accordion><br><br>
   <Accordion class="level1" title="Science5A">
     <br>
     <table id="Science5A">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
+      <tr class="noscopetr">
+        <th class="noscopeth">Name</th>
+        <th class="noscopeth">Chapter 1 Score</th>
+        <th class="noscopeth">Chapter 2 Score</th>
+        <th class="noscopeth">Chapter 3 Score</th>
       </tr>
     </table>
     </Accordion><br><br>
     <Accordion class="level1" title="Science6B">
       <br>
     <table id="Science6B">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
+      <tr class="noscopetr">
+        <th class="noscopeth">Name</th>
+        <th class="noscopeth">Chapter 1 Score</th>
+        <th class="noscopeth">Chapter 2 Score</th>
+        <th class="noscopeth">Chapter 3 Score</th>
       </tr>
     </table>
     </Accordion><br><br>
@@ -72,80 +72,43 @@ export default {
 
     async function display(user) {
       let z = await getDoc(doc(db, "Teachers", user.email))
-      let c = z.data().Classes
-      let studentsList = []
-      for (let i = 0; i < c.Math5A.Students.length; i++) {
-        if (!studentsList.includes((c.Math5A.Students)[i])) {
-          studentsList.push((c.Math5A.Students)[i])
+      let classeslist = z.data().Classes
+
+      for (let i = 0; i < classeslist.length; i++) {
+        let currclass = classeslist[i]
+        let y = await getDoc(doc(db, "Classes", currclass))
+        let currstudentlist = y.data().students
+
+        for (let j = 0; j < currstudentlist.length ; j++) {
+          let currstudent = currstudentlist[j]
+          let x = await getDoc(doc(db, "Students", currstudent))
+          let info = x.data()
+          let name = info.Name
+          let score1
+          let score2
+          let score3
+          if (currclass == "Maths5A") {
+            score1 = info.scores.math.Chap1
+            score2 = info.scores.math.Chap2
+            score3 = info.scores.math.Chap3
+          } else {
+            score1 = info.scores.sci.Chap1
+            score2 = info.scores.sci.Chap2
+            score3 = info.scores.sci.Chap3
+          }
+          
+          let table = document.getElementById(currclass)
+          let row = table.insertRow(-1)
+          let cell0 = row.insertCell(0)
+          let cell1 = row.insertCell(1)
+          let cell2 = row.insertCell(2)
+          let cell3 = row.insertCell(3)
+          cell0.innerHTML = name
+          cell1.innerHTML = score1
+          cell2.innerHTML = score2
+          cell3.innerHTML = score3
         }
-      }
-      for (let i = 0; i < c.Science5A.Students.length; i++) {
-        if (!studentsList.includes((c.Science5A.Students)[i])) {
-          studentsList.push((c.Science5A.Students)[i])
-        }
-      }
-
-      for (let i = 0; i < c.Science6B.Students.length; i++) {
-        if (!studentsList.includes((c.Science6B.Students)[i])) {
-          studentsList.push((c.Science6B.Students)[i])
-        }
-      }
-
-      for (let i = 0; i < studentsList.length; i++) {
-        let x = await getDoc(doc(db, "Students2", studentsList[i]))
-        let d = x.data()
-        if (d.classes.math == "Math5A") {
-          let mscore1 = d.scores.math.chap1
-          let mscore2 = d.scores.math.chap2
-          let mscore3 = d.scores.math.chap3
-
-          let mtable = document.getElementById("Math5A")
-          let mrow = mtable.insertRow(-1)
-          let mcell0 = mrow.insertCell(0)
-          let mcell1 = mrow.insertCell(1)
-          let mcell2 = mrow.insertCell(2)
-          let mcell3 = mrow.insertCell(3)
-
-          mcell0.innerHTML = d.name
-          mcell1.innerHTML = mscore1
-          mcell2.innerHTML = mscore2
-          mcell3.innerHTML = mscore3
-        }
-        if (d.classes.sci == "Science5A") {
-          let sscore1 = d.scores.sci.chap1
-          let sscore2 = d.scores.sci.chap2
-          let sscore3 = d.scores.sci.chap3
-
-          let stable = document.getElementById("Science5A")
-          let srow = stable.insertRow(-1)
-          let scell0 = srow.insertCell(0)
-          let scell1 = srow.insertCell(1)
-          let scell2 = srow.insertCell(2)
-          let scell3 = srow.insertCell(3)
-
-          scell0.innerHTML = d.name
-          scell1.innerHTML = sscore1
-          scell2.innerHTML = sscore2
-          scell3.innerHTML = sscore3
-        }
-        if (d.classes.sci == "Science6B") {
-          let sscore1 = d.scores.sci.chap1
-          let sscore2 = d.scores.sci.chap2
-          let sscore3 = d.scores.sci.chap3
-
-          let stable = document.getElementById("Science6B")
-          let srow = stable.insertRow(-1)
-          let scell0 = srow.insertCell(0)
-          let scell1 = srow.insertCell(1)
-          let scell2 = srow.insertCell(2)
-          let scell3 = srow.insertCell(3)
-
-          scell0.innerHTML = d.name
-          scell1.innerHTML = sscore1
-          scell2.innerHTML = sscore2
-          scell3.innerHTML = sscore3
-        }
-      }     
+      }   
     }
   }
 }

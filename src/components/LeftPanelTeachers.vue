@@ -94,14 +94,14 @@ export default {
 }
 #classesText {
     position: relative;
-    top:20px;
-    left:70px;
+    top: -45px;
+    left: 55px;
 }
  
 #classesImage {
     width: 30%;
     position: relative;
-    right: 168px;
+    left: -95px;
 
 }
 
