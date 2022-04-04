@@ -6,6 +6,8 @@
         <a id="logout" href="./" @click="handleLogout">Logout</a>
         <!-- <a id="profile" href="./profile">Profile</a> -->
     </div><br><br>
+    <div id="background"> Hello
+    </div>
 </template>
 
 <script>
@@ -43,7 +45,6 @@ export default {
 </script>
 
 <style scoped>
-
 #logo {
     float: left;
 }
@@ -78,11 +79,14 @@ h2 {
     display:inline-block;
 }
 #help {
-    float:right;
+    position: relative;
+    left: 700px;
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #logout{
+    position: relative;
+    left: 500px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     display:inline-block;
 }

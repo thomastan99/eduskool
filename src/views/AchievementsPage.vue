@@ -1,7 +1,8 @@
 <template>
   <BlueBanner/>
   <LeftPanel/>
-    <div id="main">
+  <div v-if="loading" id="loader"> <Preloader color="grey" scale="1"/> </div>
+    <div v-if="!loading" id="main">
         <div id="pageTitle"><h1> Achievements </h1></div>
         <table id = "topicstable"> 
             <th id="awardTitle"> Award </th>
@@ -9,7 +10,6 @@
             <th> Description </th>
             <tr>
                 <td>   
-                    <div v-if="loading"> <Preloader color="grey" scale="0.6"/> </div>
                     <img v-if="firststeps && !loading" class="picture" src="@/assets/firststeps.png">
                     <img v-if="!firststeps && !loading" class="picture" src="@/assets/locked.png">
                 </td>
@@ -22,7 +22,6 @@
             </tr>
             <tr>
                 <td>
-                    <div v-if="loading"> <Preloader color="grey" scale="0.6"/> </div>
                     <img v-if="firstmaths && !loading" class="picture" src="@/assets/firstmaths.png">
                     <img v-if="!firstmaths && !loading" class="picture" src="@/assets/locked.png">
                 </td>
@@ -39,7 +38,6 @@
             </tr>
             <tr>
                 <td>
-                    <div v-if="loading"> <Preloader color="grey" scale="0.6"/> </div>
                     <img v-if="smile && !loading" class="picture" src="@/assets/smile.png">
                     <img v-if="!smile && !loading" class="picture" src="@/assets/locked.png">
                 </td>
@@ -55,7 +53,6 @@
             </tr>
              <tr>
                 <td>
-                    <div v-if="loading"> <Preloader color="grey" scale="0.6"/> </div>
                     <img v-if="firstenglish && !loading" class="picture" src="@/assets/firstenglish.png">
                     <img v-if="!firstenglish && !loading" class="picture" src="@/assets/locked.png">
                 </td>
@@ -71,7 +68,6 @@
             </tr>
             <tr>
                 <td>
-                    <div v-if="loading"> <Preloader color="grey" scale="0.6"/> </div>
                     <img v-if="firstscience && !loading" class="picture" src="@/assets/firstscience.png">
                     <img v-if="!firstscience && !loading" class="picture" src="@/assets/locked.png">
                 </td>
@@ -80,6 +76,48 @@
                 </td>
                 <td> 
                     <h3 class="description"> You completed your first Science quiz! </h3>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img v-if="humancal && !loading" class="picture" src="@/assets/humancal.png">
+                    <img v-if="!humancal && !loading" class="picture" src="@/assets/locked.png">
+                </td>
+                <td> 
+                    <h3 class="award"> Human Calculator </h3>
+                </td>
+                <td> 
+                    <h3 class="description"> Completed all quizzes for Maths. </h3>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img v-if="madsci && !loading" class="picture" src="@/assets/madsci.png">
+                    <img v-if="!madsci && !loading" class="picture" src="@/assets/locked.png">
+                </td>
+                <td> 
+                    <h3 class="award"> Mad Scientist </h3>
+                </td>
+                <td> 
+                    <h3 class="description"> Completed all quizzes for Science. </h3>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img v-if="dic && !loading" class="picture" src="@/assets/dictionary.png">
+                    <img v-if="!dic && !loading" class="picture" src="@/assets/locked.png">
+                </td>
+                <td> 
+                    <h3 class="award"> Dictionary Boy </h3>
+                </td>
+                <td> 
+                    <h3 class="description"> Completed all quizzes for English. </h3>
                 </td>
                 <td>
                 </td>
@@ -105,7 +143,9 @@ var smile = ref(false)
 var loading = ref(true)
 var firstenglish = ref(false)
 var firstscience = ref(false)
-
+var humancal = ref(false)
+var madsci = ref(false)
+var dic = ref(false)
 export default {
   data: () => {
     return {
@@ -115,6 +155,9 @@ export default {
       firstenglish: firstenglish,
       firstscience: firstscience,
       smile: smile,
+      humancal: humancal,
+      madsci: madsci,
+      dic: dic,
     }
   },
   name: 'Achievements',
@@ -142,6 +185,9 @@ export default {
       loading.value = docSnap.data().loading;
       firstenglish.value = docSnap.data().firstenglish;
       firstscience.value = docSnap.data().firstscience;
+      humancal.value = docSnap.data().humancal;
+      madsci.value = docSnap.data().madsci;
+      dic.value = docSnap.data().dic;
     }
   }
 } 
@@ -149,18 +195,21 @@ export default {
 </script>
 
 <style scoped>
+#loader {
+  display: inline-block;
+  margin-top: 200px;
+}
 #awardTitle {
-  width:12%;
 }
 .picture {
-  width:100%;
-  float:left;
-}
-#main{
-    display:inline-block;
-    margin-left:25%;
-    margin-top:2%;
+  width: 30%;
+  float:center;
 
+}
+#main {
+    display:inline-block;
+    margin-left: 300px;
+    margin-top:2%;
 }
 
 #pageTitle {

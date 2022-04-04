@@ -1,8 +1,8 @@
 <template>
     <BlueBanner/>
     <LeftPanel/>
-    <div id="pageLoader" v-if="loading"> <Preloader color="grey" scale = "0.8"/> </div>
-    <div id="main" v-if="!loading">
+    <div class="classesPage" id="pageLoader" v-if="loading"> <Preloader color="grey" scale = "0.8"/> </div>
+    <div class="classesPage" id="main" v-if="!loading">
         <div id="pageTitle"><h1> Classes </h1></div>
         <div id="legend">
             <h3><u> Legend </u></h3>
@@ -132,7 +132,6 @@
                 <td v-if="satSixToEightStatus && userrole == 'P6Student'" class="classoptions" id="sat4-6" @click="isOpen=!isOpen; updateSatSixToEight()">P6 English Optional Class Size: {{p6englishoptionalsize}}</td>
                 <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="sat6-8">P6 English Optional Class Size: {{p6englishoptionalsize}}</td>
                 <td v-if="!satSixToEightStatus" class="classoptionsSelected" id="sat6-8">P6 English Optional Class Size: {{p6englishoptionalsize}}</td>
-                <td></td>
             </tr>
         </table>
         <transition name="fade" appear>
