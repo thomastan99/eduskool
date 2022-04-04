@@ -107,6 +107,11 @@ export default createStore({
                         firststeps: true,
                         firstmaths: false,
                         smile:false,
+                        firstenglish: false,
+                        firstscience: false,
+                        madsci: false,
+                        humancal: false,
+                        dic: false,
                     }))
                 } else {
                     await setDoc(doc(db, "Teachers", email), {

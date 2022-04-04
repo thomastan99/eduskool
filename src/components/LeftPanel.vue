@@ -8,7 +8,7 @@
             </div>
         </div>
         <div id="menu">
-            <div class="options" onclick="location.href='/'">
+            <div class="options" onclick="location.href='/studentsannouncements'">
                 <img id="announcementImage" src="../assets/announcement.png" alt="Announcement Image">
                 <a id="announcementText">Announcements</a>
             </div>
@@ -253,7 +253,7 @@ export default {
 #overview {
     float: left;
     display: inline-block;
-    color: #00bcd4;
+    color: black;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     text-align: left;
     line-height: 1.5;
@@ -269,9 +269,9 @@ export default {
 #main {
   float: left;
   position: fixed;
-  margin-left: 20px;
-  background-color: #ececec;
-  box-shadow: 0px 5px 5px 1px;
+  margin-left: 30px;
+  background-color: #bfd6d8;
+  box-shadow: 0px 2px 2px 0px;
   border-radius: 5px;
   padding: 0px 10px 10px 10px;
   margin-top: 80px;
