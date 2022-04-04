@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <div id="personal" onclick="location.href='/profile'">
-            <div id="photo"> <img src="../assets/photo.png" alt="Profile Pic">
+            <div id="photo"> <img id="profilePic" src="../assets/photo.png" alt="Profile Pic">
             </div>
             <div id="overview">
                 <h4 id="details">{{ user.displayName }} </h4>
