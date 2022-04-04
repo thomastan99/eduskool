@@ -1,51 +1,108 @@
 <template>
     <div id="main">
-        <div id="header"><h1>Math5A</h1></div>
-        <div id="content">
-            <table>
-                <tr>
-                    <th>Student Name</th>
-                    <th>Score</th>
-                    <th>Contact No.</th>
-                    <th>Email Address</th>
-                </tr>
-                <tr>
-                    <td>StudentA</td>
-                    <td>45</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>StudentB</td>
-                    <td>43</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>StudentC</td>
-                    <td>40</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>StudentD</td>
-                    <td>37</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>StudentE</td>
-                    <td>20</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+        <div class="container">
+            <div class="header"><h1>Math5A</h1></div>
+            <div class="content">
+                <table id="Maths5A">
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Score</th>
+                        <th>Achievements</th>
+                    </tr>
+                </table>
+            </div>
+        </div><br>
+        <div class="container">
+            <div class="header"><h1>Science5A</h1></div>
+            <div class="content" style="left:-200px">
+                <table id="Science5A">
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Score</th>
+                        <th>Achievements</th>
+                    </tr>
+                </table>
+            </div>
+        </div><br>
+        <div class="container">
+            <div class="header"><h1>Science6B</h1></div>
+            <div class="content" style="left:-200px">
+                <table id="Science6B">
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Score</th>
+                        <th>Achievements</th>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import firebaseApp from "../firebase.js"
+import { getFirestore, getDoc, doc } from "firebase/firestore"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
+
+const db = getFirestore(firebaseApp)
+
 export default {
+    mounted() {
+        const auth = getAuth()
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.user = user
+                display(user)
+            }
+        })
+
+        async function display(user) {
+            let z = await getDoc(doc(db, "Teachers", user.email))
+            let classeslist = z.data().Classes
+            for(let i = 0; i < classeslist.length; i++) {
+                let currclass = classeslist[i]
+                let nestedlist = []
+                let y = await getDoc(doc(db, "Classes", currclass))
+                let studentlist = y.data().students
+
+                for (let j = 0; j < studentlist.length; j++) {
+                    let currstudent = studentlist[j]
+                    let x = await getDoc(doc(db, "Students", currstudent))
+                    let d = x.data()
+                    let name = d.Name
+                    let totalscore
+                    
+
+                    if (currclass == "Maths5A") {
+                        totalscore = d.scores.math.Chap1 + d.scores.math.Chap2 + d.scores.math.Chap3
+                    } else {
+                        totalscore = d.scores.sci.Chap1 + d.scores.sci.Chap2 + d.scores.sci.Chap3
+                    }
+
+                    let studenttotalscore = [name, totalscore]
+                    nestedlist.push(studenttotalscore)
+                }
+
+                nestedlist.sort((function(index){
+                    return function(a,b) {
+                        return (a[index] === b[index] ? 0 : (a[index] > b[index] ? -1 : 1));
+                    };
+                })(1))
+
+                for (let k = 0; k < nestedlist.length; k++) {
+                    let table = document.getElementById(currclass)
+                    let row = table.insertRow(-1)
+                    let cell0 = row.insertCell(0)
+                    let cell1 = row.insertCell(1)
+                    let cell2 = row.insertCell(2)
+                    cell0.innerHTML = nestedlist[k][0]
+                    cell1.innerHTML = nestedlist[k][1]
+                    cell2.innerHTML = "<p>temp</p>"
+                }
+                
+            }
+        }
+    }
 }
 </script>
 
@@ -56,7 +113,7 @@ export default {
     display: inline-block;
 }
 
-#header {
+.header {
     float: left;
     margin-bottom: 20px;
 }
@@ -70,12 +127,16 @@ th, tr {
     font-weight: bold;
 }
 
+th {
+    color: #00bcd4;
+}
+
 tr {
     height: 100px;
 }
 
 table {
-    width: 1500px;
+    width: 800px;
 }
 
 table, th, td {
@@ -91,11 +152,14 @@ a:visited, a:link, a:active {
     text-decoration: none;
 }
 
-#content {
-    float: left;
-    margin-top: -10px;
-    max-width: 900px;
+.content {
+    max-width: 800px;
     overflow-x: scroll;
+    position: relative;
+    top: 80px;
+    left: -150px;
 }
-
+.container {
+    margin-bottom: 80px;
+}
 </style>

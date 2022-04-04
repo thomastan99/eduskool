@@ -21,9 +21,9 @@
                 <img id="classesImage" src="../assets/classes.png" alt="Classes Image">
                 <a id="classesText">Classes & Students</a>
             </div>
-            <div class="options" onclick="location.href='/teachersscoreboard'">
+            <div class="options" onclick="location.href='/teachersleaderboard'">
                 <img id="scoreboardImage" src="../assets/leaderboard.png" alt="ScoreBoard Image">
-                <a id="scoreboardText">ScoreBoard</a>
+                <a id="scoreboardText">Leaderboard</a>
             </div>
 
             <div class="options" onclick="location.href='/viewstats'">
@@ -94,14 +94,14 @@ export default {
 }
 #classesText {
     position: relative;
-    top:20px;
-    left:70px;
+    top: -45px;
+    left: 55px;
 }
  
 #classesImage {
     width: 30%;
     position: relative;
-    right: 168px;
+    left: -95px;
 
 }
 
