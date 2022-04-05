@@ -1,5 +1,5 @@
 <template>
-  <form v-on:change= update() >
+  <form v-on:change= update() onsubmit = submit() >
 <label for="Question">Choose a Subject</label>
 <select id="sub" name="sub">
   <option value="Chapter">Primary5English</option>
@@ -34,15 +34,16 @@
     <option>Choose the correct answer</option>
 </select>
 <br><br>
-<button  v-on:click= submit()> Add to database! </button>
+<input type="submit">
+<button  v-on:click= count(this.subject)> Add to database! </button>
   </form>
 </template>
 
 <script>
 
 import firebaseApp from '../firebase.js'
-import {getFirestore} from "firebase/firestore";
-import {collection,addDoc} from "firebase/firestore";
+import {getFirestore, updateDoc,} from "firebase/firestore";
+import {collection,addDoc, getDoc, doc} from "firebase/firestore";
 const db = getFirestore(firebaseApp)
 
 export default {
@@ -109,12 +110,39 @@ export default {
 
                 }).then(console.log("done"))
 
-            }
+            },
+             count(chap){
+                getDoc(doc(db,"Questions","index")).then((doc)=>{
+                    let s = doc.data()
+                    let val =  s[String(chap)] + 1
+                    this.change(chap,val)
+                    console.log(chap)
+                    console.log(val)
+                })
 
-        }
+             },
+             change(chap, val){
+                 updateDoc(doc(db,"Questions","index"),{
+                     chap : val
+                 }).then(()=>{
+                     console.log("Score Added")
+                 })
+             }
+                
 
-    }
+    // }).then(() =>{
+    //         updateDoc(doc(db,"Questions","index"),{
+    //                 chap: 1
+                
+    //             })
+    //     console.log("updated")
+    // })
+                
 
+    //         }
+    },
+
+}
 
 </script>
 

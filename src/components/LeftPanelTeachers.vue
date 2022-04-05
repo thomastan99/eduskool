@@ -30,6 +30,10 @@
                 <img id="statisticsImage" src="../assets/statistics.png" alt="ScoreBoard Image">
                 <a id="statisticsText">Statistics</a>
             </div>
+            <div class="options" onclick="location.href='/AddQuestion'">
+                <img id="questionImage" src="../assets/question2.png" alt="Question Image">
+                <a id="questionsText">Add Questions</a>
+            </div>
         </div>
     </div>
     <router-view/>
@@ -66,6 +70,16 @@ export default {
     position: relative;
     width: 30%;
     right: 135px;
+}
+#questionImage{
+    position: relative;
+    width: 20%;
+    right: 135px
+}
+#questionsText{
+    position: relative;
+    left: 70px;
+    top: 25px;
 }
 
 #homeText {

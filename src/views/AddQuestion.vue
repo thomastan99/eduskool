@@ -1,18 +1,18 @@
 <template>
-<LeftPanel/>
+<LeftPanelTeachers/>
 <BlueBanner/>
   <AddQues/>
 </template>
 
 <script>
 import AddQues from '../components/AddQues.vue'
-import LeftPanel from '../components/LeftPanel.vue'
+import LeftPanelTeachers from '../components/LeftPanelTeachers.vue'
 import BlueBanner from '../components/BlueBanner.vue'
 export default {
     name: "Add Question",
     components:{
         AddQues,
-        LeftPanel,
+        LeftPanelTeachers,
         BlueBanner
     }
 

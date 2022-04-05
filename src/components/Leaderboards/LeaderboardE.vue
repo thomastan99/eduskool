@@ -44,15 +44,35 @@ data(){
            eng:0,
         total:0,
         pEng:0,
-        pTot:0
+        pTot:0,
+        role:"",
+
 
     }
     
 },
-methods(){
-    // async function getProg(){
-        
-    // }
+methods:{
+    score(role){
+        if(role.includes("5")){
+            getDoc(doc(db,"Questions", "index")).then((doc)=>{
+                let s = doc.data()
+                let eng = s.Primary5English
+                let all = s.Primary5Maths + s.Primary5English + s.Primary5Science
+                this.pEng = this.eng/eng * 100
+                this.pTot = this.total/all * 100
+            })
+        }
+        else{
+              getDoc(doc(db,"Questions", "index")).then((doc)=>{
+                let s = doc.data()
+                let eng= s.Primary6English
+                let all = s.Primary6Maths + s.Primary6English + s.Primary6Science
+                this.pEng = this.eng/eng * 100
+                this.pTot = this.total/all * 100
+            })
+        }
+    
+    }
 
 },
 
@@ -118,6 +138,7 @@ methods(){
                 console.log("total added")
             })
           
+          this.score(this.role)
 
   console.log(this.total)
             
