@@ -23,11 +23,18 @@ import StudentAnnouncemnets from '@/views/StudentAnnouncements.vue'
 import ViewStats from '@/views/ViewStats.vue'
 import EditProfile from '@/views/EditProfile.vue'
 import EditPic from '@/views/EditPic.vue'
+import AddQuestion from '@/views/AddQuestion.vue'
 
 const routes = [
     {   path: '/home',
     name: 'Homepage',
     component: Homepage
+    },
+    {
+        path: '/addQuestion',
+        name: "AddQuestion",
+        component: AddQuestion
+
     },
     {
         path: "/ready",

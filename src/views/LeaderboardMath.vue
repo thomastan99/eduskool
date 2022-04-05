@@ -9,6 +9,7 @@
    <div v-if= "sub==='sci'"><LeaderboardS/></div>
     <div v-if= "sub==='eng'"><LeaderboardE/></div>
 </div>
+
 </template>
 
 <script>
