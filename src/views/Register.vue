@@ -1,8 +1,13 @@
 <template>
   <div id="registration">
-    <div id="logo"><img src="../assets/elogo.png" onclick="location.href='/'" alt="EDU'skool logo"> 
-            <h2 id="about" onclick="location.href='/about'"> About Us </h2>
-            <h2 id="help" onclick="location.href='/help'"> Help </h2>
+    <div id="logo">
+      <img
+        src="../assets/elogo.png"
+        onclick="location.href='/'"
+        alt="EDU'skool logo"
+      />
+      <h2 id="about" onclick="location.href='/about'">About Us</h2>
+      <h2 id="help" onclick="location.href='/help'">Help</h2>
     </div>
     <form id="registrationForm" class="register" @submit.prevent="register">
       <h1 class="title">Register For EDU'skool</h1>
@@ -29,23 +34,14 @@
       <h1>Choose your role for eduSkool:</h1>
       <input
         type="radio"
-        id="teacher"
-        name="role"
-        value="Teacher"
-        v-model="register_form.role"
-        required
-      />
-      <label id="option" for="teacher">Teacher</label><br />
-      <input
-        type="radio"
         id="student"
         name="role"
         value="P5Student"
         v-model="register_form.role"
         required
       />
-      <label id= "option" for="student">Primary 5 Student</label> <br />
-       <input
+      <label id="option" for="student">Primary 5 Student</label> <br />
+      <input
         type="radio"
         id="student"
         name="role"
@@ -53,13 +49,28 @@
         v-model="register_form.role"
         required
       />
-      <label id= "option" for="student">Primary 6 Student</label> <br />
+      <label id="option" for="student">Primary 6 Student</label> <br />
+      <input
+        type="radio"
+        id="teacher"
+        name="role"
+        value="Teacher"
+        v-model="register_form.role"
+        required
+      />
+      <label id="option" for="teacher">Teacher</label><br />
+      <label id="des" for="authKey">Unique Authentication Key:</label>
+      <input type="password" id="authKey" v-model="register_form.authKey" required /><br />
       <input id="register" type="submit" value="Register" />
     </form>
     <div id="loginBtns">
-      <h1>Already have an account?</h1> 
-      <input id="register" type="submit" value="Login" onclick="location.href='/'"/>
-      
+      <h1>Already have an account?</h1>
+      <input
+        id="register"
+        type="submit"
+        value="Login"
+        onclick="location.href='/'"
+      />
     </div>
   </div>
 </template>
@@ -70,40 +81,34 @@ import { useStore } from "vuex";
 
 export default {
   name: "Registration",
-  components: {
-  },
+  components: {},
 
   setup() {
     const register_form = ref({});
     const store = useStore();
 
     const register = () => {
+      if (register_form.value.authKey != "1234") {
+        return alert("Wrong authentication key")
+      }
       if (
         register_form.value.password != register_form.value.passwordConfirmation
       ) {
         return alert("Passwords don't match");
-      } else if (
-        register_form.value.password.length < 6
-      ) {
-        return alert("Passwords have to be at least 6 characters long")
+      } else if (register_form.value.password.length < 6) {
+        return alert("Passwords have to be at least 6 characters long");
       } else if (
         register_form.value.role != "P5Student" &&
         register_form.value.role != "P6Student" &&
         register_form.value.role != "Teacher"
       ) {
-        return alert("Please choose a role")
-      } else if (
-        register_form.value.fname == null
-      ) {
-        return alert("Please enter a name")
-      } else if (
-        register_form.value.lname == null
-      ) {
-        return alert("Please enter a name")
-      } else if (
-        register_form.value.email == null
-      ) {
-        return alert("Please enter a valid email")
+        return alert("Please choose a role");
+      } else if (register_form.value.fname == null) {
+        return alert("Please enter a name");
+      } else if (register_form.value.lname == null) {
+        return alert("Please enter a name");
+      } else if (register_form.value.email == null) {
+        return alert("Please enter a valid email");
       } else {
         store.dispatch("register", register_form.value);
       }
@@ -118,37 +123,43 @@ export default {
 </script>
 
 <style scoped>
-#about:hover, #help:hover, img:hover {
-  cursor:pointer;
+#about:hover,
+#help:hover,
+img:hover {
+  cursor: pointer;
 }
 @media all and (max-width: 900px) {
-    #about, #help {
-        display:none;
-        visibility: hidden;
-    }
+  #about,
+  #help {
+    display: none;
+    visibility: hidden;
+  }
 }
 img {
-    position: relative;
-    left: 80px;
+  position: relative;
+  left: 80px;
 }
 #about {
-  top:10px;
-  float:right;
+  top: 10px;
+  float: right;
   position: relative;
   right: 200px;
   color: black;
-
 }
 #help {
   top: 9px;
   position: relative;
-  float:right;
+  float: right;
   color: black;
 }
 #logo {
   background-color: #00bcd4;
 }
-#fname, #lname, #password-confirmation, #password, #email {
+#fname,
+#lname,
+#password-confirmation,
+#password,
+#email {
   font-size: 18px;
 }
 #des {
@@ -167,7 +178,8 @@ h1 {
   margin-left: 20px;
   margin-top: 10px;
 }
-#register:hover, #option:hover {
+#register:hover,
+#option:hover {
   cursor: pointer;
 }
 #loginBtn {
