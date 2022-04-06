@@ -89,9 +89,9 @@ methods:{
                     getDoc(doc(db,"Students",user.email)).then((x) =>{
             let s = x.data()
             this.sci = s.wk_sci
-            this.pSci = s.wk_sci
             this.total = s.wk_eng + s.wk_math + s.wk_sci
-            this.pTot = this.total
+            this.role = s.role
+            this.score(this.role)
 
             }).then(()=>{
                 console.log("total added")
@@ -141,7 +141,7 @@ methods:{
           
 
   console.log(this.total)
-  this.score(this.role)
+  
         
 
 

@@ -3,7 +3,7 @@
     <div id="ques">
         <h1>Full Question: </h1><br><h3>{{this.question}}</h3>
     </div>
-  <form id="forms" onsubmit = submit() >
+  <form id="forms" @submit.prevent >
     <label for="Question">Choose a Subject</label>
     <select id="sub" name="sub" v-on:change= update()>
     <option value="Chapter">Primary5English</option>
@@ -25,7 +25,7 @@
         <option>Choose the Question to delete </option>
     </select>
 <br><br>
-<button v-on:click = count(this.subject)> Delete</button>
+<button v-on:click = count(this.subject);submit()> Delete</button>
   </form>
 </div>
 </template>
@@ -110,7 +110,7 @@ export default {
             var y = document.getElementById("select").options;
             console.log(y[x].text)
             this.question  = y[x].text
-            var ref = y[x].index
+            var ref = y[x].index -1
             console.log(ref)
             console.log(this.ids[ref])
             this.toDel = this.ids[ref]
@@ -127,7 +127,7 @@ export default {
             var y = document.getElementById("select").options;
             console.log(y[x].text)
             this.question  = y[x].text
-            var ref = y[x].index
+            var ref = y[x].index -1
             console.log(ref)
             console.log(this.ids[ref])
             this.toDel = this.ids[ref]
@@ -136,7 +136,7 @@ export default {
             console.log(this.chapter)
             console.log(this.ids[ref])
             deleteDoc(doc(db,"Questions", String(this.subject), String(this.chapter),String(this.ids[ref]))).then(console.log("deleted"))
-
+            this.update()
             },
              count(chap){
                 getDoc(doc(db,"Questions","index")).then((doc)=>{

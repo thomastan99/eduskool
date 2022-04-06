@@ -20,6 +20,7 @@
 <div id="test2" class = "prog">
     <circle-progress id = "progress" :show-percent=true :percent='this.pTot' :transition=20 />
 <p id = "subject"> % Overall Progress</p>
+
 </div>
   </div>
 </template>
@@ -60,6 +61,9 @@ methods:{
                 let all = s.Primary5Maths + s.Primary5English + s.Primary5Science
                 this.pEng = this.eng/eng * 100
                 this.pTot = this.total/all * 100
+                console.log(all)
+                console.log(this.total)
+                console.log(this.pTot)
             })
         }
         else{
@@ -126,22 +130,27 @@ methods:{
         }
         getScores()
 
+ 
+          
+          
+
+  console.log(this.total)
+            
+        },
+        beforeMount(){
             getDoc(doc(db,"Students",this.user)).then((x) =>{
             let s = x.data()
 
             this.eng = s.wk_eng
-            this.pEng = s.wk_eng/35 * 100
+            this.pEng = s.wk_eng
             this.total = s.wk_eng + s.wk_math + s.wk_sci
-            this.pTot = this.total/105 * 100
+            this.role = s.role
+            this.score(this.role)
 
             }).then(()=>{
                 console.log("total added")
             })
-          
-          this.score(this.role)
 
-  console.log(this.total)
-            
         }
 
       
