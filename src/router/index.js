@@ -26,11 +26,25 @@ import EditPic from '@/views/EditPic.vue'
 import Help from '@/views/Help.vue'
 import About from '@/views/About.vue'
 import ResetPassword from '@/views/ResetPassword.vue'
+import AddQuestion from '@/views/AddQuestion.vue'
+import DelQuestion from "@/views/DelQuestion.vue"
 
 const routes = [
     {   path: '/home',
     name: 'Homepage',
     component: Homepage
+    },
+    {
+        path: '/addQuestion',
+        name: "AddQuestion",
+        component: AddQuestion
+
+    },
+    {
+        path:'/delQuestion',
+        name: "DelQuestion",
+        component: DelQuestion
+
     },
     {
         path: "/ready",

@@ -48,12 +48,38 @@ data(){
         sci:0,
         total:0,
         pSci:0,
-        pTot:0
+        pTot:0,
+        role:'',
 
 
 
     }
     
+},
+methods:{
+    score(role){
+        if(role.includes("5")){
+            getDoc(doc(db,"Questions", "index")).then((doc)=>{
+                let s = doc.data()
+                let sci = s.Primary5Science
+                let all = s.Primary5Maths + s.Primary5English + s.Primary5Science
+                this.pSci = this.sci/sci * 100
+                this.pTot = this.total/all * 100
+            })
+        }
+        else{
+              getDoc(doc(db,"Questions", "index")).then((doc)=>{
+                let s = doc.data()
+                let sci = s.Primary6Science
+                let all = s.Primary6Maths + s.Primary6English + s.Primary6Science
+                this.pSci = this.sci/sci * 100
+                this.pTot = this.total/all * 100
+            })
+        }
+        console.log("doneeee")
+    
+    }
+
 },
     mounted() {
             const auth = getAuth();
@@ -63,9 +89,9 @@ data(){
                     getDoc(doc(db,"Students",user.email)).then((x) =>{
             let s = x.data()
             this.sci = s.wk_sci
-            this.pSci = s.wk_sci/35 * 100
+            this.pSci = s.wk_sci
             this.total = s.wk_eng + s.wk_math + s.wk_sci
-            this.pTot = this.total/105 * 100
+            this.pTot = this.total
 
             }).then(()=>{
                 console.log("total added")
@@ -115,6 +141,7 @@ data(){
           
 
   console.log(this.total)
+  this.score(this.role)
         
 
 

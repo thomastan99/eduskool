@@ -16,6 +16,7 @@
 <div id="test2" class = "prog">
     <circle-progress id = "progress" :show-percent=true :percent='this.pTot'/>
 <p id = "subject"> % Overall Progress</p>
+
 </div>
   </div>
 </template>
@@ -38,10 +39,37 @@ export default {
         math:0,
         total:0,
         pMath:0,
-        pTot:0
+        pTot:0,
+        questions:0,
+        role:"",
 
     }
     
+},
+methods:{
+    score(role){
+        if(role.includes("5")){
+            getDoc(doc(db,"Questions", "index")).then((doc)=>{
+                let s = doc.data()
+                let math = s.Primary5Maths
+                let all = s.Primary5Maths + s.Primary5English + s.Primary5Science
+                this.pMath = this.math/math * 100
+                this.pTot = this.total/all * 100
+            })
+        }
+        else{
+              getDoc(doc(db,"Questions", "index")).then((doc)=>{
+                let s = doc.data()
+                let math = s.Primary6Maths
+                let all = s.Primary6Maths + s.Primary6English + s.Primary6Science
+                this.pMath = this.math/math * 100
+                this.pTot = this.total/all * 100
+                console.log(this.pMath)
+            })
+        }
+    
+    }
+
 },
 
     mounted() {
@@ -82,19 +110,27 @@ export default {
             }
         }
            getScores()
+           
 
             getDoc(doc(db,"Students",this.user)).then((x) =>{
             let s = x.data()
+            
             this.math = s.wk_math
             this.pMath = s.wk_math/35 * 100
             this.total = s.wk_eng + s.wk_math + s.wk_sci
             this.pTot = this.total/105 * 100
-
+            this.role = s.role
+            console.log(s.role)
 
             }).then(()=>{
                 console.log("total added")
             })
-          
+            
+            
+
+
+
+          this.score(this.role)
 
   console.log(this.total)
         

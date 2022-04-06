@@ -10,6 +10,7 @@
     <div v-if= "sub==='eng'"><LeaderboardE/></div>
 </div>
 <Footer/>
+
 </template>
 
 <script>
