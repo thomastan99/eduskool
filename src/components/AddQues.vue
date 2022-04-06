@@ -1,6 +1,6 @@
 <template>
 <div id="main">
-    <form v-on:change= update() onsubmit = submit() >
+    <form v-on:change= update() @submit.prevent  id="form">
     <label id="dog" for="Question">Choose a Subject</label>
     <select id="sub" name="sub">
     <option value="Chapter">Primary5English</option>
@@ -42,7 +42,7 @@
         <option>Choose the correct answer</option>
     </select>
     <br><br>
-    <input id="button" type="submit" value = "Add to Database!" v-on:click= count(this.subject)>
+    <input id="button" type="submit" value = "Add to Database!" v-on:click= count(this.subject);submit() >
     </form>
 </div>
 </template>
@@ -117,6 +117,16 @@ export default {
                     hint: this.hint,
 
                 }).then(console.log("done"))
+                document.getElementById("form").reset()
+                const myNode = document.getElementById("select");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.lastChild);
+            }
+                            var placeholder = "Choose the correct answer";
+                var ell = document.createElement("option");
+                ell.textContent= placeholder
+                ell.value = placeholder
+            myNode.appendChild(ell)
 
             },
              count(chap){
