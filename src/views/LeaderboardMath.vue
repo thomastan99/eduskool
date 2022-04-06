@@ -9,12 +9,10 @@
    <div v-if= "sub==='sci'"><LeaderboardS/></div>
     <div v-if= "sub==='eng'"><LeaderboardE/></div>
 </div>
-<Footer/>
-
 </template>
 
 <script>
-import Footer from "@/components/Footer.vue"
+
 import LeftPanel from '../components/LeftPanel.vue'
 import BlueBanner from '../components/BlueBanner.vue'
 import LeaderboardM from '../components/Leaderboards/LeaderboardM.vue'
@@ -30,7 +28,7 @@ export default {
         LeaderboardE,
         LeftPanel,
         BlueBanner,
-        Footer
+
     },
     data(){
         return{
