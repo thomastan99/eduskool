@@ -1,6 +1,6 @@
 <template>
   <form onsubmit = submit() >
-<label for="Question">Choose a Subject</label>
+<label for="Question">Choose a Subject  </label>
 <select id="sub" name="sub" v-on:change= update()>
   <option value="Chapter">Primary5English</option>
   <option value="saab">Primary5Maths</option>
@@ -9,7 +9,7 @@
 <option value="saab">Primary6Maths</option>
   <option value="fiat">Primary6Science</option>
 </select> <br> <br>
-<label for="Question">Choose a Chapter</label>
+<label for="Question">Choose a Chapter  </label>
 <select id="chap" name="chap" v-on:change= update()>
   <option value="Chapter">Chap1</option>
   <option value="Chapter">Chap2</option>
@@ -17,6 +17,7 @@
   <option value="Chapter">Chap4</option>
   <option value="Chapter">Chap5</option>
 </select> <br> <br>
+<label for="select">Choose a Question   </label>
 <select v-on:change= select() required id="select">
     <option>Choose the Question to delete! </option>
 
