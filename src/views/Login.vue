@@ -19,7 +19,7 @@
         id="password"
         v-model="login_form.password"
       /><br />
-      <input type="submit" value="Login" />
+      <input id="loginbutton" type="submit" value="Login" />
     </form>
     <a href="/resetPassword"> Forgot your password? </a>
     <a href="/register"> Register here! </a>
@@ -91,6 +91,20 @@ img {
 }
 #logo {
   background-color: #00bcd4;
+}
+#loginbutton:hover {
+    background-color: #fb8332;
+}
+#loginbutton {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.1s;
+    font-size: 18px;
 }
 input {
   margin-right: 5px;

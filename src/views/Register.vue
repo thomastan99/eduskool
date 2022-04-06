@@ -162,8 +162,19 @@ img {
 h1 {
   font-size: 20px;
 }
+#register:hover {
+    background-color: #fb8332;
+}
 #register {
-  font-size: 15px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.1s;
+    font-size: 18px;
 }
 #option {
   font-size: 16px;
@@ -171,7 +182,7 @@ h1 {
   margin-left: 20px;
   margin-top: 10px;
 }
-#register:hover, #option:hover {
+#option:hover {
   cursor: pointer;
 }
 #loginBtn {
