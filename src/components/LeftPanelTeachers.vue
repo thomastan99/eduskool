@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <div id="personal">
+        <div id="personal" onclick="location.href='/profile'">
             <div id="photo"><img src="../assets/photo.png" alt="Profile Pic"></div>
             <div id="overview">
                 <h4 id="details">{{user.displayName}}</h4>
@@ -19,11 +19,11 @@
 
             <div class="options" onclick="location.href='/teacherscs'">
                 <img id="classesImage" src="../assets/classes.png" alt="Classes Image">
-                <a id="classesText">Classes & Students</a>
+                <a id="classesText">Classes</a>
             </div>
-            <div class="options" onclick="location.href='/teachersscoreboard'">
+            <div class="options" onclick="location.href='/teachersleaderboard'">
                 <img id="scoreboardImage" src="../assets/leaderboard.png" alt="ScoreBoard Image">
-                <a id="scoreboardText">ScoreBoard</a>
+                <a id="scoreboardText">Leaderboard</a>
             </div>
 
             <div class="options" onclick="location.href='/viewstats'">
@@ -31,12 +31,12 @@
                 <a id="statisticsText">Statistics</a>
             </div>
             <div class="options" onclick="location.href='/AddQuestion'">
-                <img id="questionImage" src="../assets/question2.png" alt="Question Image">
-                <a id="questionsText">Add Questions</a>
+                <img id="addImage" src="../assets/question2.png" alt="Question Image">
+                <a id="addText">Add Questions</a>
             </div>
                         <div class="options" onclick="location.href='/DelQuestion'">
                 <img id="deleteImage" src="../assets/delete.png" alt="Question Image">
-                <a id="questionsText">Delete Questions</a>
+                <a id="deleteText">Delete Questions</a>
             </div>
         </div>
     </div>
@@ -66,30 +66,36 @@ export default {
 <style scoped>
 #scoreboardText {
     position: relative;
-    left: 71px;
+    left: 72px;
     top: 25px;
 }
 
 #scoreboardImage {
     position: relative;
     width: 30%;
-    right: 135px;
+    right: 140px;
 }
-#questionImage{
+#addImage{
     position: relative;
-    width: 20%;
-    right: 135px
+    width: 13%;
+    right: 151px;
+    top:1px;
 }
-#questionsText{
+#addText{
     position: relative;
     left: 70px;
-    top: 25px;
+    top: 15px;
+}
+#deleteText {
+    position: relative;
+    left: 70px;
+    top: 10px;
 }
 #deleteImage{
     position: relative;
-    width: 20%;
-    right: 170px
-
+    width: 19%;
+    right: 161px;
+    top: 3px;
 }
 
 #homeText {
@@ -101,7 +107,6 @@ export default {
 #homeImage {
     position: relative;
     width:23%;
-    height: 5%;
     bottom: 3px;
     right:140px;
 }
@@ -118,48 +123,43 @@ export default {
 }
 #classesText {
     position: relative;
-    top:20px;
-    left:70px;
+    top: 13px;
+    left: 70px;
 }
  
 #classesImage {
-    width: 30%;
+    width: 25%;
     position: relative;
-    right: 168px;
+    right: 118px;
 
 }
 
 #statisticsImage {
-    width: 15%;
+    width: 13%;
     position: relative;
-    right:125px;
+    right:126px;
 }
 
 #statisticsText {
     position: relative;
     top:12px;
-    left:71px;
+    left:72px;
 }
 
 #photo {
-    margin-top:8%;
     float: left;
-    display: inline-block;
 }
 #personal {
     cursor:pointer;
 }
 #overview {
-    float: left;
-    display: inline-block;
-    color: #00bcd4;
+    color: black;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     text-align: left;
     line-height: 1.5;
 }
 
 #details {
-    width:100%;
     position: relative;
     left: 10px;
     top: 25px;
@@ -170,32 +170,35 @@ export default {
 }
 #main {
     position: fixed;
-    margin-top:35px;
-    margin-left:20px;
+    margin-top:60px;
+    background-color: #bfd6d8;
+    box-shadow: 0px 2px 2px 0px;
+    border-radius: 8px;
+    overflow-y: scroll;
 }
 
 #menu {
     float: left;
     background-color: #ececec;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    max-height: 430px;
+    max-height: 800px;
     width: 250px;
     margin-top:10px;
 }
 
 .options {
     border:1px solid grey;
-    border-radius: 5px;
-    padding: 10px 0px 5px 0px;
+    border-radius: 1px;
+    padding: 5px 0px 5px 0px;
 }
 
 .options:hover {
     cursor: pointer;
-    background-color: #d6e0e2;
+    background-color: #fb8332;
 }
 
 a {
-    color: #6cc1cc;
+    color: #00bcd4;
     font-size: 19px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-weight: bold;

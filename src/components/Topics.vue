@@ -6,18 +6,18 @@
 
         <div id="maths">
             <router-link to="p5maths">
-                <img src="../assets/maths.png"  alt="Maths" width="800" height="130">
+                <img src="../assets/maths.png"  alt="Maths" width="750" height="130">
                 </router-link>
         </div>
 
         <div id="english">
             <router-link to="p5english">
-                <img src="../assets/english.png" alt="English" width="800" height="130">
+                <img src="../assets/english.png" alt="English" width="750" height="130">
             </router-link>
         </div>
         <div id="science">
             <router-link to="p5science">
-                <img src="../assets/science.png" alt="Science" width="800" height="130">
+                <img src="../assets/science.png" alt="Science" width="750" height="130">
             </router-link>
         </div>
     </div>
@@ -28,18 +28,18 @@
 
         <div id="maths">
             <router-link to="p6maths">
-                <img src="../assets/maths.png"  alt="Maths">
+                 <img src="../assets/maths.png"  alt="Maths" width="750" height="130">
             </router-link>
         </div>
 
         <div id="english">
             <router-link to="p6english">
-                <img src="../assets/english.png" alt="English">
+                <img src="../assets/english.png" alt="English" width="750" height="130">
             </router-link>
         </div>
         <div id="science">
             <router-link to="p6science">
-                <img src="../assets/science.png" alt="Science">
+                <img src="../assets/science.png" alt="Science" width="750" height="130">
             </router-link>
         </div>
     </div>
@@ -87,15 +87,13 @@ img {
 #main {
     display:inline-block;
     margin-left:150px;
-    margin-top: 40px;
+    margin-top: 60px;
     text-align: center;
 }
 #pageTitle {
     display: inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    color: #2c3e50;
-    font-size:23px;
-    margin-left:50px;
+    margin-left:60px;
     width: max-content;
     max-height: 90px;
 }

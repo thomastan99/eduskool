@@ -1,6 +1,6 @@
 <template>
 <div id="main">
-<h1> English Leaderboard </h1>
+<h1 id="title"> English Leaderboard </h1>
   <table id = "table">
       <tr>
           <th> Ranking </th>
@@ -171,14 +171,17 @@ methods:{
 </script>
 
 <style scoped>
+#title {
+    margin-right: 220px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
 table{
     float: left;
     width: 70%;
     align-items: center;
 }
 #main {
-    top:50px;
-    left:100px;
+    margin-left: 160px;
     
 }
 #prog{

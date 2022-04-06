@@ -1,7 +1,7 @@
 <template>
 <BlueBanner/>
-<div class= "a">
 <LeftPanel/>
+<div id="main" class= "a">
 <br><br>
     <button @click="change"> Math </button> <button @click="change2"> Sci </button>  <button @click="change3"> Eng </button>
     
@@ -9,10 +9,10 @@
    <div v-if= "sub==='sci'"><LeaderboardS/></div>
     <div v-if= "sub==='eng'"><LeaderboardE/></div>
 </div>
-
 </template>
 
 <script>
+
 import LeftPanel from '../components/LeftPanel.vue'
 import BlueBanner from '../components/BlueBanner.vue'
 import LeaderboardM from '../components/Leaderboards/LeaderboardM.vue'
@@ -27,7 +27,8 @@ export default {
         LeaderboardS,
         LeaderboardE,
         LeftPanel,
-        BlueBanner
+        BlueBanner,
+
     },
     data(){
         return{
@@ -60,8 +61,11 @@ export default {
 </script>
 
 <style scoped>
+#main {
+  margin-top: 40px;
+  margin-left: 280px;
 
-
+}
 button {
   align-items: center;
   background-clip: padding-box;
@@ -81,7 +85,6 @@ button {
   margin: 0;
   min-height: 3rem;
   padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
   text-decoration: none;
   transition: all 250ms;
   user-select: none;
@@ -89,6 +92,7 @@ button {
   touch-action: manipulation;
   vertical-align: baseline;
   width: auto;
+  margin-right: 50px;
 }
 
 button:hover,

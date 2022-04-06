@@ -2,9 +2,11 @@
     <BlueBanner/>
     <LeftPanelTeachers/>
     <Charts/>
+    <Footer/>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue"
 import BlueBanner from '@/components/BlueBanner.vue'
 import LeftPanelTeachers from '@/components/LeftPanelTeachers.vue'
 import Charts from '@/components/Charts.vue'
@@ -14,7 +16,8 @@ export default {
   components: {
     BlueBanner,
     LeftPanelTeachers,
-    Charts
+    Charts,
+    Footer
   }
 }
 

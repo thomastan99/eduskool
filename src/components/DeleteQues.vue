@@ -1,34 +1,33 @@
 <template>
-  <form onsubmit = submit() >
-<label for="Question">Choose a Subject  </label>
-<select id="sub" name="sub" v-on:change= update()>
-  <option value="Chapter">Primary5English</option>
-  <option value="saab">Primary5Maths</option>
-  <option value="fiat">Primary5Science</option>
-  <option value="audi">Primary6English</option>
-<option value="saab">Primary6Maths</option>
-  <option value="fiat">Primary6Science</option>
-</select> <br> <br>
-<label for="Question">Choose a Chapter  </label>
-<select id="chap" name="chap" v-on:change= update()>
-  <option value="Chapter">Chap1</option>
-  <option value="Chapter">Chap2</option>
-  <option value="Chapter">Chap3</option>
-  <option value="Chapter">Chap4</option>
-  <option value="Chapter">Chap5</option>
-</select> <br> <br>
-<label for="select">Choose a Question   </label>
-<select v-on:change= select() required id="select">
-    <option>Choose the Question to delete! </option>
-
-</select>
+<div id="main">
+    <div id="ques">
+        <h1>Full Question: </h1><br><h3>{{this.question}}</h3>
+    </div>
+  <form id="forms" onsubmit = submit() >
+    <label for="Question">Choose a Subject</label>
+    <select id="sub" name="sub" v-on:change= update()>
+    <option value="Chapter">Primary5English</option>
+    <option value="saab">Primary5Maths</option>
+    <option value="fiat">Primary5Science</option>
+    <option value="audi">Primary6English</option>
+    <option value="saab">Primary6Maths </option>
+    <option value="fiat">Primary6Science</option>
+    </select> <br> <br>
+    <label for="Question">Choose a Chapter</label>
+    <select id="chap" name="chap" v-on:change= update()>
+    <option value="Chapter">Chap1</option>
+    <option value="Chapter">Chap2</option>
+    <option value="Chapter">Chap3</option>
+    <option value="Chapter">Chap4</option>
+    <option value="Chapter">Chap5</option>
+    </select> <br> <br>
+    <select v-on:change= select() required id="select">
+        <option>Choose the Question to delete </option>
+    </select>
 <br><br>
-<button v-on:click = count(this.subject)> Delete !</button>
+<button v-on:click = count(this.subject)> Delete</button>
   </form>
-      <div id="ques">
-          <h1>Full Question: </h1><br>
-  <h3>{{this.question}}</h3>
-  </div>
+</div>
 </template>
 
 <script>
@@ -178,17 +177,48 @@ export default {
 </script>
 
 <style scoped>
+button:hover {
+    background-color: #fb8332;
+}
+button {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.1s;
+    font-size: 18px;
+}
+#forms {
+    margin-top: 20px;
+    margin-left: 300px;
+}
+label {
+    font-weight:bold;
+}
+option {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+#main {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
 form{
     max-width: 70%;
 }
 
 #ques{
-    margin-left: 400px;
-    width: 50%;
+    border: 1px black solid;
+    margin-left: 320px;
+    width: 70%;
 }
 
-select{
-    width:150px;
+select {
+    text-align: center;
+    padding: 2px 0px 2px 0px;
+    margin: 0px 0px 0px 20px;
+    width: 200px;
 }
 select option{
     width:120px;

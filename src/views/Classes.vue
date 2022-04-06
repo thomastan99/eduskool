@@ -1,8 +1,8 @@
 <template>
     <BlueBanner/>
     <LeftPanel/>
-    <div id="pageLoader" v-if="loading"> <Preloader color="grey" scale = "0.8"/> </div>
-    <div id="main" v-if="!loading">
+    <div class="classesPage" id="pageLoader" v-if="loading"> <Preloader color="grey" scale = "0.8"/> </div>
+    <div class="classesPage" id="main" v-if="!loading">
         <div id="pageTitle"><h1> Classes </h1></div>
         <div id="legend">
             <h3><u> Legend </u></h3>
@@ -132,7 +132,6 @@
                 <td v-if="satSixToEightStatus && userrole == 'P6Student'" class="classoptions" id="sat4-6" @click="isOpen=!isOpen; updateSatSixToEight()">P6 English Optional Class Size: {{p6englishoptionalsize}}</td>
                 <td v-if="userrole != 'P6Student'" class="classoptionsOccupied" id="sat6-8">P6 English Optional Class Size: {{p6englishoptionalsize}}</td>
                 <td v-if="!satSixToEightStatus" class="classoptionsSelected" id="sat6-8">P6 English Optional Class Size: {{p6englishoptionalsize}}</td>
-                <td></td>
             </tr>
         </table>
         <transition name="fade" appear>
@@ -149,6 +148,7 @@
             </div>
         </transition>
     </div>
+    <div id="footer" v-if="!loading"><Footer/></div>
 </template>
 
 <script>
@@ -160,6 +160,7 @@ import {getDoc, updateDoc, doc, arrayUnion, increment, collection, getDocs} from
 import Preloader from '../components/Preloader.vue'
 import { ref } from 'vue';
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import Footer from "@/components/Footer.vue"
 
 const db = getFirestore(firebaseApp)
 var satTenToTwelveStatus = ref(false); var sunTenToTwelveStatus = ref(false); 
@@ -471,6 +472,7 @@ name: 'Classes',
     LeftPanel,
     BlueBanner,
     Preloader,
+    Footer,
   },
 
   mounted() {
@@ -583,18 +585,17 @@ name: 'Classes',
 #timeslot {
     font-size: 15px;
     font-weight: bold;
+    width: max-content;
+    border-left: 1px black solid;
 }
 #pageTitle {
-    display: inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    color: #2c3e50;
-    font-size:23px;
-    margin-left: 150px;
+    margin-right: 50px;
 }
 #legend {
-    float: right;
     display: inline-block;
     margin-right: 20px;
+    margin-top: -30px;
 }
 #lightgrey {
     background-color: #d6e0e2;
@@ -664,13 +665,14 @@ th{
     text-align: center;
     font-size: 15px;
     border-bottom: 1px solid black;
+
 }
 td {
     font-size: 13px;
     border-bottom: 1px solid;
+    border-right: 1px solid black;
     text-align:center;
-    padding: 30px 20px 30px 20px;
-
+    padding: 30px 60px 30px 60px;
 }
 
 a {

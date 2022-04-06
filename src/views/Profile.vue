@@ -1,37 +1,43 @@
 <template>
   <BlueBanner/>
-  <LeftPanel/>
-  <div id = 'header'>
-    <a href = './editPic'><img id="profilePic" alt="Click to add a Profile Picture"></a>
-  <h1>Profile Details <a href='/editprofile'><img id = "editlogo" src = "../assets/edit.png"></a> </h1>
-  </div>
-  <div id="userDetails">
-    <div id="details">
-      <p><strong>Name:</strong> {{ user.displayName }}</p>
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <p><span id = "wk_eng"></span></p>
-      <p><span id = "wk_math"></span></p>
-      <p><span id = "wk_sci"></span></p>
+  <div v-if="userrole == 'Teacher'"><LeftPanelTeachers/></div>
+  <div v-if="userrole == 'P5Student' || userrole == 'P6Student'"><LeftPanelTeachers/></div>
+  <div id="main">
+    <div id = 'header'>
+      <a href = './editPic'><img id="profilePic" alt="Click to add a Profile Picture"></a>
+    <h1>Profile Details <a href='/editprofile'><img id = "editlogo" src = "../assets/edit.png"></a> </h1>
     </div>
-</div>
-
+    <div id="userDetails">
+      <div id="details">
+        <p><strong>Name:</strong> {{ user.displayName }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><span id = "wk_eng"></span></p>
+        <p><span id = "wk_math"></span></p>
+        <p><span id = "wk_sci"></span></p>
+      </div>
+  </div>
+  </div>
+  <Footer/>
 </template>
 
 <script>
+import LeftPanelTeachers from "@/components/LeftPanelTeachers.vue"
+import Footer from "@/components/Footer.vue"
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import BlueBanner from "../components/BlueBanner.vue";
-// import LeftPanel from "../components/LeftPanel.vue";
 import firebaseApp from "../firebase.js"
 import { getFirestore } from "firebase/firestore";
 import { getDoc, doc } from "firebase/firestore";
+import { ref } from 'vue';
 const db = getFirestore(firebaseApp);
-
+var userrole = ref("");
 
 export default {
   name: "Profile",
   components: {
     BlueBanner,
-    // LeftPanel
+    Footer,
+    LeftPanelTeachers
   },
 
   data() {
@@ -41,6 +47,7 @@ export default {
       wk_sci: 0,
       wk_math: 0,
       image: null,
+      userrole: userrole
     };
   },
 
@@ -83,6 +90,7 @@ export default {
       let docSnap = await getDoc(docRef);
       let role = docSnap.data().role;
       if (role == "P5Student" || role == "P6Student") {
+        userrole.value = role;
         let docRef = doc(db, "Students", user.email);
         let docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -95,6 +103,7 @@ export default {
             console.log("no such document")
         }
       } else {
+          userrole.value = "Teacher"
           return null;
       }
 
@@ -106,8 +115,9 @@ export default {
 </script>
 
 <style scoped>
-#header {
-  display: inline
+#main {
+  margin-left: 200px;
+  margin-top: 80px;
 }
 #userDetails {
   text-align: center;
@@ -115,20 +125,13 @@ export default {
   outline-style: solid;
   outline-color: grey;
   outline-width: medium;
-  width: 50%;
+  width: 650px;
   margin: 0 auto;
 }
 
 #profilePic {
   width: 400px;
   height: auto;
-}
-
-
-#details {
-  width: 38%;
-  margin: auto;
-  text-align: left;
 }
 
 h1 {
@@ -144,9 +147,9 @@ h1 {
 
 p {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 18px;
   color: black;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  text-align: center;
 }
 </style>

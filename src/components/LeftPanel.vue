@@ -1,14 +1,14 @@
 <template>
     <div id="main">
         <div id="personal" onclick="location.href='/profile'">
-            <div id="photo"> <img src="../assets/photo.png" alt="Profile Pic">
+            <div id="photo"> <img id="profilePic" src="../assets/photo.png" alt="Profile Pic">
             </div>
             <div id="overview">
                 <h4 id="details">{{ user.displayName }} </h4>
             </div>
         </div>
         <div id="menu">
-            <div class="options" onclick="location.href='/'">
+            <div class="options" onclick="location.href='/studentsannouncements'">
                 <img id="announcementImage" src="../assets/announcement.png" alt="Announcement Image">
                 <a id="announcementText">Announcements</a>
             </div>
@@ -253,7 +253,7 @@ export default {
 #overview {
     float: left;
     display: inline-block;
-    color: #00bcd4;
+    color: black;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     text-align: left;
     line-height: 1.5;
@@ -267,13 +267,17 @@ export default {
 }
 
 #main {
-  position: fixed;
-  margin-top: 35px;
-  margin-left: 20px;
+    position: fixed;
+    margin-top:60px;
+    background-color: #bfd6d8;
+    box-shadow: 0px 2px 2px 0px;
+    border-radius: 8px;
+    overflow-y: scroll;
 }
 
 #profilePic {
   max-width: 8em;
+  border-radius: 50%;
 }
 
 #menu {
@@ -293,11 +297,11 @@ export default {
 
 .options:hover {
   cursor: pointer;
-  background-color: #d6e0e2;
+  background-color: #fb8332;
 }
 
 a {
-  color: #6cc1cc;
+  color: #00bcd4;
   font-size: 19px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-weight: bold;

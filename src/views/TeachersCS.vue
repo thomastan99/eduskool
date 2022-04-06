@@ -4,125 +4,41 @@
 <div id="root">
   <div id="cs"><h1 style="font-size: 40px">Classes & Students</h1></div>
   <div id="accordions">
-  <Accordion class="level1" title="English5A">
+  <Accordion class="level1" title="Maths5A">
     <br>
-    <table id="English5A">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
+    <table id="Maths5A" class="noscopetable">
+      <tr class="noscopetr">
+        <th class="noscopeth">Name</th>
+        <th class="noscopeth">Chapter 1 Score</th>
+        <th class="noscopeth">Chapter 2 Score</th>
+        <th class="noscopeth">Chapter 3 Score</th>
       </tr>
     </table>
-    <!-- <Accordion class="level2" title="Tay Chung Tak">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion> -->
-    <!-- <Accordion class="level2" title="Nasry">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-    <Accordion class="level2" title="Chase Ng">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion> -->
   </Accordion><br><br>
-  <!-- <Accordion class="level1" title="Math 3">
-    <Accordion class="level2" title="Tay Chung Tak">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-    <Accordion class="level2" title="Nasry">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-    <Accordion class="level2" title="Chase Ng">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-  </Accordion>
-  <Accordion class="level1" title="Science 2">
-    <Accordion class="level2" title="Tay Chung Tak">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-    <Accordion class="level2" title="Nasry">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-    <Accordion class="level2" title="Chase Ng">
-      Chapter 1 Score - 95
-      <br> Chapter 2 Score - 92
-      <br> Chapter 3 Score - 91
-    </Accordion>
-  </Accordion> -->
-  <Accordion class="level1" title="English5B">
+  <Accordion class="level1" title="Science5A">
     <br>
-    <table id="English5B">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
-      </tr>
-    </table>
-    </Accordion><br><br>
-    <Accordion class="level1" title="Math5A">
-      <br>
-    <table id="Math5A">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
-      </tr>
-    </table>
-    </Accordion><br><br>
-    <Accordion class="level1" title="Math5B">
-      <br>
-    <table id="Math5B">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
-      </tr>
-    </table>
-    </Accordion><br><br>
-    <Accordion class="level1" title="Science5A">
-      <br>
     <table id="Science5A">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
+      <tr class="noscopetr">
+        <th class="noscopeth">Name</th>
+        <th class="noscopeth">Chapter 1 Score</th>
+        <th class="noscopeth">Chapter 2 Score</th>
+        <th class="noscopeth">Chapter 3 Score</th>
       </tr>
     </table>
     </Accordion><br><br>
-    <Accordion class="level1" title="Science5B">
+    <Accordion class="level1" title="Science6B">
       <br>
-    <table id="Science5B">
-      <tr>
-        <th>Name</th>
-        <th>Chapter 1 Score</th>
-        <th>Chapter 2 Score</th>
-        <th>Chapter 3 Score</th>
+    <table id="Science6B">
+      <tr class="noscopetr">
+        <th class="noscopeth">Name</th>
+        <th class="noscopeth">Chapter 1 Score</th>
+        <th class="noscopeth">Chapter 2 Score</th>
+        <th class="noscopeth">Chapter 3 Score</th>
       </tr>
     </table>
     </Accordion><br><br>
 </div>
 </div>
-
-
 </template>
 
 <script>
@@ -130,7 +46,8 @@ import BlueBanner from '@/components/BlueBanner.vue'
 import LeftPanelTeachers from '@/components/LeftPanelTeachers.vue'
 import Accordion from '@/components/Accordion.vue'
 import firebaseApp from "../firebase.js"
-import { getFirestore, collection, getDocs } from "firebase/firestore"
+import { getFirestore, getDoc, doc } from "firebase/firestore"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const db = getFirestore(firebaseApp)
 
@@ -143,67 +60,54 @@ export default {
     Accordion
   },
   mounted() {
-    async function display() {
-      let z = await getDocs(collection(db, "Students2"))
-      
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user
+        display(user)
+      }
+    })
 
-      z.forEach((docs) => {
-        let d = docs.data()
-        let eclass = d.classes.eng
-        let mclass = d.classes.math
-        let sclass = d.classes.sci
+    async function display(user) {
+      let z = await getDoc(doc(db, "Teachers", user.email))
+      let classeslist = z.data().Classes
 
-        let escore1 = d.scores.eng.chap1
-        let escore2 = d.scores.eng.chap2
-        let escore3 = d.scores.eng.chap3
+      for (let i = 0; i < classeslist.length; i++) {
+        let currclass = classeslist[i]
+        let y = await getDoc(doc(db, "Classes", currclass))
+        let currstudentlist = y.data().students
 
-        let mscore1 = d.scores.math.chap1
-        let mscore2 = d.scores.math.chap2
-        let mscore3 = d.scores.math.chap3
-
-        let sscore1 = d.scores.sci.chap1
-        let sscore2 = d.scores.sci.chap2
-        let sscore3 = d.scores.sci.chap3
-
-        var etable = document.getElementById(eclass)
-        var erow = etable.insertRow(-1)
-        var ecell0 = erow.insertCell(0)
-        var ecell1 = erow.insertCell(1)
-        var ecell2 = erow.insertCell(2)
-        var ecell3 = erow.insertCell(3)
-
-        ecell0.innerHTML = d.name
-        ecell1.innerHTML = escore1
-        ecell2.innerHTML = escore2
-        ecell3.innerHTML = escore3
-
-        var mtable = document.getElementById(mclass)
-        var mrow = mtable.insertRow(-1)
-        var mcell0 = mrow.insertCell(0)
-        var mcell1 = mrow.insertCell(1)
-        var mcell2 = mrow.insertCell(2)
-        var mcell3 = mrow.insertCell(3)
-
-        mcell0.innerHTML = d.name
-        mcell1.innerHTML = mscore1
-        mcell2.innerHTML = mscore2
-        mcell3.innerHTML = mscore3
-
-        var stable = document.getElementById(sclass)
-        var srow = stable.insertRow(-1)
-        var scell0 = srow.insertCell(0)
-        var scell1 = srow.insertCell(1)
-        var scell2 = srow.insertCell(2)
-        var scell3 = srow.insertCell(3)
-
-        scell0.innerHTML = d.name
-        scell1.innerHTML = sscore1
-        scell2.innerHTML = sscore2
-        scell3.innerHTML = sscore3
-
-      })
+        for (let j = 0; j < currstudentlist.length ; j++) {
+          let currstudent = currstudentlist[j]
+          let x = await getDoc(doc(db, "Students", currstudent))
+          let info = x.data()
+          let name = info.Name
+          let score1
+          let score2
+          let score3
+          if (currclass == "Maths5A") {
+            score1 = info.scores.math.Chap1
+            score2 = info.scores.math.Chap2
+            score3 = info.scores.math.Chap3
+          } else {
+            score1 = info.scores.sci.Chap1
+            score2 = info.scores.sci.Chap2
+            score3 = info.scores.sci.Chap3
+          }
+          
+          let table = document.getElementById(currclass)
+          let row = table.insertRow(-1)
+          let cell0 = row.insertCell(0)
+          let cell1 = row.insertCell(1)
+          let cell2 = row.insertCell(2)
+          let cell3 = row.insertCell(3)
+          cell0.innerHTML = name
+          cell1.innerHTML = score1
+          cell2.innerHTML = score2
+          cell3.innerHTML = score3
+        }
+      }   
     }
-    display()
   }
 }
 </script>
@@ -217,13 +121,11 @@ export default {
 }
 
 #cs {
-    float: left;
 }
 
 #root {
-  margin-top: 50px;
+  margin-top: 80px;
   margin-left: 320px;
-  display: inline-block;
 }
 
 table {

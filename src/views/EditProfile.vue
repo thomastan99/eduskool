@@ -1,6 +1,5 @@
 <template>
   <BlueBanner />
-  <LeftPanel />
   <div id="editProfile">
     <form
       id="editProfileForm"
@@ -31,23 +30,24 @@
       <br /> -->
       <!-- <input type="file" id="profilepic" @change="onFileChange" /> -->
       <br />
-      <input type="submit" value="Edit" />
+      <input id="edit" type="submit" value="Edit" />
     </form>
   </div>
+  <Footer/>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue"
 import { ref } from "vue";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useStore } from "vuex";
 import BlueBanner from "../components/BlueBanner.vue";
-import LeftPanel from "../components/LeftPanel.vue";
 export default {
   name: "EditProfile",
 
   components: {
     BlueBanner,
-    LeftPanel
+    Footer,
   },
   data() {
     return {
@@ -122,8 +122,9 @@ export default {
 </script>
 
 <style scoped>
-#loginBtn {
-  font-size: 40px;
+#editProfile {
+  margin-top: 100px;
+  margin-left: 200px;
 }
 
 a {
@@ -132,7 +133,7 @@ a {
   /*   background-color:rgb(217, 224, 224);
   border-radius: 8px; */
   padding: 8px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   color: black;
   padding-bottom: 2s0px;
 }
@@ -142,24 +143,36 @@ a:hover {
 }
 
 h1 {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   font-size: 40px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
 }
 
+#edit {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+#edit:hover {
+  background-color: #fb8332;
+}
 input {
   margin-right: 5px;
-  margin-left: 5px;
+  margin-left: 10px;
   margin-bottom: 20px;
   /* box-sizing: border-box; */
   height: auto;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 input[type="submit"] {
   /* background-color: rgb(217, 224, 224); */
   border-radius: 8px;
-  font-size: 30px;
+  font-size: 18px;
   height: 40px;
 }
 
@@ -170,21 +183,20 @@ input[type="submit"]:hover {
 
 label {
   display: inline-block;
-  text-align: right;
-  width: 150px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 30px;
-  padding-right: 5px;
+  text-align: left;
+  width: 200px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 p {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 18px;
   display: inline-block;
   text-align: left;
   color: black;
   margin-right: 135px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 </style>

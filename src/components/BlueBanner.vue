@@ -2,7 +2,7 @@
     <div id="main">
         <a href = "/home" > <img id ="logo" src="../assets/eduLogo.png" alt="EDU'skool logo" > </a>
         <h2 id="welcome">Welcome Back {{user.displayName}} </h2>
-        <a id="help" href="./">Help</a>
+        <a id="help" href="./help">Help</a>
         <a id="logout" href="./" @click="handleLogout">Logout</a>
         <!-- <a id="profile" href="./profile">Profile</a> -->
     </div><br><br>
@@ -11,8 +11,10 @@
 <script>
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useStore } from "vuex";
-
 export default {
+    name: 'BlueBanner',
+    components: {
+    },
     data: () => {
         return {
             user: false,
@@ -43,141 +45,89 @@ export default {
 </script>
 
 <style scoped>
-
 #logo {
-    float: left;
+    float:left;
 }
-
-/* welcome {
-    float: left;
-    display: inline-block;
-    margin: 5px 0px 0px 500px;
-} */
-
 h2 {
     color: white;
 }
 
 #main {
+    position:fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 0;
     border-bottom: 3px darkgrey solid;
     box-shadow: 0px 0px 2px 0px;
     background-color: #00bcd4;
-    /* position: fixed; */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height:fit-content;
 }
-#courses {
-    display:inline-block;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-}
+
 #welcome {
-    /* position:fixed; */
-    font-family: Avenir, Helvetica, Arial, sans-serif;
     display:inline-block;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #help {
     float:right;
-    display:inline-block;
+    position: relative;
+    top: 20px;
+    right: 200px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #logout{
+    float:right;
+    position: relative;
+    top: 20px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    display:inline-block;
-}
-/* @media all and (max-width: 1300px) {
-    #courses {
-        display:inline-block;
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        display:none;
-        visibility: hidden;
-    }
-@media all and (max-width: 1200px) {
-    #welcome {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        display:inline-block;
-        visibility:hidden;
-        display:none;
-    }
-    #help {
-        display:inline-block;
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        visibility: hidden;
-        display:none;
-    }
-} */
-
-button {
-    background-color: #00bcd4;
-    border: none;
-    color: white;
-    font-size: 24px;
-}
-#body {
-    display: inline-block;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-}
-a {
- margin-right: 130px;
-  margin-left: 130px;
-  /*   background-color:rgb(217, 224, 224);
-  border-radius: 8px; */
-  font-size: 28px;
-  padding: 8px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: black;
-  padding-bottom: 2s0px;
-}
-a:hover {
-  color: rgb(101, 181, 235)
-}
-
-/* #courses {
-    display: inline-block;
-    margin: 25px 50px 0 600px
-} */
-
-/* #help {
-    display: inline-block;
-    margin: 25px 0 0 0;
-} */
-
-a {
-    color: white;
-    font-size: 24px;
-}
-
-a:visited, a:link, a:active {
-    text-decoration: none;
-}
-
-a:hover {
-    color: #ececec;
 }
 
 @media all and (max-width: 900px) {
-    #logo {
-
+    #welcome {
+        display:inline-block;
+        font-family: Avenir, Helvetica, Arial, sans-serif;
     }
+    #help {
+        float:right;
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        visibility: hidden;
+    }
+    #logout{
+        float:right;
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        visibility: hidden;
+    }
+}
+
+
+a {
+    color: white;
+    font-size: 24px;
+}
+
+a:hover {
+    color: #fb8332;
+}
+
+
+@media all and (max-width: 900px) {
     #courses {
         display:inline-block;
         font-family: Avenir, Helvetica, Arial, sans-serif;
-        display:none;
-        visibility: hidden;
+        /* display:none;
+        visibility: hidden; */
     }
     #welcome {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         display:inline-block;
         padding: 5px 200px 0px 200px;
-        display:none;
-        visibility: hidden;
+        /* display:none;
+        visibility: hidden; */
     }
     #help {
         display:inline-block;
         font-family: Avenir, Helvetica, Arial, sans-serif;
-        display:none;
-        visibility: hidden;
+        /* display:none;
+        visibility: hidden; */
     }
 }
 

@@ -9,14 +9,14 @@
                         <option value="" disabled selected>Select Student Level</option>
                         <option>Primary 5</option>
                         <option>Primary 6</option>             
-                    </select><br><br>
-                </div>
+                    </select>
+
                 <select v-model="subject">
                     <option value="" disabled selected>Select Subject</option>
                     <option>Maths</option>
                     <option>Science</option>
                     <option>English</option>
-                </select><br><br>
+                </select>
                 <select v-model="chapter">
                     <option value="" disabled selected>Select Chapter</option>
                     <option>Chapter 1</option>
@@ -28,8 +28,8 @@
                     <option>Chapter 7</option>
                     <option>Chapter 8</option>                    
                 </select><br><br>
-            
-            <button @click="getStats(level, subject, chapter)">Get Stats</button><br><br>
+                <button id="getstats" @click="getStats(level, subject, chapter)">Get Stats</button><br><br>
+            </div>
             </div>
         </div>
         <div v-if="!loading" id="plot"></div>
@@ -176,30 +176,47 @@ export default{
 </script>
 
 <style scoped>
+#getstats {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    transition-duration: 0.1s;
+    font-size: 18px;
+}
+#plot {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    border: 1px black solid;
+}
+
+#getstats:hover {
+    background-color: #fb8332
+}
+.select, .button {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    display: inline-block;
+}
 #levelTitle {
-    width: 100%;
+    margin: -10px 0px 0px 0px;
 }
 #main {
     margin-top: 50px;
-    margin-left: 175px;
+    margin-left: 185px;
     display: inline-block;
-    width: 900px;
+    width: 700px;
 }
 
-#header {
-    font-size: 23px;
-    margin-right: 80%;
-}
-
-#top {
-    border-bottom: 1px solid grey;
+h1 {
+    font-size: 40px;
 }
 
 #choices {
-    font-size: 15px;
+    font-size: 20px;
     display: inline-block;
-    margin-top: 20px;
-    margin-left: -150px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
     width: 400px;
 }
 

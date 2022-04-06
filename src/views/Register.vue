@@ -1,6 +1,9 @@
 <template>
   <div id="registration">
-    <div id="logo"><img src="../assets/elogo.png" alt="EDU'skool logo" ></div>
+    <div id="logo"><img src="../assets/elogo.png" onclick="location.href='/'" alt="EDU'skool logo"> 
+            <h2 id="about" onclick="location.href='/about'"> About Us </h2>
+            <h2 id="help" onclick="location.href='/help'"> Help </h2>
+    </div>
     <form id="registrationForm" class="register" @submit.prevent="register">
       <h1 class="title">Register For EDU'skool</h1>
       <label id="des" for="fname">First name:</label>
@@ -55,19 +58,23 @@
     </form>
     <div id="loginBtns">
       <h1>Already have an account?</h1> 
-      <input id="register" type="submit" value="Login" onclick="location.href='/login'"/>
+      <input id="register" type="submit" value="Login" onclick="location.href='/'"/>
       
     </div>
+      <Footer/>
   </div>
+
 </template>
 
 <script>
 import { ref } from "vue";
 import { useStore } from "vuex";
+import Footer from "@/components/Footer.vue"
 
 export default {
   name: "Registration",
   components: {
+    Footer
   },
 
   setup() {
@@ -115,23 +122,59 @@ export default {
 </script>
 
 <style scoped>
+#about:hover, #help:hover, img:hover {
+  cursor:pointer;
+}
+@media all and (max-width: 900px) {
+    #about, #help {
+        display:none;
+        visibility: hidden;
+    }
+}
+img {
+    position: relative;
+    left: 80px;
+}
+#about {
+  top:10px;
+  float:right;
+  position: relative;
+  right: 200px;
+  color: black;
+
+}
+#help {
+  top: 9px;
+  position: relative;
+  float:right;
+  color: black;
+}
+#logo {
+  background-color: #00bcd4;
+}
 #fname, #lname, #password-confirmation, #password, #email {
   font-size: 18px;
 }
 #des {
-  font-size: 18
-  px;
+  font-size: 18px;
   margin-right: 30px;
 }
 h1 {
   font-size: 20px;
 }
-#logo {
-  background-color: #00bcd4;
-  width: 100%;
+#register:hover {
+    background-color: #fb8332;
 }
 #register {
-  font-size: 15px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.1s;
+    font-size: 18px;
 }
 #option {
   font-size: 16px;
@@ -139,7 +182,7 @@ h1 {
   margin-left: 20px;
   margin-top: 10px;
 }
-#register:hover, #option:hover {
+#option:hover {
   cursor: pointer;
 }
 #loginBtn {
@@ -179,7 +222,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: rgb(230, 46, 40);
+  background-color: #7eced9;
   border-radius: 8px;
 }
 
