@@ -34,7 +34,7 @@
     <option>Choose the correct answer</option>
 </select>
 <br><br>
-<input type="submit">
+<input type="submit" value = "Add to Database!" v-on:click= count(this.subject)>
 <button  v-on:click= count(this.subject)> Add to database! </button>
   </form>
 </template>
@@ -66,7 +66,7 @@ export default {
 
             var e = document.getElementById("sub");
             var text=e.options[e.selectedIndex].text;
-            this.subject = text
+            this.subject = text 
              var f = document.getElementById("chap");
             var val=f.options[f.selectedIndex].text;
             this.chapter = val

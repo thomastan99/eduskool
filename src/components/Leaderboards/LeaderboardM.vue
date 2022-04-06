@@ -14,8 +14,9 @@
           </div>
 
 <div id="test2" class = "prog">
-    <circle-progress id = "progress" :show-percent=true :percent='this.pTot'/>
+    <circle-progress id = "progress" :show-percent=true :percent='pTot' value='pTot'/>
 <p id = "subject"> % Overall Progress</p>
+{{pTot}}
 
 </div>
   </div>
@@ -53,8 +54,9 @@ methods:{
                 let s = doc.data()
                 let math = s.Primary5Maths
                 let all = s.Primary5Maths + s.Primary5English + s.Primary5Science
-                this.pMath = this.math/math * 100
-                this.pTot = this.total/all * 100
+                this.pMath = this.math/math *100
+                this.pTot = this.total/all *100
+                console.log(this.pTot)
             })
         }
         else{
@@ -118,10 +120,11 @@ methods:{
             let s = x.data()
             
             this.math = s.wk_math
-            this.pMath = s.wk_math/35 * 100
+            this.pMath = s.wk_math
             this.total = s.wk_eng + s.wk_math + s.wk_sci
-            this.pTot = this.total/105 * 100
+
             this.role = s.role
+             this.score(this.role)
             console.log(s.role)
 
             }).then(()=>{
@@ -132,7 +135,7 @@ methods:{
 
 
 
-          this.score(this.role)
+         
 
   console.log(this.total)
         
@@ -154,6 +157,7 @@ table{
 }
 #main {
     top:50px;
+    display: inline-block;
     left:100px;
     
 }
