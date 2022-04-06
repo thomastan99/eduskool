@@ -279,6 +279,7 @@ export default {
 
 #profilePic {
   max-width: 8em;
+  border-radius: 50%;
 }
 
 #menu {
@@ -298,11 +299,11 @@ export default {
 
 .options:hover {
   cursor: pointer;
-  background-color: #d6e0e2;
+  background-color: #fb8332;
 }
 
 a {
-  color: #6cc1cc;
+  color: #00bcd4;
   font-size: 19px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-weight: bold;

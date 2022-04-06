@@ -23,20 +23,23 @@
     </form>
     <a href="/resetPassword"> Forgot your password? </a>
     <a href="/register"> Register here! </a>
-  </div>
+
+   <Footer/>
+    </div>
 </template>
 
 <script>
 import { ref } from "vue";
-
 import { useStore } from "vuex";
+import Footer from "@/components/Footer.vue"
 
 const login_form = ref({});
 
 export default {
-  name: "Login",
-
-  components: [],
+  name: 'Login',
+    components: {
+      Footer,
+    },
 
   setup() {
     const store = useStore();

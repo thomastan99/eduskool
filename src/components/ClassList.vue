@@ -63,7 +63,6 @@ export default {
 }
 
 #header {
-    float: left;
     margin-bottom: 20px;
 }
 
@@ -76,7 +75,6 @@ a {
 }
 
 #content {
-    margin-top: 110px;
 }
 </style>
 

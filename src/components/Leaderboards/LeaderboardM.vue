@@ -1,5 +1,5 @@
 <template>
-<h1> Math Leaderboard </h1>
+<h1 id="title"> Math Leaderboard </h1>
   <table id = "table">
       <tr>
           <th> Ranking </th>
@@ -45,8 +45,6 @@ export default {
 },
 
     mounted() {
-
-
         async function getScores(){
           
             let x = await getDocs(collection(db,"Students"))
@@ -111,10 +109,15 @@ export default {
 </script>
 
 <style scoped>
+#title {
+    margin-right: 60px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
 table{
     float: left;
     width: 70%;
     align-items: center;
+    margin-left: 80px;
 }
 #main {
     top:50px;

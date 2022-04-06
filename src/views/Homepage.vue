@@ -3,14 +3,18 @@
 <div v-if="userrole == 'P5Student' || userrole == 'P6Student'">
   <LeftPanel/>
   <Topics/>
+  <Footer/>
 </div>
 <div v-if="userrole == 'Teacher'">
   <LeftPanelTeachers/>
   <ClassList/>
+  <Footer/>
 </div>
+
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue"
 import LeftPanelTeachers from '@/components/LeftPanelTeachers.vue'
 import LeftPanel from '../components/LeftPanel.vue'
 import BlueBanner from '../components/BlueBanner.vue'
@@ -32,6 +36,7 @@ export default {
     Topics,
     ClassList,
     LeftPanelTeachers,
+    Footer,
   },
 
   data() {

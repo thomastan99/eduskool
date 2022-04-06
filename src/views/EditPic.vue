@@ -19,10 +19,12 @@
     <br />
     <a href="/profile" id = "cancelBtn"> Back to Profile </a>
   </div>
+  <Footer/>
 </template>
 
 <script>
 // import { ref } from "vue";
+import Footer from "@/components/Footer.vue"
 import { getAuth, onAuthStateChanged, updateProfile } from "@firebase/auth"; //
 // import { useStore } from "vuex";
 import BlueBanner from "../components/BlueBanner.vue";
@@ -33,6 +35,7 @@ export default {
 
   components: {
     BlueBanner,
+    Footer,
   },
 
   data() {
@@ -91,18 +94,24 @@ export default {
 </script>
 
 <style scoped>
-#cancelBtn {
-  font-size: 35px;
+#editPic {
+  margin-top: 150px;
+  margin-left: 210px;
 }
 
 #updateBtn {
-  border-radius: 8px;
-  font-size: 30px;
-  height: 40px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
 }
 
 #updateBtn:hover {
-  background-color: rgb(230, 46, 40);
+  background-color: #fb8332;
   border-radius: 8px;
 }
 
@@ -117,19 +126,18 @@ a {
   /*   background-color:rgb(217, 224, 224);
   border-radius: 8px; */
   padding: 8px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   color: black;
   padding-bottom: 2s0px;
 }
 
 a:hover {
-  color: rgb(101, 181, 235);
+  color: #fb8332;
 }
 
 h1 {
   font-size: 40px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 input {
@@ -157,19 +165,19 @@ label {
   display: inline-block;
   text-align: right;
   width: auto;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 30px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
   padding-right: 5px;
 }
 
 p {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 18px;
   display: inline-block;
   text-align: left;
   color: black;
   margin-right: 135px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 </style>

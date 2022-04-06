@@ -39,8 +39,6 @@
     </Accordion><br><br>
 </div>
 </div>
-
-
 </template>
 
 <script>
@@ -123,13 +121,11 @@ export default {
 }
 
 #cs {
-    float: left;
 }
 
 #root {
-  margin-top: 50px;
+  margin-top: 80px;
   margin-left: 320px;
-  display: inline-block;
 }
 
 table {

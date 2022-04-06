@@ -6,15 +6,15 @@
         <a id="logout" href="./" @click="handleLogout">Logout</a>
         <!-- <a id="profile" href="./profile">Profile</a> -->
     </div><br><br>
-    <div id="background"> Hello
-    </div>
 </template>
 
 <script>
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useStore } from "vuex";
-
 export default {
+    name: 'BlueBanner',
+    components: {
+    },
     data: () => {
         return {
             user: false,
@@ -46,118 +46,68 @@ export default {
 
 <style scoped>
 #logo {
-    float: left;
+    float:left;
 }
-
-/* welcome {
-    float: left;
-    display: inline-block;
-    margin: 5px 0px 0px 500px;
-} */
-
 h2 {
     color: white;
 }
 
 #main {
+    position:fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 0;
     border-bottom: 3px darkgrey solid;
     box-shadow: 0px 0px 2px 0px;
     background-color: #00bcd4;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height:fit-content;
 }
-#courses {
-    display:inline-block;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-}
+
 #welcome {
-    /* position:fixed; */
-    font-family: Avenir, Helvetica, Arial, sans-serif;
     display:inline-block;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #help {
+    float:right;
     position: relative;
-    left: 700px;
-    display:inline-block;
+    top: 20px;
+    right: 200px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 #logout{
+    float:right;
     position: relative;
-    left: 500px;
+    top: 20px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
-/* @media all and (max-width: 1300px) {
-    #courses {
-        display:inline-block;
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        display:none;
-        visibility: hidden;
-    }
-@media all and (max-width: 1200px) {
+
+@media all and (max-width: 900px) {
     #welcome {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
         display:inline-block;
-        visibility:hidden;
-        display:none;
+        font-family: Avenir, Helvetica, Arial, sans-serif;
     }
     #help {
-        display:inline-block;
+        float:right;
         font-family: Avenir, Helvetica, Arial, sans-serif;
         visibility: hidden;
-        display:none;
     }
-} */
-
-button {
-    background-color: #00bcd4;
-    border: none;
-    color: white;
-    font-size: 24px;
-}
-#body {
-    display: inline-block;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-}
-a {
- margin-right: 130px;
-  margin-left: 130px;
-  /*   background-color:rgb(217, 224, 224);
-  border-radius: 8px; */
-  font-size: 28px;
-  padding: 8px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: black;
-  padding-bottom: 2s0px;
-}
-a:hover {
-  color: rgb(101, 181, 235)
+    #logout{
+        float:right;
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        visibility: hidden;
+    }
 }
 
-/* #courses {
-    display: inline-block;
-    margin: 25px 50px 0 600px
-} */
-
-/* #help {
-    display: inline-block;
-    margin: 25px 0 0 0;
-} */
 
 a {
     color: white;
     font-size: 24px;
 }
 
-a:visited, a:link, a:active {
-    text-decoration: none;
+a:hover {
+    color: #fb8332;
 }
 
-a:hover {
-    color: #ececec;
-}
 
 @media all and (max-width: 900px) {
     #courses {

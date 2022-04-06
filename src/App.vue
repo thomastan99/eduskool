@@ -14,9 +14,10 @@ export default {
 
 <style>
 body {
-  background-color: #eaf2f2;
+  background-color: #e1ebed;
 }
 #app {
+  background-color: #e1ebed;
   font-family: 'Varela Round', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

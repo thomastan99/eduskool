@@ -1,5 +1,6 @@
 <template>
     <div id="main">
+        <h1 id="pagetitle">Leaderboards </h1>
         <div class="container">
             <div class="header"><h1>Math5A</h1></div>
             <div class="content">
@@ -14,7 +15,7 @@
         </div><br>
         <div class="container">
             <div class="header"><h1>Science5A</h1></div>
-            <div class="content" style="left:-200px">
+            <div class="content">
                 <table id="Science5A">
                     <tr>
                         <th>Student Name</th>
@@ -26,7 +27,7 @@
         </div><br>
         <div class="container">
             <div class="header"><h1>Science6B</h1></div>
-            <div class="content" style="left:-200px">
+            <div class="content">
                 <table id="Science6B">
                     <tr>
                         <th>Student Name</th>
@@ -97,7 +98,7 @@ export default {
                     let cell2 = row.insertCell(2)
                     cell0.innerHTML = nestedlist[k][0]
                     cell1.innerHTML = nestedlist[k][1]
-                    cell2.innerHTML = "<p>temp</p>"
+                    cell2.innerHTML = "<img src=\"@/assets/firststeps.png\" width=\"400px\" height=\"150px\">";
                 }
                 
             }
@@ -107,6 +108,9 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+    font-size: 40px;
+}
 #main {
     margin-top: 50px;
     margin-left: 300px;
@@ -116,6 +120,7 @@ export default {
 .header {
     float: left;
     margin-bottom: 20px;
+    
 }
 
 h1 {
@@ -141,6 +146,7 @@ table {
 
 table, th, td {
     border-bottom: 1px solid black;
+
     border-collapse: collapse;
 }
 
@@ -154,12 +160,9 @@ a:visited, a:link, a:active {
 
 .content {
     max-width: 800px;
-    overflow-x: scroll;
-    position: relative;
-    top: 80px;
-    left: -150px;
 }
 .container {
     margin-bottom: 80px;
+    margin-left: 100px;
 }
 </style>

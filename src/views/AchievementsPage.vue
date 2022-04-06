@@ -124,9 +124,11 @@
             </tr>
         </table>
     </div>
+    <div v-if="!loading"> <Footer/> </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue"
 import { ref } from 'vue'
 import firebaseApp from '../firebase.js'
 import {getFirestore} from "firebase/firestore";
@@ -165,6 +167,7 @@ export default {
     LeftPanel,
     BlueBanner,
     Preloader,
+    Footer,
   },
 
   mounted() {
@@ -197,10 +200,11 @@ export default {
 <style scoped>
 #loader {
   display: inline-block;
-  margin-top: 200px;
+  margin-top: 300px;
+  margin-left:250px;
+
 }
-#awardTitle {
-}
+
 .picture {
   width: 30%;
   float:center;
@@ -208,20 +212,20 @@ export default {
 }
 #main {
     display:inline-block;
-    margin-left: 300px;
+    margin-left: 250px;
     margin-top:2%;
 }
 
 #pageTitle {
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    color: #2c3e50;
-    font-size:23px;
-    margin-right:10%;
-    margin-top:1%;
+    margin-right: 35px;
+    margin-top:40px;
 }
 #topicstable {
     font-family: Avenir, Helvetica, Arial, sans-serif;
+    margin-right: 60px;
+    margin-top: 20px;
 }
 .marks {
     text-align:center;

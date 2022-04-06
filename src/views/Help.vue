@@ -36,13 +36,16 @@
             </form>
             <button id="submit">Submit</button>
         </div>
+        <Footer/>
     </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue"
 export default {
   name: "Help",
   components: {
+    Footer
   },
 };
 </script>

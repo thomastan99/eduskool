@@ -61,16 +61,20 @@
       <input id="register" type="submit" value="Login" onclick="location.href='/'"/>
       
     </div>
+      <Footer/>
   </div>
+
 </template>
 
 <script>
 import { ref } from "vue";
 import { useStore } from "vuex";
+import Footer from "@/components/Footer.vue"
 
 export default {
   name: "Registration",
   components: {
+    Footer
   },
 
   setup() {
@@ -207,7 +211,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: rgb(230, 46, 40);
+  background-color: #7eced9;
   border-radius: 8px;
 }
 

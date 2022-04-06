@@ -1,6 +1,6 @@
 <template>
 <div id="main">
-<h1> Science Leaderboard </h1>
+<h1 id="title"> Science Leaderboard </h1>
   <table id = "table">
       <tr>
           <th> Ranking </th>
@@ -127,15 +127,17 @@ data(){
 </script>
 
 <style scoped>
+#title {
+    margin-right: 220px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
 table{
     float: left;
     width: 70%;
     align-items: center;
 }
 #main {
-    top:50px;
-    left:100px;
-    
+    margin-left: 180px;
 }
 #prog{
 display: inline-block;

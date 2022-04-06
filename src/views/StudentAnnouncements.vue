@@ -24,9 +24,8 @@ export default {
 
 <style scoped>
 #root {
-    position: absolute;
-    left: 350px;
-    top: 90px;
-    display: inline-block;
+  margin-top: 80px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  margin-left: 220px;
 }
 </style>

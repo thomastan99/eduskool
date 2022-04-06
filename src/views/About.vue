@@ -9,13 +9,16 @@
             <div class="question"> EDU'skool was founded in 2022 by a group of NUS students to help tuition centres and their students...
             </div>
         </div>
+    <Footer/>
     </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue"
 export default {
   name: "Help",
   components: {
+    Footer
   },
 };
 </script>
