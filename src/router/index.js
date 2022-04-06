@@ -24,6 +24,7 @@ import ViewStats from '@/views/ViewStats.vue'
 import EditProfile from '@/views/EditProfile.vue'
 import EditPic from '@/views/EditPic.vue'
 import AddQuestion from '@/views/AddQuestion.vue'
+import DelQuestion from "@/views/DelQuestion.vue"
 
 const routes = [
     {   path: '/home',
@@ -34,6 +35,12 @@ const routes = [
         path: '/addQuestion',
         name: "AddQuestion",
         component: AddQuestion
+
+    },
+    {
+        path:'/delQuestion',
+        name: "DelQuestion",
+        component: DelQuestion
 
     },
     {

@@ -34,6 +34,10 @@
                 <img id="questionImage" src="../assets/question2.png" alt="Question Image">
                 <a id="questionsText">Add Questions</a>
             </div>
+                        <div class="options" onclick="location.href='/DelQuestion'">
+                <img id="deleteImage" src="../assets/delete.png" alt="Question Image">
+                <a id="questionsText">Delete Questions</a>
+            </div>
         </div>
     </div>
     <router-view/>
@@ -80,6 +84,12 @@ export default {
     position: relative;
     left: 70px;
     top: 25px;
+}
+#deleteImage{
+    position: relative;
+    width: 20%;
+    right: 170px
+
 }
 
 #homeText {
