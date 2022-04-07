@@ -170,7 +170,7 @@ export default {
   cursor: pointer;
 }
 #overview {
-    color: black;
+    color: #00bcd4;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     text-align: left;
     line-height: 1.5;
