@@ -1,6 +1,11 @@
 <template>
   <BlueBanner />
-  <LeftPanel />
+    <div v-if="userrole == 'P5Student' || userrole == 'P6Student'">
+    <LeftPanel />
+  </div>
+  <div v-if="userrole == 'Teacher'">
+    <LeftPanelTeachers />
+  </div>
   <div id="editProfile">
     <form
       id="editProfileForm"
@@ -39,19 +44,27 @@
 <script>
 import { ref } from "vue";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { getDoc, doc, getFirestore } from "firebase/firestore";
+import firebaseApp from "../firebase.js";
+const db = getFirestore(firebaseApp);
 import { useStore } from "vuex";
 import BlueBanner from "../components/BlueBanner.vue";
 import LeftPanel from "../components/LeftPanel.vue";
+import LeftPanelTeachers from "@/components/LeftPanelTeachers.vue";
+var userrole = ref("");
+
 export default {
   name: "EditProfile",
 
   components: {
+    LeftPanel,
     BlueBanner,
-    LeftPanel
+    LeftPanelTeachers,
   },
   data() {
     return {
       user: false,
+      userrole: userrole,
     };
   },
 
@@ -61,8 +74,15 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
+        check(user);
       }
     });
+
+     async function check(user) {
+      let docRef = doc(db, "Users", user.email);
+      let docSnap = await getDoc(docRef);
+      userrole.value = docSnap.data().role;
+    }
   },
 
   // methods: {
@@ -122,6 +142,10 @@ export default {
 </script>
 
 <style scoped>
+
+form {
+  padding-top: 30px;
+}
 #loginBtn {
   font-size: 40px;
 }
