@@ -28,7 +28,7 @@
                 </td>
                 <td> 
                     <!-- <button id="attempt">Attempt</button> -->
-                    <router-link to="/ready" tag="button" v-on:click="update('Chap1','Primary5Science')">Attempt </router-link>
+                    <router-link class="router-link" to="/ready" tag="button" v-on:click="update('Chap1','Primary5Science')">Attempt </router-link>
                     <!-- <a id="homeworkText" href="/quiz"> </a> -->
                 </td>
                 <td> 
@@ -54,7 +54,7 @@
                         </transition>
                 </td>
                 <td> 
-                    <router-link to="/ready" tag="button" v-on:click="update('Chap2','Primary5Science')">Attempt </router-link>
+                    <router-link class="router-link" to="/ready" tag="button" v-on:click="update('Chap2','Primary5Science')">Attempt </router-link>
                 </td>
 
                 <td> 
@@ -80,7 +80,7 @@
                             </transition>
                 </td>
                 <td> 
-                    <router-link to="/ready" tag="button" v-on:click="update('Chap3','Primary5Science')">Attempt </router-link>
+                    <router-link class="router-link" to="/ready" tag="button" v-on:click="update('Chap3','Primary5Science')">Attempt </router-link>
                 </td>
                 <td> 
                     <h3 class="marks"> {{getChap3Score()}}/5 </h3>
@@ -105,7 +105,7 @@
                             </transition>
                 </td>
                 <td> 
-                    <router-link to="/ready" tag="button" v-on:click="update('Chap4','Primary5Science')">Attempt </router-link>
+                    <router-link class="router-link" to="/ready" tag="button" v-on:click="update('Chap4','Primary5Science')">Attempt </router-link>
                 </td>
                 <td> 
                     <h3 class="marks"> {{getChap4Score()}}/5 </h3>
@@ -131,7 +131,7 @@
                             </transition>
                       </td>
                 <td> 
-                    <router-link to="/ready" tag="button" v-on:click="update('Chap5','Primary5Science')">Attempt </router-link>
+                    <router-link class="router-link" to="/ready" tag="button" v-on:click="update('Chap5','Primary5Science')">Attempt </router-link>
                 </td>
                 <td> 
                     <h3 class="marks"> {{getChap5Score()}}/5 </h3>
@@ -364,4 +364,25 @@ td {
     float: left;
 }
 
+.router-link {
+    cursor:pointer;
+    transition-duration: 0.1s;
+    text-align:center;
+    font-size:15px;
+    padding: 10px 20px 10px 20px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    background-color: #efefef;
+    color: black;
+    border-color: #767676;
+    border-width: 1px;
+    border-style: solid;
+    border-bottom: 1px solid;
+    text-align:center;
+    text-decoration: none;
+}
+
+.router-link:hover {
+    background-color: #6cc1cc;
+}
 </style>

@@ -9,7 +9,8 @@
   color: white;
   font-weight: 500;
   font-size: 1.2rem;
-  display: inline-block;">Exit </a>
+  display: inline-block;
+  text-decoration: none;">Exit </a>
     </div> 
     
 
