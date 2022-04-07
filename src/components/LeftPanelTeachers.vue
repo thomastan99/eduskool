@@ -1,11 +1,13 @@
 <template>
     <div id="main">
-        <div id="personal" onclick="location.href='/profile'">
-            <div id="photo"><img src="../assets/photo.png" alt="Profile Pic"></div>
-            <div id="overview">
-                <h4 id="details">{{user.displayName}}</h4>
-            </div>
-        </div>
+    <div id="personal" onclick="location.href='/profile'">
+      <div id="photo">
+        <img img id="profilePic" src="../assets/photo.png" alt="Profile Pic" />
+      </div>
+      <div id="overview">
+        <h4 id="details">{{ user.displayName }}</h4>
+      </div>
+    </div>
         <div id="menu">
             <div class="options" onclick="location.href='/teachershome'">
                 <img id="homeImage" src="../assets/home.png" alt="Home Image">
@@ -39,31 +41,42 @@
                 <a id="deleteText">Delete Questions</a>
             </div>
         </div>
-    </div>
-    <router-view/>
+
+
+  </div>
+  <router-view />
 </template>
 
 <script>
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 export default {
-    data: () => {
-        return {
-            user: false,
+  data: () => {
+    return {
+      user: false,
+    };
+  },
+  mounted() {
+    const auth = getAuth(auth);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user;
+        console.log(user.photoURL == null);
+        if (user.photoURL == null) {
+          return;
+        } else {
+          document.getElementById("profilePic").src = user.photoURL;
         }
-    }, 
-    mounted(){
-        const auth = getAuth(auth);
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                this.user = user;
-            }
-        });
-
-    }
-}
+      }
+    });
+  },
+};
 </script>
 
 <style scoped>
+#profilePic {
+  max-width: 8em;
+}
+
 #scoreboardText {
     position: relative;
     left: 72px;
@@ -99,9 +112,9 @@ export default {
 }
 
 #homeText {
-    position: relative;
-    left: 70px;
-    top: 26px;
+  position: relative;
+  left: 70px;
+  top: 26px;
 }
 
 #homeImage {
@@ -111,15 +124,15 @@ export default {
     right:140px;
 }
 #announcementText {
-    position: relative;
-    top: 17px;
-    left: 70px;
+  position: relative;
+  top: 17px;
+  left: 70px;
 }
 
 #announcementImage {
-    position: relative;
-    width: 30%;
-    right: 155px;
+  position: relative;
+  width: 30%;
+  right: 155px;
 }
 #classesText {
     position: relative;
@@ -131,7 +144,11 @@ export default {
     width: 25%;
     position: relative;
     right: 118px;
-
+}
+#classesImage {
+  width: 30%;
+  position: relative;
+  right: 168px;
 }
 
 #statisticsImage {
@@ -150,7 +167,7 @@ export default {
     float: left;
 }
 #personal {
-    cursor:pointer;
+  cursor: pointer;
 }
 #overview {
     color: black;
@@ -166,7 +183,7 @@ export default {
 }
 
 #personal {
-    cursor:pointer;
+  cursor: pointer;
 }
 #main {
     position: fixed;
@@ -205,7 +222,9 @@ a {
     float: left;
 }
 
-a:visited, a:link, a:active {
-    text-decoration: none;
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
 }
 </style>

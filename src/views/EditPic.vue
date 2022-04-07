@@ -1,5 +1,11 @@
 <template>
   <BlueBanner />
+  <div v-if="userrole == 'P5Student' || userrole == 'P6Student'">
+    <LeftPanel />
+  </div>
+  <div v-if="userrole == 'Teacher'">
+    <LeftPanelTeachers />
+  </div>
   <div id="editPic">
     <img id="profilePic" alt="No picture yet" />
     <form id="editPicForm" class="editPic" @submit.prevent="update">
@@ -17,7 +23,7 @@
     </form>
     <br />
     <br />
-    <a href="/profile" id = "cancelBtn"> Back to Profile </a>
+    <a href="/profile" id="cancelBtn"> Back to Profile </a>
   </div>
   <Footer/>
 </template>
@@ -29,13 +35,22 @@ import { getAuth, onAuthStateChanged, updateProfile } from "@firebase/auth"; //
 // import { useStore } from "vuex";
 import BlueBanner from "../components/BlueBanner.vue";
 // import { getDownloadURL } from "firebase/storage"
+import LeftPanelTeachers from "@/components/LeftPanelTeachers.vue";
+import LeftPanel from "../components/LeftPanel.vue";
+var userrole = ref("");
+import { ref } from 'vue'
+import { getDoc, doc, getFirestore } from "firebase/firestore";
+import firebaseApp from "../firebase.js"
+const db = getFirestore(firebaseApp);
 
 export default {
   name: "EditPic",
 
   components: {
+    LeftPanel,
     BlueBanner,
     Footer,
+    LeftPanelTeachers
   },
 
   data() {
@@ -44,6 +59,7 @@ export default {
       image: null,
       //   message: "",
       url: "",
+      userrole: userrole
     };
   },
 
@@ -55,8 +71,14 @@ export default {
         this.user = user;
         console.log(user);
         document.getElementById("profilePic").src = user.photoURL;
+        check(user);
       }
     });
+    async function check(user) {
+      let docRef = doc(db, "Users", user.email);
+      let docSnap = await getDoc(docRef);
+      userrole.value = docSnap.data().role
+    }
   },
 
   methods: {
@@ -84,9 +106,20 @@ export default {
     async update() {
       // console.log(this.user.displayName);
       // console.log(this.url);
-      await updateProfile(this.user, {
-        photoURL: this.url,
-      });
+      try {
+        await updateProfile(this.user, {
+          photoURL: this.url,
+        });
+      } catch (error) {
+        switch (error.code) {
+          case "auth/invalid-profile-attribute":
+            alert("Image URL too long");
+            break;
+          default:
+            alert("Something went wrong");
+        }
+        return;
+      }
       document.getElementById("profilePic").src = this.url;
     },
   },
