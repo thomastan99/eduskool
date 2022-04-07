@@ -1,13 +1,12 @@
 <template>
 <BlueBanner/>
-<br><br>
-  <TopBar/>
+  <!-- <TopBar/> -->
   <Question/>
   <router-view/>
 </template>
 
 <script>
-import TopBar from '../components/TopBar.vue'
+// import TopBar from '../components/TopBar.vue'
 import Question from '../components/Question.vue'
 import BlueBanner from '../components/BlueBanner.vue'
 
@@ -16,7 +15,7 @@ export default {
   name: 'Quiz',
 
   components: {
-    TopBar,
+    //TopBar,
     Question,
     BlueBanner
   }
