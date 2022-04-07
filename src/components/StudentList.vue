@@ -74,9 +74,9 @@ export default {
                     
 
                     if (currclass == "Maths5A") {
-                        totalscore = d.scores.math.Chap1 + d.scores.math.Chap2 + d.scores.math.Chap3
+                        totalscore = d.scores.math.Chap1 + d.scores.math.Chap2 + d.scores.math.Chap3 + d.scores.math.Chap4 + d.scores.math.Chap5 + d.scores.math.Chap6 + d.scores.math.Chap7
                     } else {
-                        totalscore = d.scores.sci.Chap1 + d.scores.sci.Chap2 + d.scores.sci.Chap3
+                        totalscore = d.scores.sci.Chap1 + d.scores.sci.Chap2 + d.scores.sci.Chap3 + d.scores.sci.Chap4 + d.scores.sci.Chap5 + d.scores.sci.Chap6 + d.scores.sci.Chap7
                     }
 
                     let studenttotalscore = [name, totalscore]

@@ -6,7 +6,7 @@
                 <tr>
                     <th>Class</th>
                     <th>No. of Students</th>
-                    <th>Timetable</th>
+                    <th>Time Slot</th>
                 </tr>
             </table>
         </div>
@@ -96,6 +96,7 @@ tr {
 
 table {
     width: 800px;
+    overflow-x: scroll;
 }
 
 table, th, td {

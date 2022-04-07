@@ -19,7 +19,7 @@
 
             <div class="options" onclick="location.href='/teacherscs'">
                 <img id="classesImage" src="../assets/classes.png" alt="Classes Image">
-                <a id="classesText">Classes & Students</a>
+                <a id="classesText">Classes</a>
             </div>
             <div class="options" onclick="location.href='/teachersleaderboard'">
                 <img id="scoreboardImage" src="../assets/leaderboard.png" alt="ScoreBoard Image">
@@ -58,14 +58,14 @@ export default {
 <style scoped>
 #scoreboardText {
     position: relative;
-    left: 71px;
+    left: 72px;
     top: 25px;
 }
 
 #scoreboardImage {
     position: relative;
     width: 30%;
-    right: 135px;
+    right: 140px;
 }
 
 #homeText {
@@ -77,7 +77,6 @@ export default {
 #homeImage {
     position: relative;
     width:23%;
-    height: 5%;
     bottom: 3px;
     right:140px;
 }
@@ -94,19 +93,19 @@ export default {
 }
 #classesText {
     position: relative;
-    top: -45px;
-    left: 55px;
+    top: 20px;
+    left: 70px;
 }
  
 #classesImage {
-    width: 30%;
+    width: 25%;
     position: relative;
-    left: -95px;
+    right: 118px;
 
 }
 
 #statisticsImage {
-    width: 15%;
+    width: 13%;
     position: relative;
     right:125px;
 }
@@ -114,20 +113,16 @@ export default {
 #statisticsText {
     position: relative;
     top:12px;
-    left:71px;
+    left:72px;
 }
 
 #photo {
-    margin-top:8%;
     float: left;
-    display: inline-block;
 }
 #personal {
     cursor:pointer;
 }
 #overview {
-    float: left;
-    display: inline-block;
     color: #00bcd4;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     text-align: left;
@@ -135,7 +130,6 @@ export default {
 }
 
 #details {
-    width:100%;
     position: relative;
     left: 10px;
     top: 25px;
@@ -146,7 +140,7 @@ export default {
 }
 #main {
     position: fixed;
-    margin-top:35px;
+    margin-top:50px;
     margin-left:20px;
 }
 
