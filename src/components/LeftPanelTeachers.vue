@@ -191,7 +191,6 @@ export default {
     background-color: #bfd6d8;
     box-shadow: 0px 2px 2px 0px;
     border-radius: 8px;
-    overflow-y: scroll;
 }
 
 #menu {
