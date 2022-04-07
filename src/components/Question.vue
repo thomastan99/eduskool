@@ -1,9 +1,4 @@
 <template>
-  <div class="top">
-        <h1>{{subject}} - Topic</h1>
-        <hr>
-    </div>
-
     <div class="exit">
       <a href="/home" tag="button" style="appearance: none;
   outline: none;

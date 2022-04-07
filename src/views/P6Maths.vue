@@ -19,7 +19,7 @@
                         </transition>
                         <transition name="slide" appear>
                             <div id="modal" v-if="wholeNumbers">
-                                <h1> Chapter 1: Whole Numbers </h1>
+                                <h1> Chapter 1: Number & Algebra </h1>
                                  <iframe width="950" height="500"
                                     src="https://www.youtube.com/embed/HAhg0uXn9GA?autoplay=1">
                                 </iframe>
@@ -46,7 +46,7 @@
                         </transition>
                         <transition name="slide" appear>
                             <div id="modal" v-if="fractions">
-                                <h1> Chapter 2: Fractions </h1>
+                                <h1> Chapter 2: Statistics </h1>
                                  <iframe width="950" height="500"
                                     src="https://www.youtube.com/embed/rl7e0djo9Go">
                                 </iframe>
@@ -72,9 +72,11 @@
                             </transition>
                             <transition name="slide" appear>
                                 <div id="modal" v-if="decimals">
-                                    <h1> Chapter 3: Decimals </h1>
+                                    <h1> Chapter 3: Fractions </h1>
                                     <iframe width="950" height="500"
-                                        src="https://www.youtube.com/embed/UCBXoLb2ItI">
+                                        src="https://www.youtube.com/embed/rl7e0djo9Go">
+                                        <!-- src="https://www.youtube.com/embed/UCBXoLb2ItI"> -->
+                                        <!-- decimals -->
                                     </iframe>
                                 </div>
                             </transition>
@@ -165,7 +167,7 @@
             </tr>
              <tr>
                 <td>
-                    <h3 class="syllabus"> Chapter 7: Geometry </h3>
+                    <h3 class="syllabus"> Chapter 7: Speed </h3>
                 </td>
                 <td> 
                     <button id="button" @click="geo=!geo">Watch</button>
@@ -174,7 +176,7 @@
                     </transition>
                     <transition name="slide" appear>
                         <div id="modal" v-if="geo">
-                            <h1> Chapter 7: Geometry </h1>
+                            <h1> Chapter 7: Speed </h1>
                             <iframe width="950" height="500"
                                 src="https://www.youtube.com/embed/AuJQZ8Pusdg">
                             </iframe>
