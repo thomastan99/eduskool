@@ -381,6 +381,13 @@ export default {
 }
 
 #button {
+    /* cursor:pointer;
+    transition-duration: 0.1s;
+    text-align:center;
+    font-size:15px;
+    padding: 10px 20px 10px 20px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-weight: bold; */
     cursor:pointer;
     transition-duration: 0.1s;
     text-align:center;
@@ -388,6 +395,15 @@ export default {
     padding: 10px 20px 10px 20px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-weight: bold;
+    background-color: #efefef;
+    color: black;
+    border-color: #767676;
+    border-width: 1px;
+    border-style: solid;
+    /* border-bottom: 1px solid; */
+    text-align:center;
+    text-decoration: none;
+    border-radius: 2px;
 }
 #button:hover, #close:hover, #attempt:hover {
     background-color: #6cc1cc;
@@ -473,9 +489,10 @@ td {
     border-color: #767676;
     border-width: 1px;
     border-style: solid;
-    border-bottom: 1px solid;
+    /* border-bottom: 1px solid; */
     text-align:center;
     text-decoration: none;
+    border-radius: 2px;
 }
 
 .router-link:hover {
