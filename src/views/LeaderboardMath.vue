@@ -4,6 +4,7 @@
 <div id="main" class= "a">
 <br><br>
     <button @click="change"> Math </button> <button @click="change2"> Sci </button>  <button @click="change3"> Eng </button>
+    
   <div v-if= "sub==='math'"> <LeaderboardM/></div>
    <div v-if= "sub==='sci'"><LeaderboardS/></div>
     <div v-if= "sub==='eng'"><LeaderboardE/></div>
