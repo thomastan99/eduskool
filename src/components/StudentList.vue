@@ -8,7 +8,6 @@
                     <tr>
                         <th>Student Name</th>
                         <th>Score</th>
-                        <th>Achievements</th>
                     </tr>
                 </table>
             </div>
@@ -20,7 +19,6 @@
                     <tr>
                         <th>Student Name</th>
                         <th>Score</th>
-                        <th>Achievements</th>
                     </tr>
                 </table>
             </div>
@@ -32,7 +30,6 @@
                     <tr>
                         <th>Student Name</th>
                         <th>Score</th>
-                        <th>Achievements</th>
                     </tr>
                 </table>
             </div>
@@ -95,10 +92,8 @@ export default {
                     let row = table.insertRow(-1)
                     let cell0 = row.insertCell(0)
                     let cell1 = row.insertCell(1)
-                    let cell2 = row.insertCell(2)
                     cell0.innerHTML = nestedlist[k][0]
                     cell1.innerHTML = nestedlist[k][1]
-                    cell2.innerHTML = "<img src=\"@/assets/firststeps.png\" width=\"400px\" height=\"150px\">";
                 }
                 
             }

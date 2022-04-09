@@ -145,11 +145,6 @@ export default {
     position: relative;
     right: 118px;
 }
-#classesImage {
-  width: 30%;
-  position: relative;
-  right: 168px;
-}
 
 #statisticsImage {
     width: 13%;
@@ -191,7 +186,6 @@ export default {
     background-color: #bfd6d8;
     box-shadow: 0px 2px 2px 0px;
     border-radius: 8px;
-    overflow-y: scroll;
 }
 
 #menu {

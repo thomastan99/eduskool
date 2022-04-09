@@ -59,7 +59,7 @@
         required
       />
       <label id="option" for="teacher">Teacher</label><br />
-      <label id="des" for="authKey">Unique Authentication Key:</label>
+      <label id="des" class="authkey" for="authKey">Unique <br> Authentication <br> Key:</label>
       <input type="password" id="authKey" v-model="register_form.authKey" required /><br />
       <input id="register" type="submit" value="Register" />
     </form>
