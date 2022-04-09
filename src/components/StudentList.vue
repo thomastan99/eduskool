@@ -113,7 +113,7 @@ h1 {
 }
 #main {
     margin-top: 50px;
-    margin-left: 300px;
+    margin-left: 200px;
     display: inline-block;
 }
 
