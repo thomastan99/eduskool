@@ -200,8 +200,8 @@ export default {
 <style scoped>
 #loader {
   display: inline-block;
-  /* margin-top: 300px;
-  margin-left:250px; */
+  margin-top: 300px;
+  margin-left:250px;
 
 }
 
