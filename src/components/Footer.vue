@@ -79,7 +79,7 @@ export default {
     margin-left: 20px;
     color: white;
     position: relative;
-    top: 10px;
+    /* top: 10px; */
 }
 #footer {
     box-shadow: 5px 5px 5px 5px;

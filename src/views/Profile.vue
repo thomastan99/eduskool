@@ -7,6 +7,7 @@
     <LeftPanelTeachers />
   </div>
   <div id="header">
+    <br><br><br>
     <a href="./editPic"
       ><img id="profilePic" alt="Click to add a Profile Picture"
     /></a>

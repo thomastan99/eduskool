@@ -1,4 +1,5 @@
 <template>
+  <br><br><br>
     <div class="exit">
       <a href="/home" tag="button" style="appearance: none;
   outline: none;

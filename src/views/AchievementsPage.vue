@@ -200,8 +200,8 @@ export default {
 <style scoped>
 #loader {
   display: inline-block;
-  margin-top: 300px;
-  margin-left:250px;
+  /* margin-top: 300px;
+  margin-left:250px; */
 
 }
 
@@ -212,19 +212,22 @@ export default {
 }
 #main {
     display:inline-block;
-    margin-left: 250px;
+    margin-left: 35%;
+    margin-right: 20%;
     margin-top:2%;
 }
 
 #pageTitle {
     display:inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    margin-right: 35px;
-    margin-top:40px;
+    text-align: center;
+    margin-left: 5%;
+    /* margin-right: 35px;
+    margin-top:40px; */
 }
 #topicstable {
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    margin-right: 60px;
+    /* margin-right: 60px;*/
     margin-top: 20px;
 }
 .marks {

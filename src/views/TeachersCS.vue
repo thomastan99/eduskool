@@ -119,6 +119,7 @@ export default {
             score5 = info.scores.sci.Chap5
             score6 = info.scores.sci.Chap6
             score7 = info.scores.sci.Chap7
+            console.log(score7)
           }
           
           let table = document.getElementById(currclass)
