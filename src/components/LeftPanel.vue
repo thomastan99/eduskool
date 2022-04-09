@@ -275,8 +275,8 @@ export default {
 }
 
 #profilePic {
-  max-width: 8em;
-  border-radius: 50%;
+  max-width: 5em;
+  border-radius: 60%;
 }
 
 #menu {

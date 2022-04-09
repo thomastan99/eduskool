@@ -74,7 +74,8 @@ export default {
 
 <style scoped>
 #profilePic {
-  max-width: 8em;
+    max-width: 5em;
+    border-radius: 60%;
 }
 
 #scoreboardText {
