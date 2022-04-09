@@ -1,6 +1,7 @@
 <template>
     <div v-if="userlevel == 'P5Student'" id="main">
         <div id="pageTitle">
+            <br><br><br>
             <h1> Topics </h1>
         </div>
 
@@ -81,19 +82,18 @@ export default {
 </script>
 
 <style scoped>
-img {
+/* img {
     margin-left: 120px;
-}
+} */
 #main {
     display:inline-block;
-    margin-left:150px;
-    margin-top: 60px;
+    margin-left:35%;
+    margin-right: 20%;
     text-align: center;
 }
 #pageTitle {
     display: inline-block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    margin-left:60px;
     width: max-content;
     max-height: 90px;
 }
