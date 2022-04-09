@@ -1,4 +1,5 @@
 <template>
+<div id="main">
 <h1 id="title"> Math Leaderboard </h1>
   <table id = "table">
       <tr>
@@ -7,6 +8,7 @@
           <th>Score </th>
         </tr>
   </table> <br><br>
+</div>
   <div id="prog">
           <div id="test" class="prog">
 <circle-progress id = "progress" :show-percent=true :percent='this.pMath'/>
@@ -148,20 +150,16 @@ methods:{
 
 <style scoped>
 #title {
-    margin-right: 60px;
+    margin-right: 220px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 table{
     float: left;
     width: 70%;
     align-items: center;
-    margin-left: 80px;
 }
 #main {
-    top:50px;
-    display: inline-block;
-    left:100px;
-    
+    margin-left: 180px;
 }
 #prog{
 display: inline-block;
@@ -190,6 +188,5 @@ float: right
     /* margin-left: 50%;
     margin-right: 38%; */
 }
-
 
 </style>
