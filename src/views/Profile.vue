@@ -7,6 +7,10 @@
     <LeftPanelTeachers />
   </div>
   <div id="header">
+    <br />
+    <br />
+    <br />
+    <br />
     <a href="./editPic"
       ><img id="profilePic" alt="Click to add a Profile Picture"
     /></a>
@@ -25,19 +29,19 @@
       <p><span id="classes"></span></p>
     </div>
   </div>
-  <Footer/>
+  <Footer />
 </template>
 
 <script>
-import LeftPanelTeachers from "@/components/LeftPanelTeachers.vue"
-import Footer from "@/components/Footer.vue"
+import LeftPanelTeachers from "@/components/LeftPanelTeachers.vue";
+import Footer from "@/components/Footer.vue";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import BlueBanner from "../components/BlueBanner.vue";
-import LeftPanel from "../components/LeftPanel.vue"
-import firebaseApp from "../firebase.js"
+import LeftPanel from "../components/LeftPanel.vue";
+import firebaseApp from "../firebase.js";
 import { getFirestore } from "firebase/firestore";
 import { getDoc, doc } from "firebase/firestore";
-import { ref } from 'vue';
+import { ref } from "vue";
 const db = getFirestore(firebaseApp);
 var userrole = ref("");
 
@@ -47,7 +51,7 @@ export default {
     LeftPanel,
     BlueBanner,
     Footer,
-    LeftPanelTeachers
+    LeftPanelTeachers,
   },
 
   data() {
@@ -57,7 +61,7 @@ export default {
       wk_sci: 0,
       wk_math: 0,
       image: null,
-      userrole: userrole
+      userrole: userrole,
     };
   },
 
@@ -122,13 +126,14 @@ export default {
           console.log("no such document");
         }
       } else {
-          userrole.value = "Teacher"
+        userrole.value = "Teacher";
         let docRef = doc(db, "Teachers", user.email);
         let docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           console.log(docSnap.data().Classes);
           let classes = docSnap.data().Classes;
-          document.getElementById("classes").innerHTML = "Classes taught: " + classes
+          document.getElementById("classes").innerHTML =
+            "Classes taught: " + classes;
         } else {
           console.log("no such document");
         }
