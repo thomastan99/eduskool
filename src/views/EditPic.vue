@@ -39,7 +39,7 @@ import LeftPanelTeachers from "@/components/LeftPanelTeachers.vue";
 import LeftPanel from "../components/LeftPanel.vue";
 var userrole = ref("");
 import { ref } from 'vue'
-import { getDoc, doc, getFirestore } from "firebase/firestore";
+import { getDoc, doc, getFirestore, updateDoc } from "firebase/firestore";
 import firebaseApp from "../firebase.js"
 const db = getFirestore(firebaseApp);
 
@@ -77,7 +77,10 @@ export default {
     async function check(user) {
       let docRef = doc(db, "Users", user.email);
       let docSnap = await getDoc(docRef);
-      userrole.value = docSnap.data().role
+      userrole.value = docSnap.data().role;
+      updateDoc(doc(db,"Achievements", user.email), {
+          smile: true,
+      })   
     }
   },
 
