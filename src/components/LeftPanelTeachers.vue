@@ -125,7 +125,7 @@ export default {
 }
 #announcementText {
   position: relative;
-  top: 17px;
+  top: 23px;
   left: 70px;
 }
 
@@ -136,19 +136,14 @@ export default {
 }
 #classesText {
     position: relative;
-    top: 13px;
-    left: 70px;
+    top: 17px;
+    left: 75px;
 }
  
 #classesImage {
     width: 25%;
     position: relative;
     right: 118px;
-}
-#classesImage {
-  width: 30%;
-  position: relative;
-  right: 168px;
 }
 
 #statisticsImage {
@@ -191,7 +186,6 @@ export default {
     background-color: #bfd6d8;
     box-shadow: 0px 2px 2px 0px;
     border-radius: 8px;
-    overflow-y: scroll;
 }
 
 #menu {
