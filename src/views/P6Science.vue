@@ -191,6 +191,9 @@ export default {
         update(chapter,subject){
             this.fbuser = auth.currentUser.email
             console.log(this.fbuser)
+            updateDoc(doc(db,"Achievements", String(this.fbuser)), {
+                firstscience: true,
+            })
             updateDoc(doc(db,"Students",String(this.fbuser)),{
                 currQuizChapter: chapter,
                 currQuizSubject: subject

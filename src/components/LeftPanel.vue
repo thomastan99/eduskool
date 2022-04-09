@@ -272,12 +272,11 @@ export default {
     background-color: #bfd6d8;
     box-shadow: 0px 2px 2px 0px;
     border-radius: 8px;
-    overflow-y: scroll;
 }
 
 #profilePic {
-  max-width: 8em;
-  border-radius: 50%;
+  max-width: 5em;
+  border-radius: 60%;
 }
 
 #menu {
