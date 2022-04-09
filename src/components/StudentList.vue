@@ -6,8 +6,9 @@
             <div class="content">
                 <table id="Maths5A">
                     <tr>
+                        <th>Rank</th>
                         <th>Student Name</th>
-                        <th>Score</th>
+                        <th>Total Score</th>
                     </tr>
                 </table>
             </div>
@@ -17,8 +18,9 @@
             <div class="content">
                 <table id="Science5A">
                     <tr>
+                        <th>Rank</th>
                         <th>Student Name</th>
-                        <th>Score</th>
+                        <th>Total Score</th>
                     </tr>
                 </table>
             </div>
@@ -28,8 +30,9 @@
             <div class="content">
                 <table id="Science6B">
                     <tr>
+                        <th>Rank</th>
                         <th>Student Name</th>
-                        <th>Score</th>
+                        <th>Total Score</th>
                     </tr>
                 </table>
             </div>
@@ -89,11 +92,13 @@ export default {
 
                 for (let k = 0; k < nestedlist.length; k++) {
                     let table = document.getElementById(currclass)
-                    let row = table.insertRow(-1)
+                    let row = table.insertRow(k+1)
                     let cell0 = row.insertCell(0)
                     let cell1 = row.insertCell(1)
-                    cell0.innerHTML = nestedlist[k][0]
-                    cell1.innerHTML = nestedlist[k][1]
+                    let cell2 = row.insertCell(2)
+                    cell0.innerHTML = k+1
+                    cell1.innerHTML = nestedlist[k][0]
+                    cell2.innerHTML = nestedlist[k][1]
                 }
                 
             }

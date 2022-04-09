@@ -1,6 +1,7 @@
 <template>
   <BlueBanner/>
   <LeftPanel/>
+  <br>
      <div id="main">
         <div id="pageTitle"><h1> P5 English </h1></div>
         <table id = "topicstable"> 
@@ -278,8 +279,8 @@ export default {
 #modal {
     background-color:white;
     position: fixed;
-    bottom:6%;
-    right:6%;
+    bottom:20%;
+    right:25%;
     max-width: 1000px;
 }
 
@@ -323,8 +324,9 @@ export default {
 
 #main{
     display:inline-block;
-    margin-left:25%;
-    width: 100%;
+    margin-left:35%;
+    /* width: 100%; */
+    margin-right: 25%;
 }
 
 #pageTitle {
@@ -332,7 +334,7 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     color: #2c3e50;
     font-size:23px;
-    margin-right:35%;
+    /* margin-right:35%; */
     margin-top:1%;
 }
 #topicstable {

@@ -16,7 +16,6 @@
 <div id="test2" class = "prog">
     <circle-progress id = "progress" :show-percent=true :percent='pTot' value='pTot'/>
 <p id = "subject"> % Overall Progress</p>
-{{pTot}}
 
 </div>
   </div>

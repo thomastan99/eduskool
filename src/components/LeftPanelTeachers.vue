@@ -125,7 +125,7 @@ export default {
 }
 #announcementText {
   position: relative;
-  top: 17px;
+  top: 23px;
   left: 70px;
 }
 
@@ -136,8 +136,8 @@ export default {
 }
 #classesText {
     position: relative;
-    top: 13px;
-    left: 70px;
+    top: 17px;
+    left: 75px;
 }
  
 #classesImage {
